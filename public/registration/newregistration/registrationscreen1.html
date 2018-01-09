@@ -1,0 +1,283 @@
+﻿<div class="container m-b-20 tmb-direct m-b-70">
+    <h1 class="text-center text-white m-t-30">{{'APPLY-NEW_SCREEN1-CITIZEN-INFO_TITLE_LABEL' | translate}}</h1>
+    <div class="panel panel-default m-0 p-0 no-shadow" id="new-register">
+        <div class="panel-body m-0 p-0">
+            <div class="grid-row">
+                <div class="form-style">
+                    <form name="registrationscreen1.frmLogin" ng-submit="citizenInfoValidation()" novalidate>
+                        <div class="custom-row form-group">
+                            <div class="col-md-2">
+                                <label class="control-label">{{'APPLY-NEW_SCREEN1-CITIZEN-INFO_THAI-NAME_LABEL' | translate}}<span class="pink">*</span></label>
+                            </div>
+                            <div class="col-md-2">
+                                <select name="title"
+                                        class="form-control"
+                                        ng-model="registrationscreen1.title"
+                                        ng-options="titles.varDesc as titles.varDesc for titles in chooseTitles"
+                                        ng-disabled="dopaDone == true"
+                                        ng-class="{'invalidbox': (submitted==true && registrationscreen1.frmLogin.title.$invalid)}"
+                                       ng-required="dopaDone != true">
+                                    <option value="">{{'APPLY-NEW_SCREEN1-CITIZEN-INFO_THAI-TITLE_LISTBOX' | translate}}</option>
+                                </select>
+                                <div class="ngMessagesClass"
+                                     ng-messages="submitted==true && registrationscreen1.frmLogin.title.$error"
+                                     role="alert">
+                                    <div class="ngMessageClass " ng-message="required">{{'APPLY-NEW_SCREEN1-CITIZEN-INFO_ERROR-MESSAGE_LABEL' | translate}}</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <input ng-model="registrationscreen1.thfirstname"
+                                       name="thfirstname"
+                                       id="thfirstname"
+                                       ng-focus="thFirstNameBlur = false"
+                                       ng-blur="thFirstNameBlur=!thFirstNameBlur"
+                                       placeholder="{{'APPLY-NEW_SCREEN1-CITIZEN-INFO_THAI-FIRST-NAME_TEXT-BOX' | translate}}"
+                                       type="text"
+                                       class="form-control"
+                                       ng-class="{'invalidbox': (submitted==true && registrationscreen1.frmLogin.thfirstname.$invalid && !thFirstNameBlur) || (registrationscreen1.frmLogin.thfirstname.$invalid && thFirstNameBlur)}"
+                                       ng-maxlength="40"
+                                       maxlength="40"
+                                       thai-name-validator
+                                       ng-pattern = "/^([\u0E01-\u0E3A\u0E40-\u0E4D0-9]+\s)*[\u0E01-\u0E3A\u0E40-\u0E4D0-9]+$/"
+                                       ng-disabled="dopaDone == true"
+                                       ng-required="dopaDone != true" />
+                                <div class="ngMessagesClass" ng-messages="submitted==true && registrationscreen1.frmLogin.thfirstname.$error || (registrationscreen1.frmLogin.thfirstname.$error && thFirstNameBlur)" role="alert">
+                                    <div class="ngMessageClass" ng-if="(registrationscreen1.frmLogin.thfirstname.$error.required) && thFirstNameBlur">{{'APPLY-NEW_SCREEN1-CITIZEN-INFO_ERROR-MESSAGE_LABEL' | translate}}</div>
+                                    <div class="ngMessageClass" ng-if="(registrationscreen1.frmLogin.thfirstname.$error.pattern) && thFirstNameBlur">{{'APPLY-NEW_SCREEN1-CITIZEN-INFO_ERROR-MESSAGE_LABEL' | translate}}</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <input ng-model="registrationscreen1.thlastname"
+                                       name="thlastname"
+                                       id="thlastname"
+                                       placeholder="{{'APPLY-NEW_SCREEN1-CITIZEN-INFO_THAI-LAST-NAME_TEXT-BOX' | translate}}"
+                                       type="text"
+                                       ng-focus="thLastNameBlur = false"
+                                       ng-blur="thLastNameBlur=!thLastNameBlur"
+                                       class="form-control"
+                                       ng-class="{invalidbox: (submitted==true && registrationscreen1.frmLogin.thlastname.$invalid && !thLastNameBlur) || (registrationscreen1.frmLogin.thlastname.$invalid && thLastNameBlur)}"
+                                       ng-maxlength="40"
+                                       maxlength="40"
+                                       thai-name-validator
+                                       ng-disabled="dopaDone == true"
+                                       ng-pattern = "/^([\u0E01-\u0E3A\u0E40-\u0E4D0-9]+\s)*[\u0E01-\u0E3A\u0E40-\u0E4D0-9]+$/"
+                                       ng-required="dopaDone != true" />
+                                <div class="ngMessagesClass" ng-messages="submitted==true && registrationscreen1.frmLogin.thlastname.$error || (registrationscreen1.frmLogin.thlastname.$error && thLastNameBlur)" role="alert">
+                                    <div class="ngMessageClass" ng-if="(registrationscreen1.frmLogin.thlastname.$error.required) && thLastNameBlur">{{'APPLY-NEW_SCREEN1-CITIZEN-INFO_ERROR-MESSAGE_LABEL' | translate}}</div>
+                                    <div class="ngMessageClass" ng-if="(registrationscreen1.frmLogin.thlastname.$error.pattern) && thLastNameBlur">{{'APPLY-NEW_SCREEN1-CITIZEN-INFO_ERROR-MESSAGE_LABEL' | translate}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row custom-row-responsive-mg form-group">
+                            <div class="col-md-2 lbl-20-mg">
+                                <label class="control-label">{{'APPLY-NEW_SCREEN1-CITIZEN-INFO_EN-NAME_LABEL' | translate}} <span class="pink">*</span></label>
+                            </div>
+                            <div class="col-md-2"></div>
+                            <div class="col-md-3">
+                                <input name="enfirstname"
+                                       id="enfirstname"
+                                       ng-focus="enFirstNameBlur = false"
+                                       ng-blur="enFirstNameBlur=!enFirstNameBlur"
+                                       ng-model="registrationscreen1.enfirstname"
+                                       placeholder="{{'APPLY-NEW_SCREEN1-CITIZEN-INFO_EN-FIRST-NAME_TEXT-BOX' | translate}}"
+                                       type="text"
+                                       class="form-control custom-form-control"
+                                       ng-class="{invalidbox: (submitted==true && registrationscreen1.frmLogin.enfirstname.$invalid && !enFirstNameBlur) || (registrationscreen1.frmLogin.enfirstname.$invalid && enFirstNameBlur)}"
+                                       ng-maxlength="40"
+                                       maxlength="40"
+                                       english-name-validator
+                                       ng-pattern = "/^[a-zA-Z0-9](?!.*--)(?!.*  )[a-zA-Z0-9\-\ ]*[a-zA-Z0-9]$/"
+                                       required />
+                                <div class="ngMessagesClass"
+                                     ng-messages="submitted==true && registrationscreen1.frmLogin.enfirstname.$error"
+                                     role="alert">
+                                    <div class="ngMessageClass" ng-if="(registrationscreen1.frmLogin.enfirstname.$error.required) && enFirstNameBlur">{{'APPLY-NEW_SCREEN1-CITIZEN-INFO_ERROR-MESSAGE_LABEL' | translate}}</div>
+                                    <div class="ngMessageClass" ng-if="(registrationscreen1.frmLogin.enfirstname.$error.pattern) && enFirstNameBlur">{{'APPLY-NEW_SCREEN1-CITIZEN-INFO_ERROR-MESSAGE_LABEL' | translate}}</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <input name="enlastname"
+                                       id="enlastname"
+                                       ng-focus="enLastNameBlur = false"
+                                       ng-blur="enLastNameBlur=!enLastNameBlur"
+                                       ng-model="registrationscreen1.enlastname"
+                                       placeholder="{{'APPLY-NEW_SCREEN1-CITIZEN-INFO_EN-LAST-NAME_TEXT-BOX' | translate}}"
+                                       type="text"
+                                       class="form-control"
+                                       ng-class="{invalidbox: (submitted==true && registrationscreen1.frmLogin.enlastname.$invalid) || (registrationscreen1.frmLogin.enlastname.$invalid && enLastNameBlur)}"
+                                       ng-maxlength="40"
+                                       maxlength="40"
+                                       english-name-validator
+                                       ng-pattern = "/^[a-zA-Z0-9](?!.*--)(?!.*  )[a-zA-Z0-9\-\ ]*[a-zA-Z0-9]$/"
+                                       required />
+                                <div class="ngMessagesClass"
+                                     ng-messages="submitted==true && registrationscreen1.frmLogin.enlastname.$error"
+                                     role="alert">
+                                    <div class="ngMessageClass" ng-if="(registrationscreen1.frmLogin.enlastname.$error.required) && enLastNameBlur">{{'APPLY-NEW_SCREEN1-CITIZEN-INFO_ERROR-MESSAGE_LABEL' | translate}}</div>
+                                    <div class="ngMessageClass" ng-if="(registrationscreen1.frmLogin.enlastname.$error.pattern) && enLastNameBlur">{{'APPLY-NEW_SCREEN1-CITIZEN-INFO_ERROR-MESSAGE_LABEL' | translate}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row custom-row form-group">
+                            <div class="col-md-12 col-md-offset-4 info-lbl">
+                                <div class="control-label label-lh-responsive">{{'APPLY-NEW_SCREEN1-CITIZEN-INFO_LABEL1_LABEL' | translate}}</div>
+                            </div>
+                        </div>
+                        <div class="row custom-row-responsive-mg form-group overflow-shown cal-row">
+                            <div class="col-md-3">
+                                <label class="control-label">{{'APPLY-NEW_SCREEN1-CITIZEN-INFO_DATE-OF-BIRTH_LABEL' | translate}} <span class="pink">*</span></label>
+                            </div>
+                            <div class="col-md-3">
+                                <input name="birthDateVal"
+                                       input-block
+                                       block-length="0"
+                                       popover-placement="bottom"
+                                       popover-trigger="outsideClick"
+                                       ng-click="birthDatePopover.open()"
+                                       popover-is-open="birthDatePopover.isOpen"
+                                       uib-popover-template="birthDatePopover.templateUrl"
+                                       ng-model="registrationscreen1.birthDate"
+                                       type="text"
+                                       ng-disabled="dopaDone == true"
+                                       ng-required="dopaDone != true"
+                                       ng-readonly="true"
+                                       prevent-copy-paste
+                                       ng-class="{'invalidbox': submitted==true && registrationscreen1.frmLogin.birthDateVal.$invalid}"
+                                       class="form-control input-cal cal-pos">
+                                <div class="ngMessagesClass" ng-messages="submitted==true && registrationscreen1.frmLogin.birthDateVal.$error" role="alert">
+                                    <div class="ngMessageClass" ng-message="required">{{'APPLY-NEW_SCREEN1-CITIZEN-INFO_ERROR-MESSAGE_LABEL' | translate}}</div>
+                                </div>
+                            </div>
+                            <script id="birthdate-cal.html" type="text/ng-template">
+                                <div class="hide-calendar">
+                                    <div compile="showBirthDateCalendarContent"></div>
+                                </div>
+                            </script>
+                        </div>
+                        <div class="row custom-row-responsive-mg form-group overflow-shown cal-row">
+                            <div class="col-md-3">
+                                <label class="control-label">{{'APPLY-NEW_SCREEN1-CITIZEN-INFO_ISSUE-DATE_LABEL' | translate}} <span class="pink">*</span></label>
+                            </div>
+                            <div class="col-md-3">
+                                <input name="issueDate"
+                                       input-block
+                                       block-length="0"
+                                       popover-placement="bottom"
+                                       popover-trigger="outsideClick"
+                                       ng-click="issueDatePopover.open()"
+                                       popover-is-open="issueDatePopover.isOpen"
+                                       uib-popover-template="issueDatePopover.templateUrl"
+                                       ng-model="registrationscreen1.cardIssueDate"
+                                       type="text"
+                                       required
+                                       ng-readonly="true"
+                                       prevent-copy-paste
+                                       ng-class="{'invalidbox': submitted==true && registrationscreen1.frmLogin.issueDate.$invalid}"
+                                       class="form-control input-cal cal-pos" />
+                                <div class="ngMessagesClass" ng-messages="submitted==true && registrationscreen1.frmLogin.issueDate.$error" role="alert">
+                                    <div class="ngMessageClass" ng-message="required">{{'APPLY-NEW_SCREEN1-CITIZEN-INFO_ERROR-MESSAGE_LABEL' | translate}}</div>
+                                </div>
+                            </div>
+                            <script id="issue-cal.html" type="text/ng-template">
+                                <div class="hide-calendar">
+                                    <div compile="showIssueCalendarContent"></div>
+                                </div>
+                            </script>
+                            <div class="col-md-3">
+                                <label class="control-label col-md-offset-4">{{'APPLY-NEW_SCREEN1-CITIZEN-INFO_EXPIRY-DATE_LABEL' | translate}} <span class="pink">*</span></label>
+                            </div>
+                            <div class="col-md-3">
+                                <input name="expiryDate"
+                                       id="expiryDateField"
+                                       input-block
+                                       block-length="0"
+                                       popover-placement="bottom"
+                                       ng-disabled="lifeTimeFlag"
+                                       popover-trigger="outsideClick"
+                                       ng-click="expiryDatePopover.open()"
+                                       popover-is-open="expiryDatePopover.isOpen"
+                                       uib-popover-template="expiryDatePopover.templateUrl"
+                                       ng-class="{'invalidbox': (submitted==true && registrationscreen1.frmLogin.expiryDate.$invalid && !registrationscreen1.neverExpire) || invalidDate}"
+                                       ng-model="registrationscreen1.cardExpiryDate"
+                                       type="text"
+                                       ng-readonly="true"
+                                       prevent-copy-paste
+                                       class="form-control input-cal cal-pos"
+                                       ng-required="!lifeTimeFlag" />
+                                <div class="ngMessagesClass" ng-messages="submitted==true && registrationscreen1.frmLogin.expiryDate.$error" role="alert" ng-if="!registrationscreen1.neverExpire">
+                                    <div class="ngMessageClass" ng-message="required">{{'APPLY-NEW_SCREEN1-CITIZEN-INFO_ERROR-MESSAGE_LABEL' | translate}}</div>
+                                    <div class="ngMessageClass" ng-if="invalidDate">{{'APPLY-NEW_SCREEN1-CITIZEN-INFO_ERROR-MESSAGE_LABEL' | translate}}</div>
+                                </div>
+                            </div>
+                            <script id="expiry-cal.html" type="text/ng-template">
+                                <div class="hide-calendar">
+                                    <div compile="showExpiryCalendarContent"></div>
+                                </div>
+                            </script>
+                        </div>
+                        <div class="row custom-row form-group">
+                            <div class="col-md-3 lbl-20-mg">
+                                <label class="label">{{'APPLY-NEW_SCREEN1-CITIZEN-INFO_NEVER-EXPIRED_LABEL' | translate}}</label>
+                            </div>
+                            <div class="col-md-3 m-l-minus-10 checkbox lbl-10-mg">
+                                <span class="lifetime-check m-t-15">
+                                    <input ng-click="selectCheckbox()" type="checkbox" name="chkLifeTime" id="chkLifeTime" ng-model="registrationscreen1.lifeTimeCheckBox" checked="registrationscreen1.neverExpire" class="css-checkbox" />
+                                    <label for="chkLifeTime" class="css-label lh-1">{{'APPLY-NEW_SCREEN1-CITIZEN-INFO_LIFE-TIME_CHECKBOX' | translate}}</label>
+                                </span><br>
+                                <div class="ngMessagesClass" ng-if="invalidNeverExpiry === true" role="alert">
+                                    <div class="ngMessageClass">{{'APPLY-NEW_SCREEN1-CITIZEN-INFO_ERROR-MESSAGE_LABEL' | translate}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="custom-row form-group overflow-shown">
+                            <div class="col-md-3 lbl-20-mg">
+                                <label class="control-label">{{'APPLY-NEW_SCREEN1-CITIZEN-INFO_CITIZEN-ID-NUMBER_LABEL' | translate}} <span class="pink">*</span></label>
+                            </div>
+                            <div class="col-md-3">
+                                <input name="" type="text" class="form-control" value="{{citizenID}}" disabled ng-model="registrationscreen1.citizenID" placeholder="{{'APPLY-NEW_SCREEN1-CITIZEN-INFO_CITIZEN-ID-NUMBER_TEXT-BOX' | translate}}">
+                            </div>
+                            <div class="col-md-3">
+                                <label class="control-label col-md-offset-4">{{'APPLY-NEW_SCREEN1-CITIZEN-INFO_CITIZEN-ID-SERIAL-NO_LABEL' | translate}} <span class="pink">*</span></label>
+                            </div>
+                            <div class="col-md-3">
+                                <input name="laserNumber"
+                                       value="" type="text"
+                                       class="form-control"
+                                       ng-class="{'invalidbox': submitted==true && registrationscreen1.frmLogin.laserNumber.$invalid && !registrationscreen1.neverExpire}"
+                                       placeholder="{{'APPLY-NEW_SCREEN1-CITIZEN-INFO_CITIZEN-ID-SERIAL-NO_TEXT-BOX' | translate}}"
+                                       ng-model="registrationscreen1.laserNumber"
+                                       ng-maxlength="12"
+                                       ng-minlength="11"
+                                       alpha-numeric
+                                       maxlength="12"
+                                       ng-required="!registrationscreen1.neverExpire"
+                                       ng-disabled="dopaDone == true && !utilities.isEmpty(registrationscreen1.laserNumber)"
+                                        />
+                                <div class="pull-left tooltip-position">
+                                    <div class="tooltip-style">
+                                        <a class="btn-tooltip appicon-ico-navmain-09 appicon-1-50x">
+                                            <div class="tooltip">
+                                                <div class="tooltip-inner" ng-bind-html="serialNumHelpPopup">
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="ngMessagesClass" ng-messages="submitted==true && registrationscreen1.frmLogin.laserNumber.$error" role="alert">
+                                    <div class="ngMessageClass" ng-message="minlength">{{'APPLY-NEW_SCREEN1-CITIZEN-INFO_ERROR-MESSAGE_LABEL' | translate}}</div>
+                                     <div class="ngMessageClass" ng-message="required">{{'SETTINGS-PROFILE-INFO_EDIT-INFO_ERROR-MESSAGE_LABEL' | translate}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-center p-t-20 m-b-70">
+        <button type="button" ng-click="cancelApplyProcess();" class="btn gray" ng-hide="fromEditFlow">{{'APPLY-NEW_SCREEN1-CITIZEN-INFO_BACK_BUTTON' | translate}}</button>
+        <button type="button" ng-click="utilities.gotoPage('prelogin.applicantAccountSummaryScreen');" class="btn gray" ng-show="fromEditFlow">{{'APPLY-NEW_SCREEN1-CITIZEN-INFO-EDIT_BACK_BUTTON' | translate}}</button>      &nbsp;&nbsp;
+        <button type="button" class="btn" ng-click="citizenInfoValidation()" ng-hide="fromEditFlow">{{'APPLY-NEW_SCREEN1-CITIZEN-INFO_NEXT_BUTTON' | translate}}</button>
+        <button type="button" class="btn" ng-show="fromEditFlow" ng-click="citizenInfoValidation();">{{'APPLY-NEW_SCREEN1-CITIZEN-INFO-EDIT_SAVE_BUTTON' | translate}}</button>
+    </div>
+</div>

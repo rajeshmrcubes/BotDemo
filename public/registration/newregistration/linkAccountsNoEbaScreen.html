@@ -1,0 +1,83 @@
+<div class="container tmb-direct m-b-70">
+    <h1 class="text-center text-white m-t-30">{{headerLabel}}</h1>
+    <div class="grid-row white-bg" id="accounts_view">
+        <div class="custom-row form-group">
+            <div class="col-md-10">
+                <h2>{{'APPLY-NEW_SCREEN7-LINK-EBA_LINK-ACC_LABEL' | translate}}</h2>
+                <div ng-bind-html="instructionLabel">
+                </div>
+            </div>
+        </div>
+        <div class="row line-bottom" ng-show="ebaAlreadyAdded">
+            <div class="block-responsive" ng-repeat="bankdetails in bankDetails">
+                <div class="col-md-2">
+                    <div class="image-container">
+                        <img ng-src="{{bankdetails.bankLogo}}" class="bank-logo-size-80px">
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="custom-row form-group">
+                        <div class="col-md-5">
+                            <label>{{'APPLY-NEW_SCREEN7-LINK-EBA-COMPLETE_BANK-NAME_LABEL'| translate}}</label>
+                            <p class="control-info">{{bankdetails.bankName}}</p>
+                        </div>
+                        <div class="col-md-7">
+                            <label>{{'APPLY-NEW_SCREEN7-LINK-EBA-COMPLETE_ACCOUNT-NUMBER_LABEL'| translate}}</label>
+                            <p class="control-info">{{bankdetails.accNo | accountNumberFormat}}</p>
+                        </div>
+                    </div>
+                    <div class="custom-row form-group">
+                        <div class="col-md-5">
+                            <label>{{'APPLY-NEW_SCREEN7-LINK-EBA-COMPLETE_ACCOUNT-NAME_LABEL'| translate}}</label>
+                            <p class="control-info">{{bankdetails.accName}}</p>
+                        </div>
+                        <div class="col-md-7">
+                            <label>{{'APPLY-NEW_SCREEN7-LINK-EBA-COMPLETE_ACCOUNT-NICK-NAME_LABEL'| translate}}</label>
+                            <p class="control-info">{{bankdetails.accNickName}}</p>
+                        </div>
+                    </div>
+                    <div ng-if="(bankdetails.type=='ORFT' || bankdetails.type=='SMART')">
+                        <span class="pink">*</span>{{'APPLY-NEW_SCREEN7-LINK-EBA-COMPLETE_VERIFY-MESSAGE_LABEL' | translate}}
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="pull-right m-t-10">
+                        <button type="button" class="btn btn-sm btn-custom-sm btn-block btn-responsive" ng-click="deleteEBAConfirmPopup(bankdetails.accNo, bankdetails.bankCode);">{{'APPLY-NEW_SCREEN7-LINK-EBA-COMPLETE_DELETE_BUTTON'| translate}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row last" ng-hide="ebaAddLimitReached">
+            <div class="block-responsive">
+                <div class="col-md-2">
+                    <div class="image-container">
+                        <img src="img/logo-add-acc.png">
+                        <button type="button" ng-click="utilities.gotoPage('prelogin.linkAccountsAddCheckingAccount');"
+                                class="btn btn-sm darkblue right visible-xs visible-sm">{{'APPLY-NEW_SCREEN7-LINK-EBA_ADD_BUTTON' | translate}}</button>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="custom-row form-group">
+                        <div class="col-md-10">
+                            <label>{{'APPLY-NEW_SCREEN7-LINK-EBA_LABEL1_LABEL' | translate}}</label>
+                            <p class="control-info">{{'APPLY-NEW_SCREEN7-LINK-EBA_LABEL2_LABEL' | translate}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 hidden-xs hidden-sm">
+                    <div class="pull-right">
+                        <button type="button" ng-click="utilities.gotoPage('prelogin.linkAccountsAddCheckingAccount');"
+                                class="btn btn-sm btn-custom-sm darkblue btn-responsive">{{'APPLY-NEW_SCREEN7-LINK-EBA_ADD_BUTTON' | translate}}</button>
+                        <br><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-center m-t-20 p-b-30">
+      <button type="button" class="btn darkblue btn-mg" ng-hide="fromEditFlow" ng-click="gotoPrevPage();">{{'APPLY-NEW_SCREEN7-LINK-EBA_BACK_BUTTON' | translate}}</button>
+      <button type="button" class="btn gray btn-mg" ng-show="fromEditFlow" ng-click="utilities.gotoPage('prelogin.applicantAccountSummaryScreen');">{{'APPLY-NEW_SCREEN7-LINK-EBA-EDIT_BACK_BUTTON' | translate}}</button>
+      <button type="button" ng-click="addEBAModal();" ng-hide="fromEditFlow" class="btn">{{'APPLY-NEW_SCREEN7-LINK-EBA_NEXT_BUTTON' | translate}}</button>
+      <button type="button" class="btn" ng-show="fromEditFlow" ng-click="addEBAModal();">{{'APPLY-NEW_SCREEN7-LINK-EBA-EDIT_SAVE_BUTTON' | translate}}</button>
+    </div>
+</div>

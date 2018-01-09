@@ -1,0 +1,931 @@
+﻿<div class="container tmb-direct">
+    <form name="registrationcontactinfo.frmapply" novalidate>
+        <h1 class="text-center text-white m-t-30">{{'APPLY-NEW_SCREEN4-CONTACT-INFO_TITLE_LABEL' | translate}}</h1>
+        <div class="panel panel-default">
+            <div class="panel-body art-content">
+                <div class="grid-row">
+                   <div class="form-style">
+                    <div class="line-bottom">
+                        <div class="custom-row form-group">
+                            <div class="col-md-2">
+                                <label class="control-label">{{'APPLY-NEW_SCREEN4-CONTACT-INFO_EMAIL-ADDRESS_LABEL' | translate}} <span class="pink">*</span></label>
+                            </div>
+                            <div class="col-md-3">
+                                <input name="email"
+                                       type="text"
+                                       class="form-control"
+                                       ng-model="registrationcontactinfo.email"
+                                       placeholder="{{'APPLY-NEW_SCREEN4-CONTACT-INFO_EMAIL-ADDRESS_TEXT-BOX' | translate}}"
+                                       id="email"
+                                       ng-class="{invalidbox: submitted==true && registrationcontactinfo.frmapply.email.$invalid}"
+                                       required
+                                       email-validator />
+                                <div class="ngMessagesClass"
+                                     ng-messages="submitted==true && registrationcontactinfo.frmapply.email.$error"
+                                     role="alert">
+                                    <div class="ngMessageClass" ng-message="required">
+                                        {{'APPLY-NEW_SCREEN4-CONTACT-INFO-UNCHECK_ERROR-MESSAGE_LABEL' | translate}}
+                                    </div>
+                                    <div class="ngMessageClass" ng-show="invalidEmail">
+                                        {{'APPLY-NEW_SCREEN4-CONTACT-INFO-UNCHECK_ERROR-MESSAGE_LABEL' | translate}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line-bottom">
+                        <div class="custom-row custom-row-responsive-sm-mg form-group">
+                            <h2 class="m-t-b-15">{{'APPLY-NEW_SCREEN4-CONTACT-INFO_REGISTERED-ADDRESS_LABEL' | translate}}</h2>
+                            <div class="col-md-2">
+                                <label class="control-label">{{'APPLY-NEW_SCREEN4-CONTACT-INFO_COUNTRY_LABEL' | translate}} <span class="pink">*</span></label>
+                            </div>
+                            <div class="col-md-3">
+                                <input name="regcountry"
+                                       type="text"
+                                       class="form-control"
+                                       ng-model="registrationcontactinfo.regcountry"
+                                       value="ไทย"
+                                       disabled>
+                            </div>
+                            <div class="col-md-2 no-margin"></div>
+                            <div class="col-md-2">
+                                <label class="control-label">
+                                    {{'APPLY-NEW_SCREEN4-CONTACT-INFO_ADDRESS-NO_LABEL' | translate}} <span class="pink">*</span>
+                                </label>
+                            </div>
+                            <div class="col-md-3">
+                                <input name="regaddressNumber"
+                                       type="text"
+                                       class="form-control"
+                                       value=""
+                                       ng-model="registrationcontactinfo.regaddressNumber"
+                                       id="regaddressNumber"
+                                       ng-class="{invalidbox: submitted==true && registrationcontactinfo.frmapply.regaddressNumber.$invalid}"
+
+                                       maxlength="20"
+                                       placeholder="{{'APPLY-NEW_SCREEN4-CONTACT-INFO_ADDRESS-NO_TEXT-BOX' | translate}}"
+                                       required />
+                                <div class="ngMessagesClass"
+                                     ng-messages="submitted==true && registrationcontactinfo.frmapply.regaddressNumber.$error"
+                                     role="alert">
+                                    <div class="ngMessageClass" ng-message="required">
+                                        {{'APPLY-NEW_SCREEN4-CONTACT-INFO-UNCHECK_ERROR-MESSAGE_LABEL' | translate}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="custom-row form-group">
+                            <div class="col-md-2">
+                                <label class="control-label">{{'APPLY-NEW_SCREEN4-CONTACT-INFO_MOO_LABEL' | translate}}</label>
+                            </div>
+                            <div class="col-md-3">
+                                <input name="regstreetnumber"
+                                       type="text"
+                                       class="form-control"
+                                       ng-model="registrationcontactinfo.regstreetnumber"
+
+                                       maxlength="10"
+                                       placeholder="{{'APPLY-NEW_SCREEN4-CONTACT-INFO_MOO_TEXT-BOX' | translate}}"
+                                       id="regstreetnumber">
+                            </div>
+                            <div class="col-md-2 no-margin"></div>
+                            <div class="col-md-2">
+                                <label class="control-label">{{'APPLY-NEW_SCREEN4-CONTACT-INFO_BUILDING-VILLAGE_LABEL' | translate}}</label>
+                            </div>
+                            <div class="col-md-3">
+                                <input name="regbldgvillageinfo"
+                                       type="text"
+                                       ng-model="registrationcontactinfo.regbldgvillageinfo"
+                                       class="form-control"
+                                       value=""
+
+                                       maxlength="30"
+                                       placeholder="{{'APPLY-NEW_SCREEN4-CONTACT-INFO_BUILDING-VILLAGE_TEXT-BOX' | translate}}">
+                            </div>
+                        </div>
+                        <div class="custom-row form-group">
+                            <div class="col-md-2">
+                                <label class="control-label">{{'APPLY-NEW_SCREEN4-CONTACT-INFO_TROK-SOI_LABEL' | translate}}</label>
+                            </div>
+                            <div class="col-md-3">
+                                <input name="regtroksoi"
+                                       type="text"
+                                       class="form-control"
+                                       value=""
+                                       ng-model="registrationcontactinfo.regtroksoi"
+
+                                       maxlength="30"
+                                       placeholder="{{'APPLY-NEW_SCREEN4-CONTACT-INFO_TROK-SOI_TEXT-BOX' | translate}}">
+                            </div>
+                            <div class="col-md-2 no-margin"></div>
+                            <div class="col-md-2">
+                                <label class="control-label">{{'APPLY-NEW_SCREEN4-CONTACT-INFO_ROAD_LABEL' | translate}}</label>
+                            </div>
+                            <div class="col-md-3">
+                                <input name="regroad"
+                                       type="text"
+                                       class="form-control"
+                                       value=""
+                                       ng-model="registrationcontactinfo.regroad"
+
+                                       maxlength="30"
+                                       placeholder="{{'APPLY-NEW_SCREEN4-CONTACT-INFO_ROAD_TEXT-BOX' | translate}}">
+                            </div>
+                        </div>
+                        <div class="custom-row custom-row-responsive-sm-mg form-group">
+                            <div class="col-md-2">
+                                <label class="control-label">{{'APPLY-NEW_SCREEN4-CONTACT-INFO_PROVINCE_LABEL' | translate}} <span class="pink">*</span></label>
+                            </div>
+                            <div class="col-md-3">
+                                <select name="regprovince"
+                                        class="form-control"
+                                        ng-model="registrationcontactinfo.regprovince"
+                                        id="regprovince"
+                                        ng-class="{invalidbox: submitted==true && registrationcontactinfo.frmapply.regprovince.$invalid}"
+                                        required
+                                        ng-options="province.provinceCd as province.provinceNameTH for province in regProvincesList"
+                                        ng-change="getRegDistricts(registrationcontactinfo.regprovince,'districts')">
+                                    <option value="">{{'APPLY-NEW_SCREEN4-CONTACT-INFO_PROVINCE_LISTBOX' | translate}}</option>
+                                </select>
+                                <div class="ngMessagesClass"
+                                     ng-messages="submitted==true && registrationcontactinfo.frmapply.regprovince.$error"
+                                     role="alert">
+                                    <div class="ngMessageClass" ng-message="required">
+                                        {{'APPLY-NEW_SCREEN4-CONTACT-INFO-UNCHECK_ERROR-MESSAGE_LABEL' | translate}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2 no-margin"></div>
+                            <div class="col-md-2">
+                                <label class="control-label">
+                                    {{'APPLY-NEW_SCREEN4-CONTACT-INFO_SUB-PROVINCE_LABEL' | translate}} <span class="pink">*</span>
+                                </label>
+                            </div>
+                            <div class="col-md-3">
+                                <select name="regsubprovince"
+                                        class="form-control"
+                                        ng-model="registrationcontactinfo.regsubprovince"
+                                        id="regsubprovince"
+                                        ng-class="{invalidbox: submitted==true && registrationcontactinfo.frmapply.regsubprovince.$invalid}"
+                                        required
+                                        ng-options="district.districtCd as district.districtNameTH for district in regDistrictList"
+                                        ng-change="getRegSubDistricts(registrationcontactinfo.regsubprovince)">
+                                    <option value="">{{'APPLY-NEW_SCREEN4-CONTACT-INFO_SUB-PROVINCE_LISTBOX' | translate}}</option>
+                                </select>
+                                <div class="ngMessagesClass"
+                                     ng-messages="submitted==true && registrationcontactinfo.frmapply.regsubprovince.$error"
+                                     role="alert">
+                                    <div class="ngMessageClass" ng-message="required">
+                                        {{'APPLY-NEW_SCREEN4-CONTACT-INFO-UNCHECK_ERROR-MESSAGE_LABEL' | translate}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="custom-row form-group">
+                            <div class="col-md-2">
+                                <label class="control-label">{{'APPLY-NEW_SCREEN4-CONTACT-INFO_TAMBOL_LABEL ' | translate}} <span class="pink">*</span></label>
+                            </div>
+                            <div class="col-md-3">
+                                <select name="regTambol"
+                                        class="form-control"
+                                        ng-model="registrationcontactinfo.regTambol"
+                                        id="regTambol"
+                                        ng-class="{invalidbox: submitted==true && registrationcontactinfo.frmapply.regTambol.$invalid}"
+                                        required
+                                        ng-options="subDist.subDistrictCd as subDist.subDistrictNameTH for subDist in regSubDistrictList">
+                                    <option value="">{{'APPLY-NEW_SCREEN4-CONTACT-INFO_TAMBOL_LISTBOX' | translate}}</option>
+                                </select>
+                                <div class="ngMessagesClass"
+                                     ng-messages="submitted==true && registrationcontactinfo.frmapply.regTambol.$error"
+                                     role="alert">
+                                    <div class="ngMessageClass" ng-message="required">
+                                        {{'APPLY-NEW_SCREEN4-CONTACT-INFO-UNCHECK_ERROR-MESSAGE_LABEL' | translate}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2 no-margin"></div>
+                            <div class="col-md-2">
+                                <label class="control-label">
+                                    {{'APPLY-NEW_SCREEN4-CONTACT-INFO_POSTAL-CODE_LABEL' | translate}} <span class="pink">*</span>
+                                </label>
+                            </div>
+                            <div class="col-md-3">
+                                <select name="regzipcode"
+                                        class="form-control"
+                                        ng-disabled="regPostalCodeList.length === 1"
+                                        ng-model="registrationcontactinfo.regzipcode"
+                                        id="regzipcode"
+                                        ng-class="{invalidbox: submitted==true && registrationcontactinfo.frmapply.regzipcode.$invalid}"
+                                        required
+                                        ng-options="postalCode.zipCode as postalCode.zipCode for postalCode in regPostalCodeList">
+                                    <option ng-if="regPostalCodeList.length === 0 || regPostalCodeList.length > 1" value="" label="{{'APPLY-NEW_SCREEN4-CONTACT-INFO_POSTAL-CODE_LISTBOX' | translate}}" disabled selected="selected"> </option>
+                                    <option ng-if="regPostalCodeList.length === 1" value="{{registrationcontactinfo.regzipcode}}" label="{{registrationcontactinfo.regzipcode}}" disabled selected="selected"></option>
+                                </select>
+                                <div class="ngMessagesClass"
+                                     ng-messages="submitted==true && registrationcontactinfo.frmapply.regzipcode.$error"
+                                     role="alert">
+                                    <div class="ngMessageClass" ng-message="required">
+                                        {{'APPLY-NEW_SCREEN4-CONTACT-INFO-UNCHECK_ERROR-MESSAGE_LABEL' | translate}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line-bottom">
+                        <h2 class="m-t-b-15">{{'APPLY-NEW_SCREEN4-CONTACT-INFO-UNCHECK_CURRENT-ADDRESS_LABEL' | translate}}</h2>
+                        <div class="custom-row form-group radio">
+                            <div class="col-md-3">
+                                <span class="inline-radio" ng-click="enterNewAddress($event);"
+                                      id="radio_enter_new_address">
+                                    <input type="radio" name="radiog_lite2" class="css-checkbox"
+                                           id="enter_new_address"  ng-checked="!contactAddressSameAsRegisteredAddress">
+                                    <label for="enter_new_address" class="css-label radGroup1">{{'APPLY-NEW_SCREEN4-CONTACT-INFO-UNCHECK_ADD-CONTACT-ADDRESS_RADIO-BUTTON' | translate}}</label>
+                                </span>
+                            </div>
+                            <div class="col-md-3">
+                                <span class="inline-radio lg" ng-click="enterNewAddress($event);"
+                                      id="radio_use_same_address">
+                                    <input type="radio" name="radiog_lite2" class="css-checkbox"
+                                           id="same_address_input" ng-checked="contactAddressSameAsRegisteredAddress">
+                                    <label for="same_address_input"
+                                           class="css-label radGroup1 radio-inline"
+                                           id="same_address_label">{{'APPLY-NEW_SCREEN4-CONTACT-INFO-UNCHECK_SAME-AS-REGISTERED-ADDRESS_RADIO-BUTTON' | translate}}</label>
+                                </span>
+                            </div>
+                        </div>
+                        <span ng-hide="enterNewAddressFields">
+                            <div class="custom-row custom-row-responsive-sm-mg form-group">
+                                <div class="col-md-2">
+                                    <label class="control-label">{{'APPLY-NEW_SCREEN4-CONTACT-INFO_COUNTRY_LABEL' | translate}} <span class="pink">*</span></label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input name="currentAddrCountry"
+                                           type="text"
+                                           class="form-control"
+                                           value="ไทย"
+                                           disabled
+                                           ng-model="registrationcontactinfo.currentAddrCountry"
+                                           >
+                                </div>
+                                <div class="col-md-2 no-margin"></div>
+                                <div class="col-md-2">
+                                    <label class="control-label">
+                                        {{'APPLY-NEW_SCREEN4-CONTACT-INFO_ADDRESS-NO_LABEL' | translate}} <span class="pink">*</span>
+                                    </label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input name="currentAddressNumber"
+                                           type="text"
+                                           class="form-control"
+                                           value=""
+                                           ng-model="registrationcontactinfo.currentAddressNumber"
+                                           id="currentAddressNumber"
+                                           maxlength="20"
+                                           ng-class="{invalidbox: submitted==true && registrationcontactinfo.frmapply.currentAddressNumber.$invalid}"
+                                           ng-required="!sameAsRegAddress"
+                                           placeholder="{{'APPLY-NEW_SCREEN4-CONTACT-INFO_ADDRESS-NO_TEXT-BOX' | translate}}" />
+                                    <div class="ngMessagesClass"
+                                         ng-messages="submitted==true && registrationcontactinfo.frmapply.currentAddressNumber.$error"
+                                         role="alert">
+                                        <div class="ngMessageClass" ng-message="required">
+                                            {{'APPLY-NEW_SCREEN4-CONTACT-INFO-UNCHECK_ERROR-MESSAGE_LABEL' | translate}}
+                                        </div>
+                                        <div class="ngMessageClass" ng-show="invalidCurrentAddress">
+                                            {{'APPLY-NEW_SCREEN4-CONTACT-INFO-UNCHECK_ERROR-MESSAGE_LABEL' | translate}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="custom-row form-group">
+                                <div class="col-md-2">
+                                    <label class="control-label">{{'APPLY-NEW_SCREEN4-CONTACT-INFO_MOO_LABEL' | translate}}</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input name="currentStreetnumber"
+                                           type="text"
+                                           class="form-control"
+                                           ng-model="registrationcontactinfo.currentStreetnumber"
+                                           id="streetnumber"
+
+                                           maxlength="10"
+                                           placeholder="{{'APPLY-NEW_SCREEN4-CONTACT-INFO_MOO_TEXT-BOX'| translate}}">
+                                </div>
+                                <div class="col-md-2 no-margin"></div>
+                                <div class="col-md-2">
+                                    <label class="control-label">{{'APPLY-NEW_SCREEN4-CONTACT-INFO_BUILDING-VILLAGE_LABEL' | translate}}</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input name="currentBldgVillage"
+                                           type="text"
+                                           class="form-control"
+                                           ng-model="registrationcontactinfo.currentBldgVillage"
+                                           value=""
+
+                                           maxlength="30"
+                                           placeholder="{{'APPLY-NEW_SCREEN4-CONTACT-INFO_BUILDING-VILLAGE_TEXT-BOX' | translate}}">
+                                </div>
+                            </div>
+                            <div class="custom-row form-group">
+                                <div class="col-md-2">
+                                    <label class="control-label">{{'APPLY-NEW_SCREEN4-CONTACT-INFO_TROK-SOI_LABEL' | translate}}</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input name="currentTrokSoi"
+                                           type="text"
+                                           class="form-control"
+                                           value=""
+
+                                           maxlength="30"
+                                           ng-model="registrationcontactinfo.currentTrokSoi"
+                                           placeholder="{{'APPLY-NEW_SCREEN4-CONTACT-INFO_TROK-SOI_TEXT-BOX' | translate}}">
+                                </div>
+                                <div class="col-md-2 no-margin"></div>
+                                <div class="col-md-2">
+                                    <label class="control-label">{{'APPLY-NEW_SCREEN4-CONTACT-INFO_ROAD_LABEL' | translate}}</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input name="currentRoadLabel"
+                                           type="text"
+                                           class="form-control"
+                                           value=""
+
+                                           maxlength="30"
+                                           ng-model="registrationcontactinfo.currentRoadLabel"
+                                           placeholder="{{'APPLY-NEW_SCREEN4-CONTACT-INFO_ROAD_TEXT-BOX'|translate}}">
+                                </div>
+                            </div>
+                            <div class="custom-row custom-row-responsive-sm-mg form-group">
+                                <div class="col-md-2">
+                                    <label class="control-label">{{'APPLY-NEW_SCREEN4-CONTACT-INFO_PROVINCE_LABEL' | translate}} <span class="pink">*</span></label>
+                                </div>
+                                <div class="col-md-3">
+                                    <select name="currentProvince"
+                                            class="form-control"
+                                            ng-model="registrationcontactinfo.currentProvince"
+                                            id="currentProvince"
+                                            ng-class="{invalidbox: submitted==true && registrationcontactinfo.frmapply.currentProvince.$invalid}"
+                                            ng-required="!sameAsRegAddress"
+                                            ng-options="province.provinceCd as province.provinceNameTH for province in currentProvincesList"
+                                            ng-change="getCurrentDistricts(registrationcontactinfo.currentProvince,'districts')">
+                                        <option value="">{{'APPLY-NEW_SCREEN4-CONTACT-INFO_PROVINCE_LISTBOX' | translate}}</option>
+                                    </select>
+                                    <div class="ngMessagesClass"
+                                         ng-messages="submitted==true && registrationcontactinfo.frmapply.currentProvince.$error"
+                                         role="alert">
+                                        <div class="ngMessageClass" ng-message="required">
+                                            {{'APPLY-NEW_SCREEN4-CONTACT-INFO-UNCHECK_ERROR-MESSAGE_LABEL' | translate}}
+                                        </div>
+                                         <div class="ngMessageClass" ng-show="invalidCurrentAddress">
+                                            {{'APPLY-NEW_SCREEN4-CONTACT-INFO-UNCHECK_ERROR-MESSAGE_LABEL' | translate}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 no-margin"></div>
+                                <div class="col-md-2">
+                                    <label class="control-label">{{'APPLY-NEW_SCREEN4-CONTACT-INFO_SUB-PROVINCE_LABEL' | translate}} <span class="pink">*</span></label>
+                                </div>
+                                <div class="col-md-3">
+                                    <select name="currentSubprovince"
+                                            class="form-control"
+                                            ng-model="registrationcontactinfo.currentSubprovince"
+                                            id="subprovince"
+                                            ng-class="{invalidbox: submitted==true && registrationcontactinfo.frmapply.currentSubprovince.$invalid}"
+                                            ng-required="!sameAsRegAddress"
+                                            ng-options="district.districtCd as district.districtNameTH for district in currentDistrictList"
+                                            ng-change= "getCurrentSubDistricts(registrationcontactinfo.currentSubprovince)">
+                                        <option value="">{{'APPLY-NEW_SCREEN4-CONTACT-INFO_SUB-PROVINCE_LISTBOX' | translate}}</option>
+                                    </select>
+                                    <div class="ngMessagesClass"
+                                         ng-messages="submitted==true && registrationcontactinfo.frmapply.currentSubprovince.$error"
+                                         role="alert">
+                                        <div class="ngMessageClass" ng-message="required">
+                                            {{'APPLY-NEW_SCREEN4-CONTACT-INFO-UNCHECK_ERROR-MESSAGE_LABEL' | translate}}
+                                        </div>
+                                         <div class="ngMessageClass" ng-show="invalidCurrentAddress">
+                                            {{'APPLY-NEW_SCREEN4-CONTACT-INFO-UNCHECK_ERROR-MESSAGE_LABEL' | translate}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="custom-row custom-row-responsive-sm-mg form-group">
+                                <div class="col-md-2">
+                                    <label class=" control-label">{{'APPLY-NEW_SCREEN4-CONTACT-INFO_TAMBOL_LABEL' | translate}} <span class="pink">*</span></label>
+                                </div>
+                                <div class="col-md-3">
+                                    <select name=" currentTambol" class="form-control"
+                                            ng-model="registrationcontactinfo.currentTambol"
+                                            id="currentTambol"
+                                            ng-class="{invalidbox: submitted==true && registrationcontactinfo.frmapply.currentTambol.$invalid}"
+                                            ng-required="!sameAsRegAddress"
+                                            ng-options="subDist.subDistrictCd as subDist.subDistrictNameTH for subDist in currentSubDistrictList">
+                                        <option value="">{{'APPLY-NEW_SCREEN4-CONTACT-INFO_TAMBOL_LISTBOX' | translate}}</option>
+                                    </select>
+                                    <div class="ngMessagesClass"
+                                         ng-messages="submitted==true && registrationcontactinfo.frmapply.currentTambol.$error"
+                                         role="alert">
+                                        <div class="ngMessageClass" ng-message="required">{{'APPLY-NEW_SCREEN4-CONTACT-INFO-UNCHECK_ERROR-MESSAGE_LABEL' | translate}}</div>
+                                         <div class="ngMessageClass" ng-show="invalidCurrentAddress">
+                                            {{'APPLY-NEW_SCREEN4-CONTACT-INFO-UNCHECK_ERROR-MESSAGE_LABEL' | translate}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 no-margin"></div>
+                                <div class="col-md-2">
+                                    <label class="control-label">{{'APPLY-NEW_SCREEN4-CONTACT-INFO_POSTAL-CODE_LABEL' | translate}} <span class="pink">*</span></label>
+                                </div>
+                                <div class="col-md-3">
+                                    <select name="currentZipcode"
+                                            class="form-control"
+                                            ng-disabled="currentPostalCodeList.length === 1"
+                                            ng-model="registrationcontactinfo.currentzipcode"
+                                            id="currentZipcode"
+                                            ng-class="{invalidbox: submitted==true && registrationcontactinfo.frmapply.currentZipcode.$invalid}"
+                                            ng-required="!sameAsRegAddress"
+                                            ng-options="postalCode.zipCode as postalCode.zipCode for postalCode in currentPostalCodeList">
+                                        <option ng-if="currentPostalCodeList.length === 0 || currentPostalCodeList.length > 1" value="" label="{{'APPLY-NEW_SCREEN4-CONTACT-INFO_POSTAL-CODE_LISTBOX' | translate}}" disabled selected="selected"> </option>
+                                        <option ng-if="currentPostalCodeList.length === 1" value="{{registrationcontactinfo.currentzipcode}}" label="{{registrationcontactinfo.currentzipcode}}" disabled selected="selected"></option>
+                                    </select>
+                                    <div class="ngMessagesClass"
+                                         ng-messages="submitted==true && registrationcontactinfo.frmapply.currentZipcode.$error"
+                                         role="alert">
+                                        <div class="ngMessageClass" ng-message="required">{{'APPLY-NEW_SCREEN4-CONTACT-INFO-UNCHECK_ERROR-MESSAGE_LABEL' | translate}}</div>
+                                         <div class="ngMessageClass" ng-show="invalidCurrentAddress">
+                                            {{'APPLY-NEW_SCREEN4-CONTACT-INFO-UNCHECK_ERROR-MESSAGE_LABEL' | translate}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </span>
+                        <div class="custom-row form-group">
+                            <div class="col-md-2">
+                                <label class="control-label">{{'APPLY-NEW_SCREEN4-CONTACT-INFO_HOME-PHONE-NO_LABEL' | translate}} <!-- <span class="pink">*</span> --></label>
+                            </div>
+                            <div class="col-md-3">
+                                <input name="mobilenumber"
+                                       type="text"
+                                       class="form-control"
+                                       value=""
+                                       ng-model="registrationcontactinfo.mobilenumber"
+                                       id="mobilenumber"
+                                       ng-class="{invalidbox: submitted==true && registrationcontactinfo.frmapply.mobilenumber.$invalid}"
+                                       ng-minlength="9"
+                                       maxlength="10"
+                                       numbers-only
+                                       placeholder="{{'APPLY-NEW_SCREEN4-CONTACT-INFO_HOME-PHONE-NO_TEXT-BOX' | translate}}" />
+                                <div class="ngMessagesClass"
+                                     ng-messages="submitted==true && registrationcontactinfo.frmapply.mobilenumber.$error"
+                                     role="alert">
+                                    <div class="ngMessageClass" ng-show="invalidNumber">
+                                        {{'APPLY-NEW_SCREEN4-CONTACT-INFO-UNCHECK_ERROR-MESSAGE_LABEL' | translate}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2 no-margin"></div>
+                            <div class="col-md-2">
+                                <label class="control-label">{{'APPLY-NEW_SCREEN4-CONTACT-INFO_EXTENSION_LABEL' | translate}}</label>
+                            </div>
+                            <div class="col-md-3">
+                                <input name="extLabel"
+                                       type="text"
+                                       class="form-control"
+                                       value=""
+                                       placeholder="{{'APPLY-NEW_SCREEN4-CONTACT-INFO_EXTENSION_TEXT-BOX' | translate}}"
+                                       ng-model="registrationcontactinfo.extLabel"
+                                       numbers-only
+                                       maxlength="5">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="last">
+                        <h2 class="m-t-b-15">{{'APPLY-NEW_SCREEN4-CONTACT-INFO-UNCHECK_OFFICE-ADDRESS_LABEL' | translate}}</h2>
+                        <div class="custom-row form-group radio">
+                            <div class="col-md-2">
+                                <span class="inline-radio" ng-click="enterNewOfficeAddress($event);">
+                                    <input type="radio" name="radiog_lite" id="radio_enter_newOfficeaddress"
+                                           class="css-checkbox"
+                                           ng-checked="!officeAddressSameAsRegisteredAddress && !officeAddressSameAsContactAddress">
+                                    <label for="radio_enter_newOfficeaddress"
+                                           class="css-label radGroup1">{{'APPLY-NEW_SCREEN4-CONTACT-INFO-UNCHECK_ADD-OFFICE-ADDRESS_RADIO-BUTTON' | translate}}</label>
+                                </span>
+                            </div>
+                            <div class="col-md-3">
+                                <span class="inline-radio lg" ng-click="enterNewOfficeAddress($event);">
+                                    <input type="radio" name="radiog_lite" id="radio_use_sameregisteredaddress"
+                                           class="css-checkbox"
+                                           ng-checked="officeAddressSameAsRegisteredAddress">
+                                    <label for="radio_use_sameregisteredaddress"
+                                           class="css-label radGroup1 radio-inline"
+                                           id="same_as_reg_address">{{'APPLY-NEW_SCREEN4-CONTACT-INFO-UNCHECK_SAME-AS-REG-ADDRESS-OFC_RADIO-BUTTON' | translate}}</label>
+                                </span>
+                            </div>
+                            <div class="col-md-3">
+                                <span class="inline-radio lg" ng-click="enterNewOfficeAddress($event);">
+                                    <input type="radio" name="radiog_lite" id="radio_use_currentaddress"
+                                           class="css-checkbox"
+                                           ng-checked="officeAddressSameAsContactAddress">
+                                    <label for="radio_use_currentaddress" class="css-label radGroup1"
+                                           id="same_as_current_address">{{'APPLY-NEW_SCREEN4-CONTACT-INFO-UNCHECK_SAME-AS-CONTACT-ADDRESS-OFC_RADIO-BUTTON' | translate}}</label>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="custom-row custom-row-responsive-sm-mg form-group">
+                          <div class="col-md-2">
+                            <label class="control-label">{{'APPLY-NEW_SCREEN4-CONTACT-INFO_COMPANY-NAME_LABEL ' | translate}} <span class="pink">*</span></label>
+                          </div>
+                          <div class="col-md-5">
+                            <input name="companyName"
+                                   type="text"
+                                   class="form-control"
+                                   value=""
+                                   ng-model="registrationcontactinfo.companyName"
+                                   id="companyName"
+                                   ng-class="{invalidbox: submitted==true && registrationcontactinfo.frmapply.companyName.$invalid}"
+                                   required
+                                   maxlength="40"
+                                   placeholder="{{'APPLY-NEW_SCREEN4-CONTACT-INFO_COMPANY-NAME_TEXT-BOX' | translate}}" />
+                            <div class="ngMessagesClass"
+                                 ng-messages="submitted==true && registrationcontactinfo.frmapply.companyName.$error"
+                                 role="alert">
+                              <div class="ngMessageClass" ng-message="required">
+                                {{'APPLY-NEW_SCREEN4-CONTACT-INFO-UNCHECK_ERROR-MESSAGE_LABEL' | translate}}
+                              </div>
+                              <div class="ngMessageClass" ng-show="invalidCompany">
+                                {{'APPLY-NEW_SCREEN4-CONTACT-INFO-UNCHECK_ERROR-MESSAGE_LABEL' | translate}}
+                              </div>
+                              <div class="ngMessageClass" ng-show="invalidOffcAddress">{{'APPLY-NEW_SCREEN4-CONTACT-INFO-UNCHECK_ERROR-MESSAGE_LABEL' | translate}}</div>
+                            </div>
+                          </div>
+                        </div>
+                        <span ng-hide="enterNewOfficeAddressFields">
+                            <!--div class="row line-bottom"-->
+                            <div class="custom-row custom-row-responsive-sm-mg form-group">
+                          <div class="col-md-2">
+                            <label class="control-label col-md">{{'APPLY-NEW_SCREEN4-CONTACT-INFO_COUNTRY_LABEL' | translate}} <span class="pink">*</span></label>
+                          </div>
+                          <div class="col-md-3">
+                            <select name="offccountry"
+                                    class="form-control"
+                                    ng-model="registrationcontactinfo.offccountry"
+                                    id="offccountry"
+                                    ng-class="{invalidbox: submitted==true && registrationcontactinfo.frmapply.offccountry.$invalid}"
+                                    required
+                                    ng-change="otherCountrySelected();"
+                                    ng-options="country.countryCd as country.description for country in countryList"
+                            >
+                              <option value="">{{'APPLY-NEW_SCREEN4-CONTACT-INFO_COUNTRY_LISTBOX' | translate}}</option>
+                            </select>
+                            <div class="ngMessagesClass"
+                                 ng-messages="submitted==true && registrationcontactinfo.frmapply.offccountry.$error"
+                                 role="alert">
+                              <div class="ngMessageClass" ng-message="required">{{'APPLY-NEW_SCREEN4-CONTACT-INFO-UNCHECK_ERROR-MESSAGE_LABEL' | translate}}</div>
+                              <div class="ngMessageClass" ng-show="invalidOffcAddress">{{'APPLY-NEW_SCREEN4-CONTACT-INFO-UNCHECK_ERROR-MESSAGE_LABEL' | translate}}</div>
+                            </div>
+                          </div>
+                          <div class="col-md-2 no-margin"></div>
+                          <div class="col-md-2">
+                            <label class="control-label">
+                              {{'APPLY-NEW_SCREEN4-CONTACT-INFO-THAI-ADDRESS_LABEL' | translate}} <span class="pink">*</span>
+                            </label>
+                          </div>
+                          <div class="col-md-3">
+                            <input name="offcaddressnumber"
+                                   type="text"
+                                   class="form-control"
+                                   value=""
+                                   id="offcaddressnumber"
+                                   ng-model="registrationcontactinfo.offcaddressnumber"
+                                   ng-class="{invalidbox: submitted==true && registrationcontactinfo.frmapply.offcaddressnumber.$invalid}"
+                                   ng-required = "!sameAsRegAddressForOffice && !sameAsCurrentAddress && isForeignAddr=='false'"
+                                   placeholder="{{'APPLY-NEW_SCREEN4-CONTACT-INFO_ADDRESS-NO_TEXT-BOX' | translate}}" />
+                            <div class="ngMessagesClass"
+                                 ng-messages="submitted==true && registrationcontactinfo.frmapply.offcaddressnumber.$error"
+                                 role="alert">
+                              <div class="ngMessageClass" ng-message="required">{{'APPLY-NEW_SCREEN4-CONTACT-INFO-UNCHECK_ERROR-MESSAGE_LABEL' | translate}}</div>
+                              <div class="ngMessageClass" ng-show="invalidOffcAddress">{{'APPLY-NEW_SCREEN4-CONTACT-INFO-UNCHECK_ERROR-MESSAGE_LABEL' | translate}}</div>
+                            </div>
+                          </div>
+                        </div>
+                            <div class="custom-row form-group">
+                                <div class="col-md-2">
+                                    <label class="control-label">{{'APPLY-NEW_SCREEN4-CONTACT-INFO_MOO_LABEL' | translate}}</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input name="offcstreetnumber"
+                                           type="text"
+                                           class="form-control"
+                                           ng-model="registrationcontactinfo.offcstreetnumber"
+                                           id="offcstreetnumber"
+
+                                           maxlength="10"
+                                           placeholder="{{'APPLY-NEW_SCREEN4-CONTACT-INFO_MOO_TEXT-BOX' | translate}}">
+                                </div>
+                                <div class="col-md-2 no-margin"></div>
+                                <div class="col-md-2">
+                                    <label class="control-label">{{'APPLY-NEW_SCREEN4-CONTACT-INFO_BUILDING-VILLAGE_LABEL' | translate}}</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input name="offcbldgvillageinfo"
+                                           type="text"
+                                           class="form-control"
+                                           value=""
+                                           ng-model="registrationcontactinfo.offcbldgvillageinfo"
+
+                                           maxlength="30"
+                                           placeholder="{{'APPLY-NEW_SCREEN4-CONTACT-INFO_BUILDING-VILLAGE_TEXT-BOX'| translate}}">
+                                </div>
+                            </div>
+                            <div class="custom-row form-group">
+                                <div class="col-md-2">
+                                    <label class="control-label">{{'APPLY-NEW_SCREEN4-CONTACT-INFO_TROK-SOI_LABEL' | translate}}</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input name="offctroksoi"
+                                           type="text"
+                                           class="form-control"
+                                           value=""
+                                           ng-model="registrationcontactinfo.offctroksoi"
+
+                                           maxlength="30"
+                                           placeholder="{{'APPLY-NEW_SCREEN4-CONTACT-INFO_TROK-SOI_TEXT-BOX' | translate}}">
+                                </div>
+                                <div class="col-md-2 no-margin"></div>
+                                <div class="col-md-2">
+                                    <label class="control-label">{{'APPLY-NEW_SCREEN4-CONTACT-INFO_ROAD_LABEL' | translate}}</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input name="offcroad"
+                                           type="text"
+                                           class="form-control"
+                                           value=""
+                                           ng-model="registrationcontactinfo.offcroad"
+
+                                           maxlength="30"
+                                           placeholder="{{'APPLY-NEW_SCREEN4-CONTACT-INFO_ROAD_TEXT-BOX' | translate}}">
+                                </div>
+                            </div>
+                            <div class="custom-row custom-row-responsive-sm-mg form-group">
+                                <div class="col-md-2">
+                                    <label class="control-label">{{'APPLY-NEW_SCREEN4-CONTACT-INFO_PROVINCE_LABEL ' | translate}} <span class="pink">*</span></label>
+                                </div>
+                                <div class="col-md-3">
+                                    <select name="offcprovince"
+                                            class="form-control"
+                                            ng-model="registrationcontactinfo.offcprovince"
+                                            id="offcprovince"
+                                            ng-class="{invalidbox: submitted==true && registrationcontactinfo.frmapply.offcprovince.$invalid}"
+                                            ng-required = "!sameAsRegAddressForOffice && !sameAsCurrentAddress && isForeignAddr=='false'"
+                                            ng-options="province.provinceCd as province.provinceNameTH for province in offcProvincesList"
+                                            ng-change="getOffcDistricts(registrationcontactinfo.offcprovince,'districts')">
+                                        <option value="">{{'APPLY-NEW_SCREEN4-CONTACT-INFO_PROVINCE_LISTBOX' | translate}}</option>
+                                    </select>
+                                    <div class="ngMessagesClass"
+                                         ng-messages="submitted==true && registrationcontactinfo.frmapply.offcprovince.$error"
+                                         role="alert">
+                                        <div class="ngMessageClass" ng-message="required">{{'APPLY-NEW_SCREEN4-CONTACT-INFO-UNCHECK_ERROR-MESSAGE_LABEL' | translate}}</div>
+                                        <div class="ngMessageClass" ng-show="invalidOffcAddress">{{'APPLY-NEW_SCREEN4-CONTACT-INFO-UNCHECK_ERROR-MESSAGE_LABEL' | translate}}</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 no-margin"></div>
+                                <div class="col-md-2">
+                                    <label class="control-label">{{'APPLY-NEW_SCREEN4-CONTACT-INFO_SUB-PROVINCE_LABEL' | translate}} <span class="pink">*</span></label>
+                                </div>
+                                <div class="col-md-3">
+                                    <select name="offcsubprovince"
+                                            class="form-control"
+                                            ng-model="registrationcontactinfo.offcsubprovince"
+                                            id="offcsubprovince"
+                                            ng-class="{invalidbox: submitted==true && registrationcontactinfo.frmapply.offcsubprovince.$invalid}"
+                                            ng-required = "!sameAsRegAddressForOffice && !sameAsCurrentAddress && isForeignAddr=='false'"
+                                            ng-options="district.districtCd as district.districtNameTH for district in offcDistrictList"
+                                            ng-change="getOffcSubDistricts(registrationcontactinfo.offcsubprovince)">
+                                        <option value="">{{'APPLY-NEW_SCREEN4-CONTACT-INFO_SUB-PROVINCE_LISTBOX' | translate}}</option>
+                                    </select>
+                                    <div class="ngMessagesClass"
+                                         ng-messages="submitted==true && registrationcontactinfo.frmapply.offcsubprovince.$error"
+                                         role="alert">
+                                        <div class="ngMessageClass" ng-message="required">{{'APPLY-NEW_SCREEN4-CONTACT-INFO-UNCHECK_ERROR-MESSAGE_LABEL' | translate}}</div>
+                                        <div class="ngMessageClass" ng-show="invalidOffcAddress">{{'APPLY-NEW_SCREEN4-CONTACT-INFO-UNCHECK_ERROR-MESSAGE_LABEL' | translate}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="custom-row custom-row-responsive-sm-mg form-group">
+                                <div class="col-md-2">
+                                    <label class="control-label">{{'APPLY-NEW_SCREEN4-CONTACT-INFO_TAMBOL_LABEL' | translate}} <span class="pink">*</span></label>
+                                </div>
+                                <div class="col-md-3">
+                                    <select name="offcTambol"
+                                            class="form-control"
+                                            ng-model="registrationcontactinfo.offcTambol"
+                                            id="offcTambol"
+                                            ng-class="{invalidbox: submitted==true && registrationcontactinfo.frmapply.offcTambol.$invalid}"
+                                            ng-required = "!sameAsRegAddressForOffice && !sameAsCurrentAddress && isForeignAddr=='false'"
+                                            ng-options="subDist.subDistrictCd as subDist.subDistrictNameTH for subDist in offcSubDistrictList">
+                                        <option value="">{{'APPLY-NEW_SCREEN4-CONTACT-INFO_TAMBOL_LISTBOX' | translate}}</option>
+                                    </select>
+                                    <div class="ngMessagesClass"
+                                         ng-messages="submitted==true && registrationcontactinfo.frmapply.offcTambol.$error"
+                                         role="alert">
+                                        <div class="ngMessageClass" ng-message="required">{{'APPLY-NEW_SCREEN4-CONTACT-INFO-UNCHECK_ERROR-MESSAGE_LABEL' | translate}}</div>
+                                        <div class="ngMessageClass" ng-show="invalidOffcAddress">{{'APPLY-NEW_SCREEN4-CONTACT-INFO-UNCHECK_ERROR-MESSAGE_LABEL' | translate}}</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 no-margin"></div>
+                                <div class="col-md-2">
+                                    <label class="control-label">{{'APPLY-NEW_SCREEN4-CONTACT-INFO_POSTAL-CODE_LABEL' | translate}} <span class="pink">*</span></label>
+                                </div>
+                                <div class="col-md-3">
+                                    <select name="offczipcode"
+                                            class="form-control"
+                                            ng-disabled="offcPostalCodeList.length === 1"
+                                            ng-model="registrationcontactinfo.offczipcode"
+                                            id="offczipcode"
+                                            ng-class="{invalidbox: submitted==true && registrationcontactinfo.frmapply.offczipcode.$invalid}"
+                                            ng-required = "!sameAsRegAddressForOffice && !sameAsCurrentAddress && isForeignAddr=='false'"
+                                            ng-options="postalCode.zipCode as postalCode.zipCode for postalCode in offcPostalCodeList">
+                                        <option ng-if="offcPostalCodeList.length === 0 || offcPostalCodeList.length > 1" value="" label="{{'APPLY-NEW_SCREEN4-CONTACT-INFO_POSTAL-CODE_LISTBOX' | translate}}" disabled selected="selected"> </option>
+                                        <option ng-if="offcPostalCodeList.length === 1" value="{{registrationcontactinfo.offczipcode}}" label="{{registrationcontactinfo.offczipcode}}" disabled selected="selected"></option>
+                                    </select>
+                                    <div class="ngMessagesClass"
+                                         ng-messages="submitted==true && registrationcontactinfo.frmapply.offczipcode.$error"
+                                         role="alert">
+                                        <div class="ngMessageClass" ng-message="required">{{'APPLY-NEW_SCREEN4-CONTACT-INFO-UNCHECK_ERROR-MESSAGE_LABEL' | translate}}</div>
+                                        <div class="ngMessageClass" ng-show="invalidOffcAddress">{{'APPLY-NEW_SCREEN4-CONTACT-INFO-UNCHECK_ERROR-MESSAGE_LABEL' | translate}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/div-->
+                        </span>
+                        <span ng-show="notThaicountry">
+                            <div class="custom-row custom-row-responsive-sm-mg form-group">
+                                <div class="col-md-2">
+                                    <label class="control-label col-md">{{'APPLY-NEW_SCREEN4-CONTACT-INFO_COUNTRY_LABEL' | translate}} <span class="pink">*</span></label>
+                                </div>
+                                <div class="col-md-3">
+                                    <select name="offccountry"
+                                            class="form-control"
+                                            ng-model="registrationcontactinfo.offccountry"
+                                            id="offccountry"
+                                            ng-class="{invalidbox: submitted==true && registrationcontactinfo.frmapply.offccountry.$invalid}"
+                                            required
+                                            ng-change="otherCountrySelected();"
+                                            ng-options="country.countryCd as country.description for country in countryList">
+                                        <option value="">{{"APPLY-NEW_SCREEN4-CONTACT-INFO_COUNTRY_LISTBOX" | translate}}</option>
+                                    </select>
+                                    <div class="ngMessagesClass"
+                                         ng-messages="submitted==true && registrationcontactinfo.frmapply.offccountry.$error"
+                                         role="alert">
+                                        <div class="ngMessageClass" ng-message="required">{{'APPLY-NEW_SCREEN4-CONTACT-INFO-UNCHECK_ERROR-MESSAGE_LABEL' | translate}}</div>
+                                        <div class="ngMessageClass" ng-show="invalidOffcAddress">{{'APPLY-NEW_SCREEN4-CONTACT-INFO-UNCHECK_ERROR-MESSAGE_LABEL' | translate}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="custom-row custom-row-responsive-sm-mg form-group">
+                                <div class="col-md-2">
+                                    <label class="control-label">{{'APPLY-NEW_SCREEN4-CONTACT-INFO-UNCHECK_NOT-THAI-ADDRESS_LABEL ' | translate}} <span class="pink">*</span></label>
+                                </div>
+                                <div class="col-md-10">
+                                    <input name="notThaiAddrLabel1"
+                                           type="text"
+                                           class="form-control"
+                                           value=""
+                                           ng-model="registrationcontactinfo.notThaiAddrLabel1"
+                                           id="notThaiAddrLabel1"
+                                           ng-class="{invalidbox: submitted==true && registrationcontactinfo.frmapply.notThaiAddrLabel1.$invalid}"
+                                           ng-required = "!sameAsRegAddressForOffice && !sameAsCurrentAddress && isForeignAddr=='true'" />
+                                    <div class="ngMessagesClass"
+                                         ng-messages="submitted==true && registrationcontactinfo.frmapply.notThaiAddrLabel1.$error"
+                                         role="alert">
+                                        <div class="ngMessageClass" ng-message="required">
+                                            {{'APPLY-NEW_SCREEN4-CONTACT-INFO-UNCHECK_ERROR-MESSAGE_LABEL' | translate}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2"></div>
+                                <div class="col-md-10">
+                                    <input name="notThaiAddrLabel2"
+                                           type="text"
+                                           class="form-control"
+                                           value=""
+                                           ng-model="registrationcontactinfo.notThaiAddrLabel2"
+                                           id="notThaiAddrLabel2"
+
+                                           ng-class="{invalidbox: submitted==true && registrationcontactinfo.frmapply.notThaiAddrLabel2.$invalid}" />
+
+                                </div>
+                                <div class="col-md-2"></div>
+                                <div class="col-md-10">
+                                    <input name="notThaiAddrLabel3"
+                                           type="text"
+                                           class="form-control"
+                                           value=""
+                                           ng-model="registrationcontactinfo.notThaiAddrLabel3"
+                                           id="notThaiAddrLabel3"
+
+                                           ng-class="{invalidbox: submitted==true && registrationcontactinfo.frmapply.notThaiAddrLabel3.$invalid}" />
+
+                                </div>
+                            </div>
+                            <div class="custom-row custom-row-responsive-sm-mg form-group">
+                                <div class="col-md-2">
+                                    <label class="control-label">{{'APPLY-NEW_SCREEN4-CONTACT-INFO_PROVINCE_LABEL' | translate}} <span class="pink">*</span></label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input name="offcForeignProvince"
+                                       type="text"
+                                       class="form-control"
+                                       value=""
+                                       ng-model="registrationcontactinfo.offcForeignProvince"
+                                       id="offcForeignProvince"
+                                       ng-class="{invalidbox: submitted==true && registrationcontactinfo.frmapply.offcForeignProvince.$invalid}"
+                                       ng-required = "notThaicountry"
+                                       maxlength="30"
+                                       placeholder="{{'APPLY-NEW_SCREEN4-CONTACT-INFO_PROVINCE_LABEL' | translate}}" />
+                                    <div class="ngMessagesClass"
+                                         ng-messages="submitted==true && registrationcontactinfo.frmapply.offcForeignProvince.$error"
+                                         role="alert">
+                                        <div class="ngMessageClass" ng-message="required">{{'APPLY-NEW_SCREEN4-CONTACT-INFO-UNCHECK_ERROR-MESSAGE_LABEL' | translate}}</div>
+                                        <div class="ngMessageClass" ng-show="invalidOffcAddress">{{'APPLY-NEW_SCREEN4-CONTACT-INFO-UNCHECK_ERROR-MESSAGE_LABEL' | translate}}</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 no-margin"></div>
+                                <div class="col-md-2">
+                                    <label class="control-label">{{'APPLY-NEW_SCREEN4-CONTACT-INFO_POSTAL-CODE_LABEL' | translate}} <span class="pink">*</span></label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input name="offcForeignZipcode"
+                                       type="text"
+                                       class="form-control"
+                                       value=""
+                                       ng-model="registrationcontactinfo.offcForeignZipcode"
+                                       id="offcForeignZipcode"
+                                       ng-class="{invalidbox: submitted==true && registrationcontactinfo.frmapply.offcForeignZipcode.$invalid}"
+                                       ng-required = "notThaicountry"
+                                       maxlength="30"
+                                       placeholder="{{'APPLY-NEW_SCREEN4-CONTACT-INFO_POSTAL-CODE_LABEL' | translate}}" />
+                                    <div class="ngMessagesClass"
+                                         ng-messages="submitted==true && registrationcontactinfo.frmapply.offcForeignZipcode.$error"
+                                         role="alert">
+                                        <div class="ngMessageClass" ng-message="required">{{'APPLY-NEW_SCREEN4-CONTACT-INFO-UNCHECK_ERROR-MESSAGE_LABEL' | translate}}</div>
+                                        <div class="ngMessageClass" ng-show="invalidOffcAddress">{{'APPLY-NEW_SCREEN4-CONTACT-INFO-UNCHECK_ERROR-MESSAGE_LABEL' | translate}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </span>
+                        <div class="custom-row form-group">
+                            <div class="col-md-2">
+                                <label class="control-label col-md">{{'APPLY-NEW_SCREEN4-CONTACT-INFO_OFFICE-NUMBER_LABEL' | translate}} <span class="pink" ng-show ="!sameAsRegAddressForOffice && !sameAsCurrentAddress">*</span></label>
+                            </div>
+                            <div class="col-md-3">
+                                <input name="officenumber"
+                                       type="text"
+                                       class="form-control"
+                                       value=""
+                                       ng-model="registrationcontactinfo.officenumber"
+                                       id="officenumber"
+                                       ng-class="{invalidbox: submitted==true && registrationcontactinfo.frmapply.officenumber.$invalid}"
+                                       ng-required ="!sameAsRegAddressForOffice && !sameAsCurrentAddress"
+                                       numbers-only
+                                       ng-minlength="9"
+                                       maxlength="10"
+                                       placeholder="{{'APPLY-NEW_SCREEN4-CONTACT-INFO_OFFICE-NUMBER_TEXT-BOX' | translate}}" />
+                                <div class="ngMessagesClass"
+                                     ng-messages="submitted==true && registrationcontactinfo.frmapply.officenumber.$error"
+                                     role="alert">
+                                    <div class="ngMessageClass" ng-message="required">
+                                        {{'APPLY-NEW_SCREEN4-CONTACT-INFO-UNCHECK_ERROR-MESSAGE_LABEL' | translate}}
+                                    </div>
+                                    <div class="ngMessageClass" ng-show="invalidOffcNumber">
+                                        {{'APPLY-NEW_SCREEN4-CONTACT-INFO-UNCHECK_ERROR-MESSAGE_LABEL' | translate}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2 no-margin"></div>
+                            <div class="col-md-2">
+                                <label class="control-label">{{'APPLY-NEW_SCREEN4-CONTACT-INFO_EXTENSION_LABEL' | translate}}</label>
+                            </div>
+                            <div class="col-md-3">
+                                <input name="offcextlabel"
+                                       type="text"
+                                       class="form-control"
+                                       value=""
+                                       ng-model="registrationcontactinfo.offcextlabel"
+                                       placeholder="{{'APPLY-NEW_SCREEN4-CONTACT-INFO_EXTENSION_TEXT-BOX' | translate}}"
+                                       numbers-only
+                                       maxlength="5" />
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="text-center m-b-70">
+    <button type="button" ng-click="cancelApplyProcess();" class="btn gray btn-mg" ng-hide="fromEditFlow">{{'APPLY-NEW_SCREEN4-CONTACT-INFO_CANCEL_BUTTON' | translate}}</button>
+    <button type="button" class="btn" ng-click="contactInfoValidation();" ng-hide="fromEditFlow">{{'APPLY-NEW_SCREEN4-CONTACT-INFO_NEXT_BUTTON' | translate}}</button>
+    <button type="button" ng-click="utilities.gotoPage('prelogin.applicantAccountSummaryScreen');" class="btn gray btn-mg" ng-show="fromEditFlow">{{'APPLY-NEW_SCREEN4-CONTACT-INFO-EDIT_CANCEL_BUTTON' | translate}}</button>
+    <button type="button" class="btn" ng-show="fromEditFlow" ng-click="contactInfoValidation();">{{'APPLY-NEW_SCREEN4-CONTACT-INFO-EDIT_SAVE_BUTTON' | translate}}</button>
+</div>

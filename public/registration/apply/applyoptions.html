@@ -1,0 +1,57 @@
+﻿<div class="container tmb-direct m-b-70" id="applyOptionPage">
+    <form name="frmApplyInitialOptions" novalidate ng-show="pageLoaded">
+        <h1 class="text-white m-t-20">{{'APPLY-INITIAL_OPTION-SCREEN_TITLE_LABEL' | translate }}</h1>
+        <div class="art-content">
+            <div class="form-style p-t-20">
+                <div class="custom-row form-group">
+                    <div class="col-md-offset-3 col-md-2">
+                        <label class="text-right text-white resp-right m-t-10">{{'APPLY-INITIAL_OPTION-SCREEN_CITIZEN-ID_LABEL' | translate }}</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input name="citizenid"
+                               ng-model="applyoption.citizenid"
+                               id="citizenid"
+                               ng-class="{invalidbox: submitted==true && frmApplyInitialOptions.citizenid.$invalid}"
+                               type="text"
+                               placeholder="{{'APPLY-INITIAL_OPTION-SCREEN_CITIZEN-ID_TEXTBOX' | translate}}"
+                               class="form-control frmApplyInitialOptionstextbox no-bg text-white"
+                               numbers-only
+                               maxlength="13"
+                               ng-minlength="13"
+                               ng-maxlength="13"
+                               check-digit-validator
+                               required>
+                        <div class="ngMessagesClass" ng-messages="submitted==true && frmApplyInitialOptions.citizenid.$error" role="alert">
+                            <div class="ngMessageClass" ng-message="required">{{'APPLY-DIRECT_SCREEN1-AUTHENTICATE_UN-BLANK_LABEL' | translate}}</div>
+                            <div class="ngMessageClass" ng-message="minlength">{{'APPLY-DIRECT_SCREEN1-AUTHENTICATE_UN-BLANK_LABEL' | translate}}</div>
+                            <div class="ngMessageClass" ng-message="maxlength">{{'APPLY-DIRECT_SCREEN1-AUTHENTICATE_UN-BLANK_LABEL' | translate}}</div>
+                            <div class="ngMessageClass" ng-message="checkdigitvalidator">{{'APPLY-DIRECT_SCREEN1-AUTHENTICATE_UN-BLANK_LABEL' | translate}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 p-l-0 center-block">
+                        <div ng-click="gotoApplyNewRegistration()" class="initial-options">
+                            <div class="entry-img">
+                                <!-- <img class="apply-initial apply-initial-04" /> -->
+                                <img class="apply-initial apply-initial-03" />
+                            </div>
+                            <label class="text-white p-t-5">{{'APPLY-INITIAL_OPTION-SCREEN_NEW-REGISTRATION-DESC-HEADER_LABEL' | translate }}</label>
+                        </div>
+                        <div class="initial-options-or text-center">
+                            <div class="txt-sm pink text-center m-t-10">
+                                {{'APPLY-INITIAL_OPTION-SCREEN_OR_LABEL' | translate }}
+                            </div>
+                        </div>
+                        <div class="initial-options" ng-click="gotoApplyTMBDirect()">
+                            <div class="entry-img">
+                                <img class="apply-initial apply-initial-02">
+                            </div>
+                            <label class="text-white p-t-5">{{'APPLY-INITIAL_OPTION-SCREEN_USING-TMB-DIRECT-DESC-HEADER_LABEL' | translate }}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

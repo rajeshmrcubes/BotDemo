@@ -1,0 +1,36 @@
+{
+  "name": "botdemo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "dotenv": "^4.0.0",
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "express-validator": "^4.3.0",
+    "firebase": "^4.6.2",
+    "node-wit": "^4.3.0",
+    "properties-reader": "0.0.16",
+    "request": "^2.83.0",
+    "rotating-file-stream": "^1.3.4"
+  },
+  "engines": {
+    "node": "8.9.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/heroku/BotDemo"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ]
+}

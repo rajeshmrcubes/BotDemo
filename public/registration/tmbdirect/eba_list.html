@@ -1,0 +1,77 @@
+﻿<div class="container tmb-direct m-b-70">
+    <h1 class="text-center text-white m-t-30">{{'APPLY-DIRECT_SCREEN6-LINK-ACC-COMPLETE_HEADER_LABEL' | translate}}</h1>
+    <div class="grid-row white-bg" id="accounts_view">
+        <div class="custom-row form-group">
+            <div class="col-md-10">
+                <h2>{{'APPLY-DIRECT_SCREEN6-LINK-ACC-COMPLETE_LINK-ACCOUNT_LABEL' | translate}}</h2>
+                <div ng-bind-html="completeInstructionEBACompleteLabel"></div>
+            </div>
+        </div>
+        <div class="row line-bottom" ng-repeat="eba in ebaList">
+            <div class="block-responsive">
+                <div class="col-md-2">
+                    <div class="image-container m-b-10">
+                        <img class="left bank-logo-size-80px" ng-src="{{eba.bankLogo}}">
+                        <a ng-click="deleteEBA(eba)" class="btn btn-sm right visible-xs visible-sm">
+                            {{'APPLY-DIRECT_SCREEN6-LINK-ACC-COMPLETE_DELETE_BUTTON' | translate}}
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="clearfix"></div>
+                    <div class="custom-row form-group">
+                        <div class="col-xs-6 col-sm-5 col-md-6">
+                            <label>{{'APPLY-DIRECT_SCREEN6-LINK-ACC-COMPLETE_BANK-NAME_LABEL' | translate}}</label>
+                            <p class="control-info">{{eba.bankName}}</p>
+                        </div>
+                        <div class="col-xs-6 col-sm-7 col-md-6">
+                            <label>{{'APPLY-DIRECT_SCREEN6-LINK-ACC-COMPLETE_ACCOUNT-NUMBER_LABEL' | translate}}</label>
+                            <p class="control-info">{{eba.accNo | accountNumberFormat}}</p>
+                        </div>
+                    </div>
+                    <div class="custom-row">
+                        <div class="col-xs-6 col-sm-5 col-md-6">
+                            <label>{{'APPLY-DIRECT_SCREEN6-LINK-ACC-COMPLETE_ACCOUNT-NAME_LABEL' | translate}}</label>
+                            <p class="control-info">{{eba.accName}}</p>
+                        </div>
+                        <div class="col-xs-6 col-sm-5 col-md-6">
+                          <label>{{'APPLY-DIRECT_SCREEN6-LINK-ACC-COMPLETE_ACCOUNT-NICKNAME_LABEL' | translate}}</label>
+                          <p class="control-info">{{eba.accNickName}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 hidden-xs hidden-sm">
+                    <button type="button" ng-click="deleteEBA(eba)" class="btn btn-sm btn-custom-sm btn-block btn-responsive">{{'APPLY-DIRECT_SCREEN6-LINK-ACC-COMPLETE_DELETE_BUTTON' | translate}}</button>
+                    <br /><br />
+                </div>
+            </div>
+        </div>
+        <div class="row last" ng-show="ebaList && ebaList.length < 3">
+            <div class="block-responsive">
+                <div class="col-md-2">
+                    <div class="image-container">
+                        <img class="left bank-logo bank-logo-size-80px" src="img/logo-add-acc.png">
+                        <a ng-show="ebaList.length < 3" ng-click="goToAddEBA()" class="btn btn-sm darkblue right visible-xs visible-sm">{{'APPLY-DIRECT_SCREEN6-LINK-ACC-COMPLETE_ADD_BUTTON' | translate}}</a>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="clearfix"></div>
+                    <div class="custom-row form-group">
+                        <div class="col-md-10 m-t-10">
+                            <label>{{'APPLY-DIRECT_SCREEN6-LINK-ACC-COMPLETE_LABEL1_LABEL' | translate}}</label>
+                            <p class="control-info">{{'APPLY-DIRECT_SCREEN6-LINK-ACC-COMPLETE_LABEL2_LABEL' | translate}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 hidden-xs hidden-sm">
+                    <button type="button" ng-show="ebaList && ebaList.length < 3" ng-click="goToAddEBA()" class="btn btn-sm btn-custom-sm darkblue btn-responsive">{{'SETTINGS-LINK-ACCOUNTS_LANDING-PAGE_ADD-ACCOUNT_BUTTON' | translate}}</button>
+                    <br /><br />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-center m-t-20 p-b-30">
+        <button type="button" ng-click="ebaListBackButton()" class="btn darkblue btn-mg">{{'APPLY-DIRECT_SCREEN6-LINK-ACC-COMPLETE_BACK_BUTTON' | translate}}</button>
+        <button type="button" ng-disabled="ebaList.length < 1" ng-click="checkForTMBEBA()" class="btn">{{'APPLY-DIRECT_SCREEN6-LINK-ACC-COMPLETE_NEXT_BUTTON' | translate}}</button>
+    </div>
+</div>

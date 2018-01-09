@@ -1,0 +1,40 @@
+﻿<div class="container settings-link">
+    <div class="art-content">
+        <div class="txt-center">
+            <div class="primary-inline">
+                <h1 class="text-center text-white  m-t-30">{{'APPLY-DIRECT_SCREEN9-COMPLETE_HEADER_LABEL' | translate}}</h1>
+                <div class="text-center text-white m-t-30">{{'APPLY-DIRECT_SCREEN9-COMPLETE_TITLE2_LABEL' | translate}}</div>
+                <div class="text-center text-white m-t-30">{{accountName}}</div>
+                <div class="text-center text-white m-t-15">{{accountNumber | accountNumberFormat}}</div>
+                <div class="text-center text-white m-t-15"><span ng-bind-html="'APPLY-DIRECT_SCREEN9-COMPLETE_CUST-MESSAGE_LABEL' | translate"></span></div>
+                <div class="text-center text-white m-t-15"><span ng-bind-html="applicationExpiryDate"></span></div>
+            </div>
+            <h2 class="text-white">{{'APPLY-DIRECT_SCREEN9-COMPLETE_REQUIRED-DOC_LABEL' | translate}}</h2>
+            <div class="grouped-col">
+                <div class="col col-3">
+                    <div><img src="img/apply-01.png"></div>
+                    <p class="text-center text-white m-t-10 m-b-10">{{'APPLY-DIRECT_SCREEN9-COMPLETE_CITIZEN-ID_LABEL' | translate}}</p>
+                </div>
+                <div class="col col-3">
+                    <div><img src="img/apply-02.png"></div>
+                    <p class="text-center text-white m-t-10 m-b-10">{{'APPLY-DIRECT_SCREEN9-COMPLETE_SAVINGS-ACC-BANK-BOOK_LABEL' | translate}}</p>
+                </div>
+            </div>
+            <div class="grouped-col p-t-0 m-t-minus-10">
+                <div class="col col-3">
+                </div>
+                <div class="col col-3">
+                    <span ng-repeat="detail in EBADetails" class="text-center text-white"> {{detail.bankShortName}} / {{detail.nonTMBAccNumber | accountNumberFormat}}<br /></span>
+                </div>
+            </div>
+            <br>
+        </div>
+    </div>
+    <div class="m-b-70">
+        <div class="text-center">
+            <button type="button" ng-click="openMEPlace()" class="btn btn-md gray m-t-b-15">{{'APPLY-DIRECT_SCREEN9-COMPLETE_FIND-ME-PLACE_BUTTON' | translate}} </button>
+            <button type="button" ng-click="findTMB()" class="btn darkblue btn-md btn-mg m-t-b-15 m-l-5">{{'APPLY-NEW_SCREEN9-COMPLETE-REG_FIND-TMB_BUTTON' | translate}} </button>
+            <button type="button" ng-click="utilities.gotoSplash()" class="btn m-t-b-15">{{'APPLY-DIRECT_SCREEN9-COMPLETE_LOGIN_BUTTON' | translate}}</button>
+        </div>
+    </div>
+</div>

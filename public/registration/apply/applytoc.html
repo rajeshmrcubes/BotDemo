@@ -1,0 +1,39 @@
+﻿﻿<div class="container m-b-70" ng-show="pageLoaded">
+    <div class="grid-row-small">
+        <div class="col-md-2"></div>
+        <div class="col-md-8"><h1 class="text-center text-white">{{'APPLY-INITIAL_TNC_HEADER_LABEL' | translate}}</h1></div>
+        <div class="col-md-2">
+            <div class="print-btn-responsive">
+                <button type="button" class="btn btn-sm gray" ng-click="openPDF()">
+                    <img src="img/ico-print.png">
+                    {{'APPLY-INITIAL_TNC_PRINT_BUTTON' | translate}}
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-body art-content p-0">
+            <div class="entry-content term-condition">
+                <div class="terms-cond-content">
+                    <span ng-bind-html="termsandconditionsDetails"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-center m-b-30">
+        <p class="txt-terms checkbox checkbox-02">
+            <input type="checkbox" name="checkboxG1" ng-model="acceptTOC" id="checkboxG1" class="css-checkbox checkbox-02" />
+            <label for="checkboxG1" class="css-label text-white">
+                {{ 'APPLY-INITIAL_TNC_ACCEPT_CHECKBOX' | translate }}
+            </label>
+        </p>
+        <div class="m-t-20">
+            <button type="button" ng-click="utilities.gotoApplyInitial();" class="btn btn-mg gray">
+                {{'APPLY-INITIAL_TNC_CANCEL_BUTTON' | translate }}
+            </button>
+            <button type="button" ng-click="gotoApplyOptions()" class="btn">
+                {{'APPLY-INITIAL_TNC_OK_BUTTON' | translate }}
+            </button>
+        </div>
+    </div>
+</div>

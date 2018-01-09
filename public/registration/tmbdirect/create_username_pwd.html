@@ -1,0 +1,148 @@
+﻿<div class="container tmb-direct m-b-70">
+    <form id="applyCreateUPData.frmApplyCreateUsernamePassword" name="applyCreateUPData.frmApplyCreateUsernamePassword" novalidate ng-submit="setUsernamePassword()">
+        <h1 class="text-center text-white m-t-30">{{'APPLY-DIRECT_SCREEN8-CREATE-UNPW_TITLE_LABEL' | translate}}</h1>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="grid-row">
+                    <div class="form-style">
+                        <div class="custom-row form-group overflow-shown">
+                            <div class="col-md-2">
+                                <label class="control-label">{{'APPLY-DIRECT_SCREEN8-CREATE-UNPW_USER-NAME_LABEL' | translate}}<span class="pink">*</span></label>
+                            </div>
+                            <div class="col-md-3">
+                                <input ng-model="applyCreateUPData.username"
+                                       ng-class="{invalidbox: (isUserIdInvalidAttempt == true) || (submitted==true && applyCreateUPData.frmApplyCreateUsernamePassword.username.$invalid)}"
+                                       type="text"
+                                       id="username"
+                                       name="username"
+                                       placeholder="{{'APPLY-DIRECT_SCREEN8-CREATE-UNPW_USER-NAME_TEXT-BOX' | translate}}"
+                                       autocapitalize="off"
+                                       autocorrect="off"
+                                       autocomplete="off"
+                                       class="form-control"
+                                       ng-minlength="8"
+                                       ng-maxlength="20"
+                                       maxlength="20"
+                                       required
+                                       user-name-validator
+                                       prevent-copy-paste
+                                       no-space-allowed />
+                                <div class="pull-left tooltip-position">
+                                  <div class="tooltip-style">
+                                    <a class="btn-tooltip appicon-ico-navmain-09 appicon-1-50x">
+                                      <div class="tooltip">
+                                        <div class="tooltip-inner" ng-bind-html="setUserPassUserIDHelpDescription"></div>
+                                      </div>
+                                    </a>
+                                  </div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="ngMessagesClass" ng-messages="submitted==true && applyCreateUPData.frmApplyCreateUsernamePassword.username.$error" role="alert">
+                                    <div class="ngMessageClass" ng-message="required">{{'APPLY-DIRECT_SCREEN8-CREATE-UNPW_USER-NAME-ERROR_LABEL' | translate}}</div>
+                                    <div class="ngMessageClass" ng-message="minlength">{{'APPLY-DIRECT_SCREEN8-CREATE-UNPW_USER-NAME-ERROR_LABEL' | translate}}</div>
+                                    <div class="ngMessageClass" ng-message="maxlength">{{'APPLY-DIRECT_SCREEN8-CREATE-UNPW_USER-NAME-ERROR_LABEL' | translate}}</div>
+                                    <div class="ngMessageClass" ng-message="userNameValidator">{{'APPLY-DIRECT_SCREEN8-CREATE-UNPW_USER-NAME-ERROR_LABEL' | translate}}</div>
+                                </div>
+                                <div class="ngMessagesClass" ng-show="isUserIdInvalidAttempt == true" role="alert">
+                                    <div class="ngMessageClass">{{'APPLY-DIRECT_SCREEN8-CREATE-UNPW_USER-NAME-ERROR_LABEL' | translate}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="custom-row form-group overflow-shown">
+                            <div class="col-md-2">
+                                <label class="control-label">{{'APPLY-DIRECT_SCREEN8-CREATE-UNPW_NEW-PASSWORD_LABEL' | translate}} <span class="pink">*</span></label>
+                            </div>
+                            <div class="col-md-3">
+                                <input type="password"
+                                       id="userpassword"
+                                       name="userpassword"
+                                       ng-model="applyCreateUPData.userpassword"
+                                       ng-class="{invalidbox: (isUserPasswordInvalidAttempt == true) || blocklistedPwd || (isUsernamePasswordEqual == true) || (submitted==true && applyCreateUPData.frmApplyCreateUsernamePassword.userpassword.$invalid)}"
+                                       placeholder="{{'APPLY-DIRECT_SCREEN8-CREATE-UNPW_NEW-PASSWORD_TEXT-BOX' | translate}}"
+                                       autocapitalize="off"
+                                       autocorrect="off"
+                                       autocomplete="off"
+                                       ng-minlength="8"
+                                       ng-maxlength="20"
+                                       maxlength="20"
+                                       password-validator
+                                       disallow-chars="<,>,&"
+                                       class="form-control"
+                                       required />
+                                <div class="pull-left tooltip-position">
+                                  <div class="tooltip-style">
+                                    <a class="btn-tooltip appicon-ico-navmain-09 appicon-1-50x">
+                                      <div class="tooltip">
+                                        <div class="tooltip-inner" ng-bind-html="setUserPassPasswordHelpDescription"></div>
+                                      </div>
+                                    </a>
+                                  </div>
+                                </div>
+                                <div class="ngMessagesClass" ng-messages="submitted==true && applyCreateUPData.frmApplyCreateUsernamePassword.userpassword.$error" role="alert">
+                                    <div ng-message="required" class="ngMessageClass">{{'APPLY-DIRECT_SCREEN8-CREATE-UNPW_NEW-PASSWORD-ERROR_LABEL' | translate}}</div>
+                                    <div ng-message="minlength" class="ngMessageClass">{{'APPLY-DIRECT_SCREEN8-CREATE-UNPW_NEW-PASSWORD-ERROR_LABEL' | translate}}</div>
+                                    <div ng-message="maxlength" class="ngMessageClass">{{'APPLY-DIRECT_SCREEN8-CREATE-UNPW_NEW-PASSWORD-ERROR_LABEL' | translate}}</div>
+                                    <div ng-message="passwordValidator" class="ngMessageClass">{{'APPLY-DIRECT_SCREEN8-CREATE-UNPW_NEW-PASSWORD-ERROR_LABEL' | translate}}</div>
+                                </div>
+                                <div class="ngMessagesClass" ng-if="isUsernamePasswordEqual==true" role="alert">
+                                    <div class="ngMessageClass">{{'APPLY-DIRECT_SCREEN8-CREATE-UNPW_NEW-PASSWORD-ERROR_LABEL' | translate}}</div>
+                                </div>
+                                <div class="ngMessagesClass" ng-show="isUserPasswordInvalidAttempt == true" role="alert">
+                                    <div class="ngMessageClass">{{'APPLY-DIRECT_SCREEN8-CREATE-UNPW_NEW-PASSWORD-ERROR_LABEL' | translate}}</div>
+                                </div>
+                                <div class="ngMessagesClass" ng-show="blocklistedPwd == true">
+                                  <div class="ngMessageClass">{{'APPLY-DIRECT_SCREEN8-CREATE-UNPW_NEW-PASSWORD-ERROR_LABEL' | translate}}</div>
+                                </div>
+                                <div class="bar-password-field" ng-show="showPasswordStrength()">
+                                    <div class="password-check">
+                                        <span class="txt-xs">{{'APPLY-DIRECT_SCREEN8-CREATE-UNPW_SECURITY-LEVEL_LABEL' | translate}} : {{getPasswordStrengthText()}}</span>
+                                        <div class="checktransparent">
+                                            <span ng-class="{'strength strong': checkPasswordStrength() == 2, 'strength medium': checkPasswordStrength() == 1, 'strength weak': checkPasswordStrength() == 0}"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="custom-row form-group overflow-shown">
+                            <div class="col-md-2">
+                                <label class="control-label col-lg">{{'APPLY-DIRECT_SCREEN8-CREATE-UNPW_CONFIRM-NEW-PASSWORD_LABEL ' | translate}}<span class="pink">*</span></label>
+                            </div>
+                            <div class="col-md-3">
+                                <input type="password"
+                                       id="userconfirmpassword"
+                                       name="userconfirmpassword"
+                                       placeholder="{{'APPLY-DIRECT_SCREEN8-CREATE-UNPW_CONFIRM-NEW-PASSWORD_TEXT-BOX' | translate}}"
+                                       ng-model="applyCreateUPData.userconfirmpassword"
+                                       ng-class="{invalidbox: (isUserPasswordInvalidAttempt == true) || (submitted==true && applyCreateUPData.frmApplyCreateUsernamePassword.userconfirmpassword.$invalid)}"
+                                       class="form-control"
+                                       autocapitalize="off"
+                                       autocorrect="off"
+                                       autocomplete="off"
+                                       ng-minlength="8"
+                                       ng-maxlength="20"
+                                       maxlength="20"
+                                       password-validator
+                                       disallow-chars="<,>,&"
+                                       compare-to="applyCreateUPData.userpassword"
+                                       required />
+                                <div class="ngMessagesClass" ng-messages="submitted==true && applyCreateUPData.frmApplyCreateUsernamePassword.userconfirmpassword.$error" role="alert">
+                                    <div ng-message="required" class="ngMessageClass">{{'APPLY-DIRECT_SCREEN8-CREATE-UNPW_NEW-PASSWORD-ERROR_LABEL' | translate}}</div>
+                                    <div ng-message="minlength" class="ngMessageClass">{{'APPLY-DIRECT_SCREEN8-CREATE-UNPW_NEW-PASSWORD-ERROR_LABEL' | translate}}</div>
+                                    <div ng-message="maxlength" class="ngMessageClass">{{'APPLY-DIRECT_SCREEN8-CREATE-UNPW_NEW-PASSWORD-ERROR_LABEL' | translate}}</div>
+                                    <div ng-message="passwordValidator" class="ngMessageClass">{{'APPLY-DIRECT_SCREEN8-CREATE-UNPW_NEW-PASSWORD-ERROR_LABEL' | translate}}</div>
+                                    <div ng-message="compareTo" class="ngMessageClass">{{'APPLY-DIRECT_SCREEN8-CREATE-UNPW_NEW-PASSWORD-ERROR_LABEL' | translate}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center m-t-20 p-b-30">
+            <button type="button" class="btn darkblue btn-mg" ng-click="cancelRegistrationProcess()">{{'APPLY-DIRECT_SCREEN8-CREATE-UNPW_CANCEL_BUTTON' | translate}}</button>
+            <button type="submit" ng-disabled="checkPasswordStrength() == 0" class="btn">{{'APPLY-DIRECT_SCREEN8-CREATE-UNPW_NEXT_BUTTON' | translate}}</button>
+        </div>
+    </form>
+</div>

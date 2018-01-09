@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+        <title>Customer Verification using Citizenship Id and Bank Account</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="styles.css">
+        <script type="text/javascript">
+                $(document).ready(function () {
+                        var makeAllFormSubmitOnEnter = function () {
+                            $('form input, form select').live('keypress', function (e) {
+                                if (e.which && e.which == 13) {
+                                    $(this).parents('form').submit();
+                                    return false;
+                                } else {
+                                    return true;
+                                }
+                            });
+                        };
+                        makeAllFormSubmitOnEnter();
+                });
+                function verify(){
+		var citizenid = document.getElementById("citizenid").value;
+		var meaccountnumber = document.getElementById("meaccountnumber").value;
+		if(citizenid == "DemoThaiId" && meaccountnumber == "9988776655"){
+			//Ajax request to server
+			userVerified();
+		} else {
+			document.getElementById("validationResult").innerHTML  = "Invalid Citizen Id / Account Number. Please retry.";
+			return false;
+		}
+	}
+
+	        function userVerified(){
+		var urlToParse = location.search;
+		var result = parseQueryString(urlToParse );
+		console.info(JSON.stringify(result));
+		var messageToSend = JSON.stringify(
+			{
+				"psid":result.PSId,
+				"action":"VERIFY_SUCCESS"
+			}
+		);
+		var xmlhttp = new XMLHttpRequest;
+		var url = "http://localhost:3030/public/webviewpost";
+		xmlhttp.open("POST", url);
+
+		xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+		xmlhttp.onreadystatechange = function(){
+        	        receiveSvrResponse(xmlhttp);
+                }
+		xmlhttp.send(messageToSend);
+	}
+
+	        function receiveSvrResponse(xmlhttp){
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			//close the browser
+			document.getElementById("validationResult").innerHTML  = "Server synched.";
+			window.location = "https://www.messenger.com/closeWindow/?image_url=http://localhost:3030/public/Correct.png&display_text=Validation Successful";
+		}else if(xmlhttp.readyState==4 && xmlhttp.status!=200){
+			alert("Somehing went wrong. xmlhttp.status: "+xmlhttp.status);
+			console.log("Some went wrong while retrieving http response: "+xmlhttp.status);
+			document.getElementById("validationResult").innerHTML  = "Server responded with Error.";
+			return false;
+		}
+	}
+
+	        var parseQueryString = function(url) {
+		var urlParams = {};
+		url.replace(
+			new RegExp("([^?=&]+)(=([^&]*))?", "g"),
+			function($0, $1, $2, $3) {
+			urlParams[$1] = $3;
+			}
+		);
+		return urlParams;
+	}
+        </script>
+</head>
+<body>
+<div class="container">
+        <div class="col-md-4 col-md-offset-4 form-container-header">
+                <div class="title">Customer Verification using Citizenship Id and Bank Account</div>
+        </div>
+        <div class="col-md-4 col-md-offset-4">
+                <div class="form-container">
+                        <form>
+                                <div class="form-group">
+                                        <label for="citizenid">Citizen Id </label>
+                                        <input type="text" id="citizenid" maxlength="13" placeholder="Please enter Citizen Id" class="form-control">
+
+                                </div>
+                                <div class="form-group">
+                                        <label for="meaccountnumber">Account Number</label>
+                                        <input type="text" id="meaccountnumber" maxlength="10" placeholder="Please enter Account Number" class="form-control">
+                                </div>
+                                <input type="submit" class="btn btn-primary f-right" value="Verify" id="verficationForm" onclick="return verify()">
+
+                                <div class="clear-fix"></div>
+                                <br>
+                                <div id="validationResult" align="center"></div>
+                        </form>
+
+                </div>
+        </div>
+</div>
+</body>
+</html>

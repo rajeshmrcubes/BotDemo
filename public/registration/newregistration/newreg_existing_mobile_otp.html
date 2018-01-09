@@ -1,0 +1,86 @@
+<div class="container settings-link tmb-direct">
+    <form name="newMobileOTPConfirmForm" novalidate>
+        <h1 class="text-center text-white m-t-30">{{'APPLY-NEW_SCREEN2-EXISTING-MOBILE-NO_TITLE_LABEL' | translate}}</h1>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div id="accounts_view">
+                    <div>
+                        <div class="custom-row p-t-20">
+                            <div class="col-md-2 form-group p-l-0">
+                            </div>
+                            <div class="col-md-9 form-group p-l-0">
+                                <p class="sub-title-content">
+                                    {{"APPLY-NEW_SCREEN2-EXISTING-MOBILE-NO_OTP-EXPLAINATION_LABEL" | translate}}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="custom-row">
+                            <div class="col-md-2 form-group p-l-0">
+                            </div>
+                            <div class="col-md-2 form-group p-l-0">
+                                <label class="control-label">{{"APPLY-NEW_SCREEN2-EXISTING-MOBILE-NO_MOBILE-NUMBER_LABEL" | translate}}</label>
+                            </div>
+                            <div class="col-md-3 p-l-0 p-r-10">
+                                <span style="width:275px; font-size:18px; font-weight: 800; display:inline-block;color: #353535; padding:2px 0 0 0;">{{mobilenumber}}</span>
+                                <div ng-if="bankRef">
+                                    {{'APPLY-NEW_SCREEN2-REG-MOBILE-NUMBER_OTP-STATUS_LABEL' | translate}} <br />
+                                    {{'APPLY-NEW_SCREEN2-REG-MOBILE-NUMBER_BANK-REF-NO_LABEL' | translate}}: {{bankRef}}
+                                </div>
+                            </div>
+                            <div class="col-md-3 p-l-10">
+                                <button type="button" name="generateOtpBtn" ng-disabled="!enabledOTPButton" ng-click="validateNewMobile('oldMobile_flow')" class="btn">{{'APPLY-NEW_SCREEN2-REG-MOBILE-NUMBER_REQUEST-OTP_BUTTON' | translate}}</button>
+                                <div ng-if="errorOTPMessage === true">
+                                    <h5 class="ngMessageClass">{{'APPLY-NEW_SCREEN2-REG-MOBILE-NUMBER_OTP-REG-FAILED-ERROR_LABEL' | translate}}</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="custom-row">
+                            <div class="col-md-2 p-l-0">
+                            </div>
+                            <div class="col-md-2 p-l-0">
+                                <label class="control-label">
+                                    {{'APPLY-NEW_SCREEN2-REG-MOBILE-NUMBER_FILL-OTP-NO_TEXT-BOX' | translate}}
+                                </label>
+                            </div>
+                            <div class="col-md-3 p-l-0">
+                                <input name="newMobileNumberOtp"
+                                       type="text"
+                                       ng-minlength="6"
+                                       ng-maxlength="6"
+                                       maxlength="6"
+                                       ng-pattern="/^[0-9]*$/"
+                                       numbers-only
+                                       required=""
+                                       ng-model="newMobileNumberOtp"
+                                       class="form-control"
+                                       ng-class="{'invalidbox': (OTPRequestSubmitted === true && newMobileOTPConfirmForm.newMobileNumberOtp.$invalid) || invalidNewMobileOTP === true || moreThan3Attempts === true}">
+                                <div class="ngMessagesClass" ng-messages="OTPRequestSubmitted === true && newMobileOTPConfirmForm.newMobileNumberOtp.$error" role="alert">
+                                    <div class="ngMessageClass" ng-message="required">{{'APPLY-NEW_SCREEN2-REG-MOBILE-NUMBER_OTP-REG-FAILED-ERROR_LABEL' | translate}}</div>
+                                    <div class="ngMessageClass" ng-message="pattern">{{'APPLY-NEW_SCREEN2-REG-MOBILE-NUMBER_OTP-REG-FAILED-ERROR_LABEL' | translate}}</div>
+                                    <div class="ngMessageClass" ng-message="minlength">{{'APPLY-NEW_SCREEN2-REG-MOBILE-NUMBER_OTP-INCORRECT-FORMAT_LABEL' | translate}}</div>
+                                </div>
+                                <div class="ngMessagesClass" ng-if="moreThan3Attempts === true" role="alert">
+                                    <div class="ngMessageClass">{{'APPLY-NEW_SCREEN2-REG-MOBILE-NUMBER_OTP-ERROR-MSG1_LABEL' | translate}}</div>
+                                    <div class="ngMessageClass">{{'APPLY-NEW_SCREEN2-REG-MOBILE-NUMBER_OTP-ERROR-MSG2_LABEL' | translate}}</div>
+                                </div>
+                                <div class="ngMessagesClass" ng-if="invalidNewMobileOTP === true" role="alert">
+                                    <div class="ngMessageClass">{{'APPLY-NEW_SCREEN2-REG-MOBILE-NUMBER_OTP-REG-FAILED-ERROR_LABEL' | translate}}</div>
+                                </div>
+                                <div>
+                                    {{'APPLY-NEW_SCREEN2-EXISTING-MOBILE-NO_CHANGE-MOBILE_LINK' | translate}} <span ng-bind-html="clickherelink" ng-click="utilities.gotoPage('prelogin.newreg_new_mobile_otp');"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="text-center m-b-70">
+    <button type="button" ng-click="gotoPrevPage();" class="btn gray btn-mg" ng-hide="fromEditFlow">{{'APPLY-NEW_SCREEN2-REG-MOBILE-NUMBER_BACK_BUTTON' | translate}}</button>
+    <button type="button" ng-disabled="!mobileNumberValidated" class="btn" ng-click="validateNewMobileOtp(newMobileNumberOtp);" ng-hide="fromEditFlow">{{'APPLY-NEW_SCREEN2-REG-MOBILE-NUMBER_NEXT_BUTTON' | translate}}</button>
+    <button type="button" ng-click="utilities.gotoPage('prelogin.applicantAccountSummaryScreen');" class="btn gray btn-mg" ng-show="fromEditFlow">{{'APPLY-NEW_SCREEN2-REG-MOBILE-NUMBER-EDIT_BACK_BUTTON' | translate}}</button>
+    <button type="button" ng-disabled="!mobileNumberValidated" class="btn" ng-show="fromEditFlow" ng-click="validateNewMobileOtp(newMobileNumberOtp);">{{'APPLY-NEW_SCREEN2-REG-MOBILE-NUMBER-EDIT_SAVE_BUTTON' | translate}}</button>
+</div>

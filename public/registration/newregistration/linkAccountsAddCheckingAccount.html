@@ -1,0 +1,119 @@
+<div class="container tmb-direct m-b-70">
+  <h1 class="text-center text-white">{{'APPLY-NEW_SCREEN7-LINK-EBA_HEADER_LABEL' | translate}}</h1>
+  <div class="grid-row white-bg" id="accounts_view">
+    <div class="custom-row form-group">
+      <div class="col-md-10">
+        <h2>{{'APPLY-NEW_SCREEN7-LINK-EBA_LINK-ACC_LABEL' | translate}}</h2>
+        <div ng-bind-html="instructionLabel"> </div>
+      </div>
+    </div>
+    <div class="row last">
+      <form name="addLinkAccountForm" ng-submit="accountEnquiryForNonTMB_AddEBA(eba)" novalidate>
+        <div class="row last">
+          <div class="block-responsive">
+            <div class="col-md-2">
+              <div class="image-container m-l-10">
+                <img ng-if="eba.bank.bankLogo" ng-src="{{eba.bank.bankLogo}}" class="bank-logo-size-80px">
+                <img ng-if="!eba.bank.bankLogo" src="img/logo-add-acc.png" class="bank-logo-size-80px">
+              </div>
+            </div>
+            <div class="col-md-10">
+              <div class="custom-row form-style">
+                <div class="custom-row form-group">
+                  <div class="col-md-5 m-b-5">
+                    <label>{{'APPLY-NEW_SCREEN7-LINK-EBA-CHECK_BANK-NAME_LABEL' | translate}} <span class="pink">*</span></label>
+                    <select name="banksList"
+                            required
+                            ng-class="{'invalidbox': submitted === true && eba.bank.bankCD === ''}"
+                            class="form-control"
+                            data-ng-model="eba.bank"
+                            data-ng-options="bank.shortNameTH for bank in banksList">
+                      <option value="" label="{{bankName}}"  selected="selected"></option>
+                    </select>
+                    <div class="ngMessagesClass" ng-if="submitted === true && eba.bank.bankCD === ''" role="alert">
+                      <div class="ngMessageClass">{{'APPLY-NEW_SCREEN7-LINK-EBA-CHECK_ERROR-MESSAGE_LABEL' | translate}}</div>
+                    </div>
+                  </div>
+                  <div class="col-md-5 m-b-5">
+                    <label>{{'APPLY-NEW_SCREEN7-LINK-EBA-CHECK_ACC-NUMBER_LABEL' | translate}} <span class="pink">*</span></label>
+                    <div ng-if="eba.bank.IsTMBSelected && accountsListTMB">
+                      <select name="accNo"
+                              class="form-control"
+                              ng-class="{'invalidbox': submitted === true && addLinkAccountForm.accNo.$invalid}"
+                              required
+                              data-ng-model="eba.account"
+                              data-ng-options="account.accNo for account in formattedAccList"
+                              ng-change="getAccNameForTMBAccount(eba.account)">
+                          <option value="" label="{{'APPLY-NEW_SCREEN7-LINK-EBA-CHECK_ACC-NUMBER_TEXT-BOX' | translate}}" disabled selected="selected"></option>
+                      </select>
+                      <div class="ngMessagesClass" ng-messages="submitted===true && addLinkAccountForm.accNo.$error"
+                           role="alert">
+                        <div ng-message="required" class="ngMessageClass">
+                          {{'APPLY-NEW_SCREEN7-LINK-EBA-CHECK_ERROR-MESSAGE_LABEL' | translate}}
+                        </div>
+                      </div>
+                    </div>
+                    <div ng-if="!eba.bank.IsTMBSelected || (eba.bank.IsTMBSelected && !accountsListTMB)">
+                      <input name="accountNumber"
+                             id="accountNumber"
+                             type="text"
+                             numbers-only
+                             ng-required="isAccountNumberInvalid === false || utilities.isEmpty(eba.account.accNumber)"
+                             data-ng-model="eba.account.accNumber"
+                             class="form-control"
+                             placeholder="{{'APPLY-NEW_SCREEN7-LINK-EBA-CHECK_ACC-NUMBER_TEXT-BOX' | translate}}"
+							 ng-change="validateBankToGetAccNum(eba.bank)"
+                             ng-class="{invalidbox: (submitted === true && addLinkAccountForm.accountNumber.$invalid) || isAccountNumberInvalid === true}">
+                        <div class="ngMessagesClass" ng-messages="submitted===true && addLinkAccountForm.accountNumber.$error" role="alert">
+                          <div ng-message="required" class="ngMessageClass" ng-if="isAccountNumberInvalid===false">{{'APPLY-NEW_SCREEN7-LINK-EBA-CHECK_ERROR-MESSAGE_LABEL' | translate}} </div>
+                          <div ng-message="numbersOnly" class="ngMessageClass">{{'APPLY-NEW_SCREEN7-LINK-EBA-CHECK_ERROR-MESSAGE_LABEL' | translate}}</div>
+                        </div>
+                        <div class="ngMessagesClass" ng-if="isAccountNumberInvalid===true">
+                          <div class="ngMessageClass">{{'APPLY-NEW_SCREEN7-LINK-EBA-CHECK_ERROR-MESSAGE_LABEL' | translate}}  </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="custom-row form-group">
+                <div class="col-md-5 m-b-10">
+                  <label>{{'APPLY-NEW_SCREEN7-LINK-EBA-CHECK_ACCOUNT-NAME_LABEL' | translate}}</label>
+                  <input name="accountName"
+                         data-ng-model="eba.account.accName"
+                         type="text"
+                         ng-disabled="true"
+                         class="form-control"/>
+                </div>
+                <div class="col-md-5 m-b-10">
+                  <label>{{'APPLY-NEW_SCREEN7-LINK-EBA-CHECK_ACC-NICK-NAME_LABEL' | translate}} <span class="pink">*</span></label>
+                  <input name="ebAccountNickName"
+                         id="ebAccountNickName"
+                         type="text"
+                         ng-maxlength="20"
+                         maxlength="20"
+                         data-ng-model="eba.account.nickName"
+                         class="form-control"
+                         placeholder="{{'APPLY-NEW_SCREEN7-LINK-EBA-CHECK_ACC-NICK-NAME_TEXT-BOX' | translate}}"
+                         ng-class="{'invalidbox': (submitted === true && addLinkAccountForm.ebAccountNickName.$invalid) || isNickNameAlreadyExists === true}"
+                         required>
+                  <div class="ngMessagesClass" ng-messages="submitted==true && addLinkAccountForm.ebAccountNickName.$error" role="alert">
+                    <div class="ngMessageClass" ng-if="isNickNameAlreadyExists == true">{{'APPLY-NEW_SCREEN7-LINK-EBA-ADD_NICK-NAME-ERROR_LABEL' | translate}}</div>
+                    <div ng-message="required" class="ngMessageClass">{{'APPLY-NEW_SCREEN7-LINK-EBA-CHECK_ERROR-MESSAGE_LABEL' | translate}}</div>
+                    <div ng-message="maxlength" class="ngMessageClass">{{'APPLY-NEW_SCREEN7-LINK-EBA-CHECK_ERROR-MESSAGE_LABEL' | translate}}</div>
+                  </div>
+                </div>
+              </div>
+              <div class="pull-right responsive-m-r-apply-eba-add m-t-25">
+                <button type="button" ng-click="utilities.gotoPage('prelogin.linkAccountsNoEbaScreen');" class="btn darkblue m-r-10">{{'APPLY-NEW_SCREEN7-LINK-EBA-CHECK_CANCEL_BUTTON' | translate}}</button>
+                <button type="submit" class="btn btn-md-lg">{{'APPLY-NEW_SCREEN7-LINK-EBA-CHECK_CHECK-ACCOUNT-NAME_BUTTON' | translate}}</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+<div class="text-center m-t-20 p-b-30"></div>
+

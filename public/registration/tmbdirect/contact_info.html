@@ -1,0 +1,745 @@
+﻿<form name="tmbDirectContactInfoForm" novalidate ng-submit="addContactInfo()">
+    <div class="container tmb-direct m-b-70">
+        <h1 class="text-center text-white m-t-30">{{'APPLY-DIRECT_SCREEN4-CONTACT_HEADER_LABEL' | translate}}</h1>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="grid-row">
+                    <div class="form-style">
+                        <div class="line-bottom">
+                            <div class="custom-row form-group">
+                                <div class="col-md-2">
+                                    <label class="control-label">{{'APPLY-DIRECT_SCREEN4-CONTACT_EMAIL_LABEL' | translate}}<span class="pink">*</span></label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input name="customerEmail"
+                                           type="email"
+                                           email-validator
+                                           placeholder="{{'APPLY-DIRECT_SCREEN4-CONTACT_EMAIL-VALUE_TEXTBOX' | translate}}"
+                                           class="form-control"
+                                           ng-model="customerEmail"
+                                           ng-pattern="/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/"
+                                           id="customerEmail"
+                                           ng-class="{'invalidbox': submitted==true && tmbDirectContactInfoForm.customerEmail.$invalid || (customerEmailInvalid === true)}"
+                                           required />
+                                    <div class="ngMessagesClass" ng-messages="submitted==true && tmbDirectContactInfoForm.customerEmail.$error" role="alert">
+                                        <div class="ngMessageClass" ng-message="required">{{'APPLY-DIRECT_SCREEN4-CONTACT_EMAIL-ERROR-MESSAGE_LABEL' | translate}}</div>
+                                        <div class="ngMessageClass" ng-message="pattern">{{'APPLY-DIRECT_SCREEN4-CONTACT_EMAIL-ERROR-MESSAGE_LABEL' | translate}}</div>
+                                        <div class="ngMessageClass" ng-message="emailValidator">{{'APPLY-DIRECT_SCREEN4-CONTACT_EMAIL-ERROR-MESSAGE_LABEL' | translate}}</div>
+                                    </div>
+                                    <div class="ngMessagesClass" ng-if="customerEmailInvalid === true" role="alert">
+                                      <div class="ngMessageClass">{{'APPLY-DIRECT_SCREEN4-CONTACT_EMAIL-ERROR-MESSAGE_LABEL' | translate}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="custom-row line-bottom form-group">
+                            <h2 class="m-t-b-15">{{'APPLY-DIRECT_SCREEN4-CONTACT_REGISTERED-ADDRESS-HEADER_LABEL' | translate}}</h2>
+                            <div class="col-md-5">
+                              <div ng-bind-html="registeredAddress"></div>
+                            </div>
+                        </div>
+                        <div class="line-bottom">
+                            <h2 class="m-t-b-15">{{'APPLY-DIRECT_SCREEN4-CONTACT-OTHER-THAN-REG_CURRENT-ADDRESS_LABEL' | translate}}</h2>
+                            <div class="custom-row form-group" ng-init="selectedRadioOption='matchRegisteredAddress'">
+                                <div class="col-md-3 col-xs-4 radio">
+                                    <input type="radio"
+                                           id="matchRegisteredAddressOption"
+                                           ng-model=selectedRadioOption
+                                           value="matchRegisteredAddress"
+                                           ng-change="getSelectedAddressTypeForContact(selectedRadioOption)"
+                                           class="css-checkbox">
+                                    <label for="matchRegisteredAddressOption" class="css-label radGroup1 radio-inline m-b-10">{{'APPLY-DIRECT_SCREEN4-CONTACT-OTHER-THAN-REG_SAME-AS-REG-ADDRESS_RADIO-BUTTON' | translate}}</label>
+                                </div>
+                                <div class="col-md-3 col-xs-4 radio">
+                                    <input type="radio"
+                                           id="correspondenceAddressOption"
+                                           ng-model=selectedRadioOption
+                                           value="currentAddress"
+                                           ng-change="getSelectedAddressTypeForContact(selectedRadioOption)"
+                                           class="css-checkbox">
+                                    <label for="correspondenceAddressOption" class="css-label radGroup1 radio-inline m-b-10">{{'APPLY-DIRECT_SCREEN4-CONTACT-OTHER-THAN-REG_CURRENT-ADDRESS_RADIO-BUTTON' | translate}}</label>
+                                </div>
+                            </div>
+                            <!--<div class="custom-row custom-row-responsive-sm-mg form-group" ng-if="selectedRadioOption === 'matchRegisteredAddress'">-->
+                                <!--<div ng-bind-html="copiedFormattedRegAddrForCurrent"></div>-->
+                            <!--</div>-->
+                            <!--<br>-->
+                            <div ng-if="selectedRadioOption === 'currentAddress'">
+                                <div class="custom-row custom-row-responsive-sm-mg form-group form-style m-t-10">
+                                    <div class="col-md-2">
+                                        <label class="control-label">{{'APPLY-DIRECT_SCREEN4-CONTACT-OTHER-THAN-REG_COUNTRY_LABEL' | translate}} <span class="pink">*</span></label>
+                                    </div>
+                                    <div class="col-md-3">
+                                      <input name="homeCountry"
+                                             type="text"
+                                             class="form-control"
+                                             ng-model="homeCountry.description"
+                                             value="ไทย"
+                                             disabled>
+                                    </div>
+                                    <div class="col-md-2 no-margin"></div>
+                                    <div class="col-md-2">
+                                        <label class="control-label col-md-offset-2">{{'APPLY-DIRECT_SCREEN4-CONTACT-OTHER-THAN-REG_ADDRESS-NUMBER_LABEL' | translate}}<span class="pink">*</span></label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input name="addressNumber"
+                                               type="text"
+                                               placeholder="{{'APPLY-DIRECT_SCREEN4-CONTACT-OTHER-THAN-REG_ADDRESS-NO-VALUE_TEXTBOX' | translate}}"
+                                               class="form-control"
+                                               value=""
+                                               ng-maxlength="20"
+                                               maxlength="20"
+                                               ng-model="currentAddress.addressNo"
+                                               id="addressNumber"
+                                               ng-class="{'invalidbox': submitted===true && tmbDirectContactInfoForm.addressNumber.$invalid}"
+                                               required />
+                                        <div class="ngMessagesClass"
+                                             ng-messages="submitted==true && tmbDirectContactInfoForm.addressNumber.$error" role="alert">
+                                            <div class="ngMessageClass" ng-message="required">{{'APPLY-DIRECT_SCREEN4-CONTACT_CURRENT-ADDRESS-ERROR-MESSAGE_LABEL' | translate}}</div>
+                                            <div class="ngMessageClass" ng-message="minlength">{{'APPLY-DIRECT_SCREEN4-CONTACT_CURRENT-ADDRESS-ERROR-MESSAGE_LABEL' | translate}}</div>
+                                            <div class="ngMessageClass" ng-message="myMaxlength">{{'APPLY-DIRECT_SCREEN4-CONTACT_CURRENT-ADDRESS-ERROR-MESSAGE_LABEL' | translate}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="custom-row custom-row-responsive-sm-mg form-group form-style">
+                                    <div class="col-md-2">
+                                        <label class="control-label">{{'APPLY-DIRECT_SCREEN4-CONTACT-OTHER-THAN-REG_MOO_LABEL' | translate}}</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input name="mooNo"
+                                               ng-maxlength="10"
+                                               maxlength="10"
+                                               placeholder="{{'APPLY-DIRECT_SCREEN4-CONTACT-OTHER-THAN-REG_MOO-VALUE_TEXTBOX' | translate}}"
+                                               type="text"
+                                               class="form-control"
+                                               ng-model="currentAddress.mooNo"
+                                               ng-class="{'invalidbox': submitted==true && tmbDirectContactInfoForm.mooNo.$invalid}"
+                                               id="contactMooNo">
+                                        <div class="ngMessagesClass" ng-messages="submitted===true && tmbDirectContactInfoForm.mooNo.$error" role="alert">
+                                          <div class="ngMessageClass" ng-message="minlength">{{'APPLY-DIRECT_SCREEN4-CONTACT_CURRENT-ADDRESS-ERROR-MESSAGE_LABEL' | translate}}</div>
+                                          <div class="ngMessageClass" ng-message="myMaxlength">{{'APPLY-DIRECT_SCREEN4-CONTACT_CURRENT-ADDRESS-ERROR-MESSAGE_LABEL' | translate}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 no-margin"></div>
+                                    <div class="col-md-2">
+                                        <label class="control-label col-md-offset-2">{{'APPLY-DIRECT_SCREEN4-CONTACT-OTHER-THAN-REG_BUILDING_LABEL' | translate}}</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input name="buildingName"
+                                               type="text"
+                                               ng-class="{'invalidbox': submitted==true && tmbDirectContactInfoForm.buildingName.$invalid}"
+                                               maxlength="30"
+                                               ng-maxlength="30"
+                                               placeholder="{{'APPLY-DIRECT_SCREEN4-CONTACT-OTHER-THAN-REG_BUILDING-VALUE_TEXTBOX' | translate}}"
+                                               class="form-control"
+                                               ng-model="currentAddress.buildingName">
+                                        <div class="ngMessagesClass" ng-messages="submitted===true && tmbDirectContactInfoForm.buildingName.$error" role="alert">
+                                          <div class="ngMessageClass" ng-message="maxlength">{{'APPLY-DIRECT_SCREEN4-CONTACT_CURRENT-ADDRESS-ERROR-MESSAGE_LABEL' | translate}}   </div>
+                                          <div class="ngMessageClass" ng-message="myMaxlength">{{'APPLY-DIRECT_SCREEN4-CONTACT_CURRENT-ADDRESS-ERROR-MESSAGE_LABEL' | translate}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="custom-row custom-row-responsive-sm-mg form-group">
+                                    <div class="col-md-2">
+                                        <label class="control-label">{{'APPLY-DIRECT_SCREEN4-CONTACT-OTHER-THAN-REG_TROK-SOI_LABEL' | translate}}</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input name="contactAddrSOI"
+                                               ng-maxlength="30"
+                                               maxlength="30"
+                                               placeholder="{{'APPLY-DIRECT_SCREEN4-CONTACT-OTHER-THAN-REG_TROK-SOI-VALUE_TEXTBOX' | translate}}"
+                                               ng-class="{'invalidbox': submitted==true && tmbDirectContactInfoForm.contactAddrSOI.$invalid}"
+                                               type="text"
+                                               class="form-control"
+                                               ng-model="currentAddress.soi">
+                                      <div class="ngMessagesClass" ng-messages="submitted==true && tmbDirectContactInfoForm.contactAddrSOI.$error" role="alert">
+                                        <div class="ngMessageClass" ng-message="minlength">{{'APPLY-DIRECT_SCREEN4-CONTACT_CURRENT-ADDRESS-ERROR-MESSAGE_LABEL' | translate}}</div>
+                                        <div class="ngMessageClass" ng-message="myMaxlength">{{'APPLY-DIRECT_SCREEN4-CONTACT_CURRENT-ADDRESS-ERROR-MESSAGE_LABEL' | translate}}</div>
+                                      </div>
+                                    </div>
+                                    <div class="col-md-2 no-margin"></div>
+                                    <div class="col-md-2">
+                                        <label class="control-label col-md-offset-2">{{'APPLY-DIRECT_SCREEN4-CONTACT-OTHER-THAN-REG_ROAD_LABEL' | translate}}</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input name="street"
+                                               placeholder="{{'APPLY-DIRECT_SCREEN4-CONTACT-OTHER-THAN-REG_ROAD-VALUE_TEXTBOX' | translate}}"
+                                               ng-class="{'invalidbox': submitted==true && tmbDirectContactInfoForm.street.$invalid}"
+                                               type="text"
+                                               ng-maxlength="30"
+                                               maxlength="30"
+                                               class="form-control"
+                                               ng-model="currentAddress.street">
+                                      <div class="ngMessagesClass" ng-messages="submitted==true && tmbDirectContactInfoForm.street.$error" role="alert">
+                                        <div class="ngMessageClass" ng-message="minlength">{{'APPLY-DIRECT_SCREEN4-CONTACT_CURRENT-ADDRESS-ERROR-MESSAGE_LABEL' | translate}}</div>
+                                        <div class="ngMessageClass" ng-message="myMaxlength">{{'APPLY-DIRECT_SCREEN4-CONTACT_CURRENT-ADDRESS-ERROR-MESSAGE_LABEL' | translate}}</div>
+                                      </div>
+                                    </div>
+                                </div>
+                                <div class="custom-row custom-row-responsive-sm-mg form-group">
+                                    <div class="col-md-2">
+                                        <label class="control-label">{{'APPLY-DIRECT_SCREEN4-CONTACT-OTHER-THAN-REG_PROVINCE_LABEL' | translate}} <span class="pink">*</span></label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <select name="provinceList"
+                                                required
+                                                ng-class="{'invalidbox': submitted === true && tmbDirectContactInfoForm.provinceList.$invalid}"
+                                                class="form-control"
+                                                data-ng-model="currentAddress.provinceData"
+                                                data-ng-options="province as province.provinceNameTH for province in provincesList track by province.provinceCd"
+                                                ng-change="getCurrentDistricts(currentAddress.provinceData)">
+                                            <option value="" label="{{'APPLY-DIRECT_SCREEN4-CONTACT-OTHER-THAN-REG_PROVINCE_LISTBOX' | translate}}" disabled selected="selected"></option>
+                                        </select>
+                                        <div class="ngMessagesClass" ng-messages="submitted === true && tmbDirectContactInfoForm.provinceList.$error" role="alert">
+                                            <div class="ngMessageClass" ng-message="required">{{'APPLY-DIRECT_SCREEN4-CONTACT_CURRENT-ADDRESS-ERROR-MESSAGE_LABEL' | translate}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 no-margin"></div>
+                                    <div class="col-md-2">
+                                        <label class="control-label col-md-offset-2">{{'APPLY-DIRECT_SCREEN4-CONTACT-OTHER-THAN-REG_SUB-PROVINCE_LABEL' | translate}}<span class="pink">*</span></label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <select name="districtList"
+                                                ng-class="{'invalidbox': submitted === true && tmbDirectContactInfoForm.districtList.$invalid}"
+                                                class="form-control"
+                                                data-ng-model="currentAddress.districtData"
+                                                data-ng-options="district as district.districtNameTH for district in currentAddrDistList track by district.districtCd"
+                                                ng-change="getCurrentAddrSubDistricts(currentAddress.districtData)"
+                                                required>
+                                            <option value="" label="{{'APPLY-DIRECT_SCREEN4-CONTACT-OTHER-THAN-REG_SUB-PROVINCE_LISTBOX' | translate}}" disabled selected="selected"></option>
+                                        </select>
+                                        <div class="ngMessagesClass"
+                                             ng-messages="submitted==true && tmbDirectContactInfoForm.districtList.$error" role="alert">
+                                            <div class="ngMessageClass" ng-message="required">{{'APPLY-DIRECT_SCREEN4-CONTACT_CURRENT-ADDRESS-ERROR-MESSAGE_LABEL' | translate}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="custom-row custom-row-responsive-sm-mg form-group">
+                                    <div class="col-md-2">
+                                        <label class="control-label">{{'APPLY-DIRECT_SCREEN4-CONTACT-OTHER-THAN-REG_TAMBOL_LABEL' | translate}} <span class="pink">*</span></label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <select name="subDistrictList"
+                                                class="form-control"
+                                                ng-class="{'invalidbox': submitted === true && tmbDirectContactInfoForm.subDistrictList.$invalid}"
+                                                data-ng-model="currentAddress.subDistrictData"
+                                                ng-change="setCurrentAddrSubDistrict(currentAddress.subDistrictData)"
+                                                data-ng-options="subDist as subDist.subDistrictNameTH for subDist in currentAddrSubDistList track by subDist.subDistrictCd"
+                                                required>
+                                            <option value="" label="{{'APPLY-DIRECT_SCREEN4-CONTACT-OTHER-THAN-REG_TAMBOL_LISTBOX' | translate}}" disabled selected="selected"></option>
+                                        </select>
+                                        <div class="ngMessagesClass" ng-messages="submitted === true && tmbDirectContactInfoForm.subDistrictList.$error" role="alert">
+                                            <div class="ngMessageClass" ng-message="required">{{'APPLY-DIRECT_SCREEN4-CONTACT_CURRENT-ADDRESS-ERROR-MESSAGE_LABEL' | translate}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 no-margin"></div>
+                                    <div class="col-md-2">
+                                        <label class="control-label col-md-offset-2">{{'APPLY-DIRECT_SCREEN4-CONTACT-OTHER-THAN-REG_POSTAL-CODE_LABEL' | translate}} <span class="pink">*</span></label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <select name="postalCode"
+                                                ng-class="{'invalidbox': submitted === true && tmbDirectContactInfoForm.postalCodeList.$invalid}"
+                                                class="form-control"
+                                                ng-disabled="currentAddrPostalCodeList.length === 1"
+                                                data-ng-model="currentAddress.postalCode"
+                                                data-ng-options="postalCode.zipCode as postalCode.zipCode for postalCode in currentAddrPostalCodeList"
+                                                required>
+                                            <option ng-if="currentAddrPostalCodeList.length === 0 || currentAddrPostalCodeList.length > 1" value="" label="{{'APPLY-DIRECT_SCREEN4-CONTACT-OTHER-THAN-REG_POSTAL-CODE_LISTBOX' | translate}}" disabled selected="selected"> </option>
+                                            <option ng-if="currentAddrPostalCodeList.length === 1" value="{{currentAddress.postalCode}}" label="{{currentAddress.postalCode}}" disabled selected="selected"></option>
+                                        </select>
+                                        <div class="ngMessagesClass" ng-messages="submitted === true && tmbDirectContactInfoForm.postalCode.$error" role="alert">
+                                            <div class="ngMessageClass" ng-message="required">{{'APPLY-DIRECT_SCREEN4-CONTACT_CURRENT-ADDRESS-ERROR-MESSAGE_LABEL' | translate}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="custom-row custom-row-responsive-sm-mg form-group">
+                                <div class="col-md-2">
+                                    <label class="control-label">{{'APPLY-DIRECT_SCREEN4-CONTACT_HOME-PHONE-NO_LABEL' | translate}}<!-- <span class="pink">*</span> --></label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input name="homePhone"
+                                           id="homePhone"
+                                           type="tel"
+                                           class="form-control"
+                                           ng-model="currentAddress.phoneNo"
+                                           ng-class="{'invalidbox': submitted==true && tmbDirectContactInfoForm.homePhone.$invalid}"
+                                           numbers-only
+                                           ng-minlength="9"
+                                           maxlength="10" />
+                                    <div class="ngMessagesClass" ng-messages="submitted == true && tmbDirectContactInfoForm.homePhone.$error" role="alert">
+                                        <div class="ngMessageClass" ng-message="minlength">{{'APPLY-DIRECT_SCREEN4-CONTACT_CURRENT-ADDRESS-ERROR-MESSAGE_LABEL' | translate}}</div>
+                                        <div class="ngMessageClass" ng-message="myMaxlength">{{'APPLY-DIRECT_SCREEN4-CONTACT_CURRENT-ADDRESS-ERROR-MESSAGE_LABEL' | translate}}</div>
+                                        <div class="ngMessageClass" ng-message="numbersOnly">{{'APPLY-DIRECT_SCREEN4-CONTACT_CURRENT-ADDRESS-ERROR-MESSAGE_LABEL' | translate}}</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 no-margin"></div>
+                                <div class="col-md-2">
+                                    <label class="control-label col-md-offset-2">{{'APPLY-DIRECT_SCREEN4-CONTACT_EXTENSION_LABEL' | translate}}</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input name="homePhoneExt"
+                                           id="homePhoneExt"
+                                           type="text"
+                                           numbers-only
+                                           maxlength="5"
+                                           class="form-control"
+                                           ng-model="currentAddress.extension"
+                                           ng-class="{'invalidbox': submitted===true && tmbDirectContactInfoForm.homePhoneExt.$invalid}" />
+                                    <div class="ngMessagesClass" ng-messages="submitted === true && tmbDirectContactInfoForm.homePhoneExt.$error" role="alert">
+                                        <div class="ngMessageClass" ng-message="myMaxlength">{{'APPLY-DIRECT_SCREEN4-CONTACT_CURRENT-ADDRESS-ERROR-MESSAGE_LABEL' | translate}}</div>
+                                        <div class="ngMessageClass" ng-message="numbersOnly">{{'APPLY-DIRECT_SCREEN4-CONTACT_CURRENT-ADDRESS-ERROR-MESSAGE_LABEL' | translate}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="last">
+                            <h2 class="m-t-b-15">
+                                {{'APPLY-DIRECT_SCREEN4-CONTACT-OTHER-THAN-REG_OFFICE-ADDRESS_LABEL' | translate}}
+                            </h2>
+                            <div class="custom-row form-group" ng-init="selectedOfficeRadioOption='matchRegisteredAddressForOffice'">
+                                <div class="col-md-3 col-xs-4 radio">
+                                    <input type="radio"
+                                           id="registeredAddressOption"
+                                           ng-model="selectedOfficeRadioOption"
+                                           value="matchRegisteredAddressForOffice"
+                                           ng-change="getSelectedAddressTypeForOffice(selectedOfficeRadioOption, selectedRadioOption)"
+                                           class="css-checkbox">
+                                    <label for="registeredAddressOption" class="css-label radGroup1 radio-inline">{{'APPLY-DIRECT_SCREEN4-CONTACT-OTHER-THAN-REG_SAME-AS-REG-ADDRESS_RADIO-BUTTON' | translate}}</label>
+                                </div>
+                                <div class="col-md-3 col-xs-4 radio">
+                                    <input type="radio"
+                                           id="correspondenceAddressOpt"
+                                           ng-model="selectedOfficeRadioOption"
+                                           value="correspondenceAddress"
+                                           ng-change="getSelectedAddressTypeForOffice(selectedOfficeRadioOption, selectedRadioOption)"
+                                           class="css-checkbox">
+                                    <label for="correspondenceAddressOpt" class="css-label radGroup1 radio-inline">{{'APPLY-DIRECT_SCREEN4-CONTACT-OTHER-THAN-REG_SAME-AS-CUR-ADDRESS_RADIO-BUTTON' | translate }}</label>
+                                </div>
+                                <div class="col-md-3 col-xs-4 radio">
+                                    <input type="radio"
+                                           id="officeAddressOption"
+                                           ng-model="selectedOfficeRadioOption"
+                                           value="officeAddress"
+                                           ng-change="getSelectedAddressTypeForOffice(selectedOfficeRadioOption, selectedRadioOption)"
+                                           class="css-checkbox">
+                                    <label for="officeAddressOption" class="css-label radGroup1 radio-inline">{{'APPLY-DIRECT_SCREEN4-CONTACT-OTHER-THAN-REG_OFFICE-ADDRESS_RADIO-BUTTON' | translate }}</label>
+                                </div>
+
+                            </div>
+                            <!--<div class="custom-row custom-row-responsive-sm-mg form-group" ng-if="selectedOfficeRadioOption === 'matchRegisteredAddressForOffice'">-->
+                                <!--<div ng-bind-html="copiedFormattedRegAddrForOffice"></div>-->
+                            <!--</div>-->
+                            <!--<br>-->
+                            <div class="custom-row custom-row-responsive-sm-mg form-group m-t-10">
+                                <div class="col-md-2">
+                                    <label class="control-label">
+                                        {{'APPLY-DIRECT_SCREEN4-CONTACT_COMPANY-NAME_LABEL' | translate}} <span class="pink">*</span>
+                                    </label>
+                                </div>
+                                <div class="col-md-5">
+                                    <input name="companyName"
+                                           type="text"
+                                           class="form-control"
+                                           ng-maxlength="40"
+                                           maxlength="40"
+                                           value=""
+                                           ng-model="officeAddress.companyName"
+                                           placeholder="{{'APPLY-DIRECT_SCREEN4-CONTACT_COMPANY-NAME_LABEL' | translate}}"
+                                           id="companyName"
+                                           ng-class="{'invalidbox': submitted==true && tmbDirectContactInfoForm.companyName.$invalid}"
+                                           required />
+                                    <div class="ngMessagesClass" ng-messages="submitted == true && tmbDirectContactInfoForm.companyName.$error" role="alert">
+                                        <div class="ngMessageClass" ng-message="required">{{'APPLY-DIRECT_SCREEN4-CONTACT_OFFICE-ADDRESS-ERROR-MESSAGE_LABEL' | translate}} </div>
+                                        <div class="ngMessageClass" ng-message="maxlength">{{'APPLY-DIRECT_SCREEN4-CONTACT_OFFICE-ADDRESS-ERROR-MESSAGE_LABEL' | translate}}   </div>
+                                        <div class="ngMessageClass" ng-message="myMaxlength">{{'APPLY-DIRECT_SCREEN4-CONTACT_OFFICE-ADDRESS-ERROR-MESSAGE_LABEL' | translate}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ng-if="selectedOfficeRadioOption === 'officeAddress'">
+                                <div class="custom-row custom-row-responsive-sm-mg form-group">
+                                    <div class="col-md-2">
+                                        <label class="control-label col-md">
+                                            {{'APPLY-DIRECT_SCREEN4-CONTACT-OTHER-THAN-REG_COUNTRY-OFC_LABEL' |  translate}} <span class="pink">*</span>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <select name="officeAddrCountry"
+                                                class="form-control"
+                                                ng-model="officeAddress.countryData"
+                                                data-ng-options="country as country.description for country in countryList track by country.id"
+                                                ng-change="checkCountrySelected(officeAddress.countryData)"
+                                                ng-class="{'invalidbox': submitted==true && tmbDirectContactInfoForm.officeAddrCountry.$invalid}"
+                                                required>
+                                            <option value="" label="{{'APPLY-DIRECT_SCREEN4-CONTACT-OTHER-THAN-REG_COUNTRY-OFC_LISTBOX' | translate}}" disabled selected="selected"></option>
+                                        </select>
+                                        <div class="ngMessagesClass"
+                                             ng-messages="submitted==true && tmbDirectContactInfoForm.officeAddrCountry.$error" role="alert">
+                                            <div class="ngMessageClass" ng-message="required">{{'APPLY-DIRECT_SCREEN4-CONTACT_OFFICE-ADDRESS-ERROR-MESSAGE_LABEL' | translate}}</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2 no-margin"></div>
+                                    <div class="col-md-2" ng-if="!countryNonThaiSelected">
+                                        <label class="control-label col-md-offset-2">
+                                            {{'APPLY-DIRECT_SCREEN4-CONTACT-OTHER-THAN-REG_ADDRESS-NUMBER-OFC_LABEL' | translate}}<span class="pink">*</span>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-3" ng-if="!countryNonThaiSelected">
+                                        <input name="officeAddrNumber"
+                                               type="text"
+                                               ng-maxlength="20"
+                                               maxlength="20"
+                                               class="form-control"
+                                               value=""
+                                               placeholder="{{'APPLY-DIRECT_SCREEN4-CONTACT-OTHER-THAN-REG_ADDRESS-NUMBER-OFC-VALUE_TEXTBOX' | translate}}"
+                                               ng-model="officeAddress.addressNo"
+                                               ng-class="{'invalidbox': submitted===true && tmbDirectContactInfoForm.officeAddrNumber.$invalid}"
+                                               required />
+                                        <div class="ngMessagesClass"
+                                             ng-messages="submitted===true && tmbDirectContactInfoForm.officeAddrNumber.$error" role="alert">
+                                            <div class="ngMessageClass" ng-message="required">{{'APPLY-DIRECT_SCREEN4-CONTACT_OFFICE-ADDRESS-ERROR-MESSAGE_LABEL' | translate}}</div>
+                                            <div class="ngMessageClass" ng-message="maxlength">{{'APPLY-DIRECT_SCREEN4-CONTACT_OFFICE-ADDRESS-ERROR-MESSAGE_LABEL' | translate}}   </div>
+                                            <div class="ngMessageClass" ng-message="myMaxlength">{{'APPLY-DIRECT_SCREEN4-CONTACT_OFFICE-ADDRESS-ERROR-MESSAGE_LABEL' | translate}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="custom-row custom-row-responsive-sm-mg form-group" ng-if="!countryNonThaiSelected">
+                                    <div class="col-md-2">
+                                        <label class="control-label">
+                                            {{'APPLY-DIRECT_SCREEN4-CONTACT-OTHER-THAN-REG_MOO-OFC_LABEL' | translate}}
+                                        </label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input name="officeMooNo"
+                                               ng-maxlength="10"
+                                               maxlength="10"
+                                               placeholder="{{'APPLY-DIRECT_SCREEN4-CONTACT-OTHER-THAN-REG_MOO-VALUE_TEXTBOX' | translate}}"
+                                               ng-class="{'invalidbox': submitted===true && tmbDirectContactInfoForm.officeMooNo.$invalid}"
+                                               type="text"
+                                               class="form-control"
+                                               ng-model="officeAddress.mooNo">
+                                        <div class="ngMessagesClass" ng-messages="submitted===true && tmbDirectContactInfoForm.officeMooNo.$error" role="alert">
+                                          <div class="ngMessageClass" ng-message="maxlength">{{'APPLY-DIRECT_SCREEN4-CONTACT_OFFICE-ADDRESS-ERROR-MESSAGE_LABEL' | translate}}   </div>
+                                          <div class="ngMessageClass" ng-message="myMaxlength">{{'APPLY-DIRECT_SCREEN4-CONTACT_OFFICE-ADDRESS-ERROR-MESSAGE_LABEL' | translate}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 no-margin"></div>
+                                    <div class="col-md-2">
+                                        <label class="control-label col-md-offset-2">
+                                            {{'APPLY-DIRECT_SCREEN4-CONTACT-OTHER-THAN-REG_BUILDING-OFC_LABEL' | translate}}
+                                        </label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input name="officeBuildingName"
+                                               ng-maxlength="30"
+                                               maxlength="30"
+                                               type="text"
+                                               placeholder="{{'APPLY-DIRECT_SCREEN4-CONTACT-OTHER-THAN-REG_BUILDING-OFC-VALUE_TEXTBOX' | translate}}"
+                                               ng-class="{'invalidbox': submitted===true && tmbDirectContactInfoForm.officeBuildingName.$invalid}"
+                                               class="form-control"
+                                               ng-model="officeAddress.buildingName">
+                                      <div class="ngMessagesClass" ng-messages="submitted===true && tmbDirectContactInfoForm.officeBuildingName.$error" role="alert">
+                                        <div class="ngMessageClass" ng-message="maxlength">{{'APPLY-DIRECT_SCREEN4-CONTACT_OFFICE-ADDRESS-ERROR-MESSAGE_LABEL' | translate}}   </div>
+                                        <div class="ngMessageClass" ng-message="myMaxlength">{{'APPLY-DIRECT_SCREEN4-CONTACT_OFFICE-ADDRESS-ERROR-MESSAGE_LABEL' | translate}}</div>
+                                      </div>
+                                    </div>
+                                </div>
+                                <div class="custom-row custom-row-responsive-sm-mg form-group" ng-if="!countryNonThaiSelected">
+                                    <div class="col-md-2">
+                                        <label class="control-label">
+                                            {{'APPLY-DIRECT_SCREEN4-CONTACT-OTHER-THAN-REG_TROK-SOI-OFC_LABEL' | translate}}
+                                        </label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input name="officeSoi"
+                                               ng-maxlength="30"
+                                               maxlength="30"
+                                               placeholder="{{'APPLY-DIRECT_SCREEN4-CONTACT-OTHER-THAN-REG_TROK-SOI-OFC-VALUE_TEXTBOX' | translate}}"
+                                               ng-class="{'invalidbox': submitted===true && tmbDirectContactInfoForm.officeSoi.$invalid}"
+                                               type="text"
+                                               class="form-control"
+                                               ng-model="officeAddress.soi">
+                                        <div class="ngMessagesClass" ng-messages="submitted==true && tmbDirectContactInfoForm.officeSoi.$error" role="alert">
+                                          <div class="ngMessageClass" ng-message="minlength">{{'APPLY-DIRECT_SCREEN4-CONTACT_OFFICE-ADDRESS-ERROR-MESSAGE_LABEL' | translate}}</div>
+                                          <div class="ngMessageClass" ng-message="myMaxlength">{{'APPLY-DIRECT_SCREEN4-CONTACT_OFFICE-ADDRESS-ERROR-MESSAGE_LABEL' | translate}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 no-margin"></div>
+                                    <div class="col-md-2">
+                                        <label class="control-label col-md-offset-2">
+                                            {{'APPLY-DIRECT_SCREEN4-CONTACT-OTHER-THAN-REG_ROAD-OFC_LABEL' | translate}}
+                                        </label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input name="officeStreet"
+                                               ng-maxlength="30"
+                                               maxlength="30"
+                                               placeholder="{{'APPLY-DIRECT_SCREEN4-CONTACT-OTHER-THAN-REG_ROAD-OFC-VALUE_TEXTBOX' | translate}}"
+                                               type="text"
+                                               class="form-control"
+                                               ng-class="{'invalidbox': submitted===true && tmbDirectContactInfoForm.officeStreet.$invalid}"
+                                               ng-model="officeAddress.street">
+                                      <div class="ngMessagesClass" ng-messages="submitted==true && tmbDirectContactInfoForm.officeStreet.$error" role="alert">
+                                        <div class="ngMessageClass" ng-message="minlength">{{'APPLY-DIRECT_SCREEN4-CONTACT_OFFICE-ADDRESS-ERROR-MESSAGE_LABEL' | translate}}</div>
+                                        <div class="ngMessageClass" ng-message="myMaxlength">{{'APPLY-DIRECT_SCREEN4-CONTACT_OFFICE-ADDRESS-ERROR-MESSAGE_LABEL' | translate}}</div>
+                                      </div>
+                                    </div>
+                                </div>
+                                <div class="custom-row custom-row-responsive-sm-mg form-group" ng-if="!countryNonThaiSelected">
+                                    <div class="col-md-2">
+                                        <label class="control-label">
+                                            {{'APPLY-DIRECT_SCREEN4-CONTACT-OTHER-THAN-REG_PROVINCE-OFC_LABEL' | translate}}
+                                            <span class="pink">*</span>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-3" ng-if="selectedOfficeRadioOption !== 'correspondenceAddress'">
+                                        <select name="officeProvince"
+                                                class="form-control"
+                                                ng-model="officeAddress.provinceData"
+                                                data-ng-options="province as province.provinceNameTH for province in provincesList track by province.provinceCd"
+                                                ng-change="getOfficeDistricts(officeAddress.provinceData)"
+                                                ng-class="{'invalidbox': submitted==true && tmbDirectContactInfoForm.officeProvince.$invalid}"
+                                                required>
+                                            <option value="" label="{{'APPLY-DIRECT_SCREEN4-CONTACT-OTHER-THAN-REG_PROVINCE-OFC_LISTBOX' | translate}}" disabled selected="selected"> </option>
+                                        </select>
+                                        <div class="ngMessagesClass" ng-messages="submitted==true && tmbDirectContactInfoForm.officeProvince.$error"
+                                             role="alert">
+                                            <div class="ngMessageClass" ng-message="required">{{'APPLY-DIRECT_SCREEN4-CONTACT_OFFICE-ADDRESS-ERROR-MESSAGE_LABEL' | translate}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 no-margin"></div>
+                                    <div class="col-md-2">
+                                        <label class="control-label col-md-offset-2">
+                                            {{'APPLY-DIRECT_SCREEN4-CONTACT-OTHER-THAN-REG_SUB-PROVINCE-OFC_LABEL' | translate}}<span class="pink">*</span>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <select name="officeDistrictList"
+                                                class="form-control"
+                                                ng-model="officeAddress.districtData"
+                                                data-ng-options="district as district.districtNameTH for district in officeAddrDistList track by district.districtCd"
+                                                ng-change="getOfficeAddrSubDistricts(officeAddress.districtData)"
+                                                ng-class="{'invalidbox': submitted==true && tmbDirectContactInfoForm.officeDistrictList.$invalid}"
+                                                required>
+                                            <option value="" label="{{'APPLY-DIRECT_SCREEN4-CONTACT-OTHER-THAN-REG_SUB-PROVINCE-OFC_LISTBOX' | translate}}" disabled selected="selected"> </option>
+                                        </select>
+                                        <div class="ngMessagesClass"
+                                             ng-messages="submitted==true && tmbDirectContactInfoForm.officeDistrictList.$error" role="alert">
+                                            <div class="ngMessageClass" ng-message="required">{{'APPLY-DIRECT_SCREEN4-CONTACT_OFFICE-ADDRESS-ERROR-MESSAGE_LABEL' | translate}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="custom-row custom-row-responsive-sm-mg form-group" ng-if="!countryNonThaiSelected">
+                                    <div class="col-md-2">
+                                        <label class="control-label">
+                                            {{'APPLY-DIRECT_SCREEN4-CONTACT-OTHER-THAN-REG_TAMBOL-OFC_LABEL' | translate}}
+                                            <span class="pink">*</span>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-3" ng-if="selectedOfficeRadioOption !== 'correspondenceAddress'">
+                                        <select name="officeSubDistrictList"
+                                                class="form-control"
+                                                ng-model="officeAddress.subDistrictData"
+                                                ng-change="setOfficeAddrSubDistrict(officeAddress.subDistrictData)"
+                                                id="officeSubDistrictList"
+                                                data-ng-options="subDist as subDist.subDistrictNameTH for subDist in officeAddrSubDistList track by subDist.subDistrictCd"
+                                                ng-class="{'invalidbox': submitted==true && tmbDirectContactInfoForm.officeSubDistrictList.$invalid}"
+                                                required>
+                                            <option value="" label="{{'APPLY-DIRECT_SCREEN4-CONTACT-OTHER-THAN-REG_TAMBOL-OFC_LISTBOX' | translate}}" disabled selected="selected"> </option>
+                                        </select>
+                                        <div class="ngMessagesClass" ng-messages="submitted==true && tmbDirectContactInfoForm.officeSubDistrictList.$error"
+                                             role="alert">
+                                            <div class="ngMessageClass" ng-message="required">{{'APPLY-DIRECT_SCREEN4-CONTACT_OFFICE-ADDRESS-ERROR-MESSAGE_LABEL' | translate}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 no-margin"></div>
+                                    <div class="col-md-2">
+                                        <label class="control-label col-md-offset-2">
+                                            {{'APPLY-DIRECT_SCREEN4-CONTACT-OTHER-THAN-REG_POSTAL-CODE-OFC_LABEL' | translate}}<span class="pink">*</span>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-3" ng-if="selectedOfficeRadioOption !== 'correspondenceAddress'">
+                                        <select name="officeZipCode"
+                                                class="form-control"
+                                                ng-disabled="officeAddrPostalCodeList.length === 1"
+                                                ng-model="officeAddress.postalCode"
+                                                data-ng-options="postalCode.zipCode as postalCode.zipCode for postalCode in officeAddrPostalCodeList"
+                                                id="officeZipCode"
+                                                ng-class="{'invalidbox': submitted==true && tmbDirectContactInfoForm.officeZipCode.$invalid}"
+                                                required>
+
+                                            <option ng-if="officeAddrPostalCodeList.length === 0 || officeAddrPostalCodeList.length > 1" value="" label="{{'APPLY-DIRECT_SCREEN4-CONTACT-OTHER-THAN-REG_POSTAL-CODE-OFC_LISTBOX' | translate}}" disabled selected="selected"> </option>
+                                            <option ng-if="officeAddrPostalCodeList.length === 1" value="{{officeAddress.postalCode}}" label="{{officeAddress.postalCode}}" disabled selected="selected"></option>
+
+                                        </select>
+                                        <div class="ngMessagesClass" ng-messages="submitted==true && tmbDirectContactInfoForm.officeZipCode.$error"
+                                             role="alert">
+                                            <div class="ngMessageClass" ng-message="required">{{'APPLY-DIRECT_SCREEN4-CONTACT_OFFICE-ADDRESS-ERROR-MESSAGE_LABEL' | translate}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="custom-row custom-row-responsive-sm-mg form-style m-b-0" ng-if="countryNonThaiSelected">
+                                <div class="col-md-2 form-group"> <label class="control-label lh-2-5">{{'APPLY-DIRECT_SCREEN4-CONTACT-NOT-THAILAND_OFFICE-ADDRESS-HEADER_LABEL' | translate}} <span class="pink">*</span></label> </div>
+                                <div class="col-md-10 form-group">
+                                    <input name="addr1"
+                                           ng-class="{'invalidbox': submitted === true && officeAddressForm.addr1.$invalid}"
+                                           type="text"
+                                           required
+                                           class="form-control settings-m-l-resp-addr-input m-l-0"
+                                           ng-model="countryNonThaiAddress.addr1">
+                                    <div class="ngMessagesClass settings-m-l-resp-addr-input" ng-messages="submitted === true && officeAddressForm.addr1.$error" role="alert">
+                                        <div class="ngMessageClass" ng-message="required">{{'SETTINGS-CONTACT-INFO_EDIT-REG-ADDRESS_ERROR-MESSAGE_LABEL' | translate}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="custom-row custom-row-responsive-sm-mg form-style m-b-0" ng-if="countryNonThaiSelected">
+                                <div class="col-md-10 form-group col-md-offset-2">
+                                    <input name="addr2"
+                                           ng-class="{'invalidbox': submitted === true && officeAddressForm.addr2.$invalid}"
+                                           type="text"
+                                           required
+                                           class="form-control settings-m-l-resp-addr-input m-l-0"
+                                           ng-model="countryNonThaiAddress.addr2">
+                                    <div class="ngMessagesClass settings-m-l-resp-addr-input" ng-messages="submitted === true && officeAddressForm.addr2.$error" role="alert">
+                                        <div class="ngMessageClass" ng-message="required">{{'SETTINGS-CONTACT-INFO_EDIT-REG-ADDRESS_ERROR-MESSAGE_LABEL' | translate}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="custom-row custom-row-responsive-sm-mg form-style m-b-0" ng-if="countryNonThaiSelected">
+                                <div class="col-md-10 form-group col-md-offset-2">
+                                    <input name="addr3"
+                                           ng-class="{'invalidbox': submitted === true && officeAddressForm.addr3.$invalid}"
+                                           type="text"
+                                           required
+                                           class="form-control settings-m-l-resp-addr-input m-l-0"
+                                           ng-model="countryNonThaiAddress.addr3">
+                                    <div class="ngMessagesClass settings-m-l-resp-addr-input" ng-messages="submitted === true && officeAddressForm.addr3.$error" role="alert">
+                                        <div class="ngMessageClass" ng-message="required">{{'SETTINGS-CONTACT-INFO_EDIT-REG-ADDRESS_ERROR-MESSAGE_LABEL' | translate}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                          <div class="custom-row custom-row-responsive-sm-mg form-style m-b-0" ng-if="countryNonThaiSelected">
+                            <div class="col-md-2">
+                              <label class="control-label">{{'APPLY-NEW_SCREEN4-CONTACT-INFO_PROVINCE_LABEL' | translate}} <span class="pink">*</span></label>
+                            </div>
+                            <div class="col-md-3">
+                              <input name="foreignProvince"
+                                     type="text"
+                                     class="form-control"
+                                     value=""
+                                     ng-model="countryNonThaiAddress.foreignProvince"
+                                     id="foreignProvince"
+                                     ng-class="{invalidbox: submitted==true && officeAddressForm.foreignProvince.$invalid}"
+                                     ng-required = "countryNonThaiSelected === true"
+                                     maxlength="30"
+                                     placeholder="{{'APPLY-NEW_SCREEN4-CONTACT-INFO_PROVINCE_LABEL' | translate}}" />
+                              <div class="ngMessagesClass"
+                                   ng-messages="submitted==true && officeAddressForm.foreignProvince.$error"
+                                   role="alert">
+                                  <div class="ngMessageClass" ng-message="required">{{'APPLY-DIRECT_SCREEN4-CONTACT_OFFICE-ADDRESS-ERROR-MESSAGE_LABEL' | translate}}</div>
+                              </div>
+                            </div>
+                            <div class="col-md-2 no-margin"></div>
+                            <div class="col-md-2">
+                              <label class="control-label">{{'APPLY-NEW_SCREEN4-CONTACT-INFO_POSTAL-CODE_LABEL' | translate}} <span class="pink">*</span></label>
+                            </div>
+                            <div class="col-md-3">
+                              <input name="foreignZipcode"
+                                     type="text"
+                                     class="form-control"
+                                     value=""
+                                     ng-model="countryNonThaiAddress.foreignZipcode"
+                                     id="foreignZipcode"
+                                     ng-class="{invalidbox: submitted==true && officeAddressForm.foreignZipcode.$invalid}"
+                                     ng-required = "countryNonThaiSelected === true"
+                                     maxlength="7"
+                                     placeholder="{{'APPLY-NEW_SCREEN4-CONTACT-INFO_POSTAL-CODE_LABEL' | translate}}" />
+                              <div class="ngMessagesClass"
+                                   ng-messages="submitted==true && officeAddressForm.foreignZipcode.$error"
+                                   role="alert">
+                                <div class="ngMessageClass" ng-message="required">{{'APPLY-DIRECT_SCREEN4-CONTACT_OFFICE-ADDRESS-ERROR-MESSAGE_LABEL' | translate}}</div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="custom-row custom-row-responsive-sm-mg form-group">
+                                <div class="col-md-2">
+                                    <label class="control-label">
+                                        {{'APPLY-DIRECT_SCREEN4-CONTACT_OFFICE-NUMBER_LABEL' | translate}}
+                                      <span class="pink" ng-show="selectedOfficeRadioOption !== 'correspondenceAddress' && selectedOfficeRadioOption !== 'matchRegisteredAddressForOffice'">*</span>
+                                    </label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input name="officePhone"
+                                           type="tel"
+                                           numbers-only
+                                           ng-required="selectedOfficeRadioOption !== 'correspondenceAddress' && selectedOfficeRadioOption !== 'matchRegisteredAddressForOffice'"
+                                           ng-minlength="9"
+                                           maxlength="10"
+                                           class="form-control"
+                                           ng-model="officeAddress.phoneNo"
+                                           id="officePhone"
+                                           ng-class="{'invalidbox': submitted==true && tmbDirectContactInfoForm.officePhone.$invalid}" />
+                                    <div class="ngMessagesClass" ng-messages="submitted == true && tmbDirectContactInfoForm.officePhone.$error" role="alert">
+                                        <div class="ngMessageClass" ng-message="required">{{'APPLY-DIRECT_SCREEN4-CONTACT_OFFICE-ADDRESS-ERROR-MESSAGE_LABEL' | translate}}</div>
+                                        <div class="ngMessageClass" ng-message="minlength">{{'APPLY-DIRECT_SCREEN4-CONTACT_OFFICE-ADDRESS-ERROR-MESSAGE_LABEL' | translate}}</div>
+                                        <div class="ngMessageClass" ng-message="myMaxlength">{{'APPLY-DIRECT_SCREEN4-CONTACT_OFFICE-ADDRESS-ERROR-MESSAGE_LABEL' | translate}}</div>
+                                        <div class="ngMessageClass" ng-message="numbersOnly">{{'APPLY-DIRECT_SCREEN4-CONTACT_OFFICE-ADDRESS-ERROR-MESSAGE_LABEL' | translate}}</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 no-margin"></div>
+                                <div class="col-md-2">
+                                    <label class="control-label col-md-offset-2">
+                                        {{'APPLY-DIRECT_SCREEN4-CONTACT_EXTENSION_LABEL' | translate }}
+                                    </label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input name="officePhoneExt"
+                                           type="text"
+                                           numbers-only
+                                           maxlength="5"
+                                           ng-maxlength="5"
+                                           class="form-control"
+                                           ng-model="officeAddress.extension"
+                                           ng-class="{'invalidbox': submitted===true && tmbDirectContactInfoForm.officePhoneExt.$invalid}" />
+                                    <div class="ngMessagesClass" ng-messages="submitted === true && officeAddressForm.officePhoneExt.$error" role="alert">
+                                        <div class="ngMessageClass" ng-message="minlength">{{'APPLY-DIRECT_SCREEN4-CONTACT_OFFICE-ADDRESS-ERROR-MESSAGE_LABEL' | translate}}</div>
+                                        <div class="ngMessageClass" ng-message="myMaxlength">{{'APPLY-DIRECT_SCREEN4-CONTACT_OFFICE-ADDRESS-ERROR-MESSAGE_LABEL' | translate}}</div>
+                                        <div class="ngMessageClass" ng-message="numbersOnly">{{'APPLY-DIRECT_SCREEN4-CONTACT_OFFICE-ADDRESS-ERROR-MESSAGE_LABEL' | translate}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--<div class="custom-row custom-row-responsive-sm-mg form-group" ng-if="!countryNonThaiSelected">-->
+                                <!--<div class="col-md-2">-->
+                                  <!--<label class="control-label">-->
+                                    <!--{{'APPLY-DIRECT_SCREEN4-CONTACT_MAILING-ADDRESS_LABEL' | translate}}-->
+                                    <!--<span class="pink">*</span>-->
+                                  <!--</label>-->
+                                <!--</div>-->
+                                <!--<div class="col-md-3">-->
+                                  <!--<select name="officeMailingAddress"-->
+                                          <!--class="form-control"-->
+                                          <!--ng-class="{'invalidbox': submitted==true && tmbDirectContactInfoForm.officeMailingAddress.$invalid}"-->
+                                          <!--required-->
+                                          <!--ng-model="officeAddress.mailingAddress"-->
+                                          <!--data-ng-options="mailingAddress.varCode as mailingAddress.varDesc for mailingAddress in mailingAddressList"-->
+                                          <!--id="officeMailingAddress">-->
+                                          <!--<option value="" label="{{'APPLY-DIRECT_SCREEN4-CONTACT_MAILING-ADDRESS_LISTBOX' | translate}}" disabled selected="selected"> </option>-->
+                                  <!--</select>-->
+                                  <!--<div class="ngMessagesClass" ng-messages="submitted === true && tmbDirectContactInfoForm.officeMailingAddress.$error" role="alert">-->
+                                    <!--<div class="ngMessageClass" ng-message="required">{{'APPLY-DIRECT_SCREEN4-CONTACT_OFFICE-ADDRESS-ERROR-MESSAGE_LABEL' | translate}}</div>-->
+                                  <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center m-t-20 p-b-30">
+            <button type="button" ng-click="backButton()" class="btn gray btn-mg">{{'APPLY-DIRECT_SCREEN4-CONTACT-EDIT_CANCEL_BUTTON' | translate}}</button>
+            <button type="submit" class="btn">{{'APPLY-DIRECT_SCREEN4-CONTACT-EDIT_SAVE_BUTTON' | translate}}</button>
+        </div>
+    </div>
+</form>

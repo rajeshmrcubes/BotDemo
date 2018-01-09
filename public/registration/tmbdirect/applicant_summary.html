@@ -1,0 +1,292 @@
+﻿<div class="container tmb-direct m-b-70">
+  <form name="refereeMobileForm" novalidate>
+    <h1 class="text-center text-white m-t-30">
+      {{'APPLY-DIRECT_SCREEN7-CONFIRM_HEADER_LABEL' | translate}}<br />
+      {{'APPLY-DIRECT_SCREEN7-CONFIRM_TITLE1_LABEL' | translate}}</h1>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="grid-row">
+                <div>
+                    <div class="custom-row form-group">
+                        <div class="col-md-12">
+                            <h2 class="left m-b-minus-5">{{'APPLY-DIRECT_SCREEN7-CONFIRM_PERSONAL-INFO-HEADER_LABEL' | translate}}</h2>
+                        </div>
+                    </div>
+                    <div class="custom-row form-group">
+                        <div class="custom-row line-bottom form-group">
+                            <div class="custom-row form-group">
+                                <div class="col-md-4">
+                                    <label>{{'APPLY-DIRECT_SCREEN7-CONFIRM_TH-NAME_LABEL' | translate}}</label>
+                                    <p class="control-info">{{personalInfo.nameTH}}</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <label>{{'APPLY-DIRECT_SCREEN7-CONFIRM_TH-SURNAME_LABEL' | translate}} </label>
+                                    <p class="control-info">{{personalInfo.surNameTH}}</p>
+                                </div>
+                            </div>
+                            <div class="custom-row form-group">
+                                <div class="col-md-4">
+                                    <label>{{'APPLY-DIRECT_SCREEN7-CONFIRM_EN-NAME_LABEL' | translate}} </label>
+                                    <p class="control-info">{{personalInfo.nameEN}}</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <label>{{'APPLY-DIRECT_SCREEN7-CONFIRM_EN-SURNAME_LABEL' | translate}} </label>
+                                    <p class="control-info">{{personalInfo.surNameEN}}</p>
+                                </div>
+                            </div>
+                            <div class="custom-row form-group">
+                                <div class="col-md-4">
+                                    <label>{{'APPLY-DIRECT_SCREEN7-CONFIRM_CITIZEN-ID_LABEL' | translate}}</label>
+                                    <p class="control-info">{{personalInfo.citizenID}}</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <label>{{'APPLY-DIRECT_SCREEN7-CONFIRM_DATE-OF-BIRTH_LABEL' | translate}} </label>
+                                    <p class="control-info" ng-if="personalInfo.birthDate && personalInfo.birthDate !== ''">{{getRequestedDateInThai(personalInfo.birthDate)}}</p>
+                                    <p class="control-info bold-text" ng-if="!personalInfo.birthDate">-</p>
+                                </div>
+                            </div>
+                            <div class="custom-row form-group">
+                                <div class="col-md-4">
+                                    <label>{{'APPLY-DIRECT_SCREEN7-CONFIRM_ISSUE-DATE_LABEL ' | translate}}</label>
+                                    <p class="control-info" ng-if="personalInfo.issueDate && personalInfo.issueDate !== ''">{{getRequestedDateInThai(personalInfo.issueDate)}}</p>
+                                    <p class="control-info bold-text" ng-if="!personalInfo.issueDate">-</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <label>{{'APPLY-DIRECT_SCREEN7-CONFIRM_EXPIRY-DATE_LABEL' | translate}}</label>
+                                    <p class="control-info" ng-if="personalInfo.expiryDate && personalInfo.expiryDate !== ''">{{getRequestedDateInThai(personalInfo.expiryDate)}}</p>
+                                    <p class="control-info bold-text" ng-if="!personalInfo.expiryDate">-</p>
+                                </div>
+                            </div>
+                            <div class="custom-row form-group">
+                                <div class="col-md-4">
+                                    <label>{{'APPLY-DIRECT_SCREEN7-CONFIRM_MARITAL-STATUS_LABEL' | translate}}</label>
+                                    <p class="control-info" ng-if="personalInfo.maritalStatus">{{personalInfo.maritalStatus}}</p>
+                                    <p class="control-info bold-text" ng-if="!personalInfo.maritalStatus">-</p>
+                                </div>
+                                <div class="col-md-4">
+                                </div>
+                            </div>
+                            <div class="custom-row form-group">
+                                <div class="col-md-4">
+                                    <label>{{'APPLY-DIRECT_SCREEN7-CONFIRM_NATIONALITY_LABEL' | translate}}</label>
+                                    <p class="control-info" ng-if="personalInfo.nationality">{{personalInfo.nationality}}</p>
+                                    <p class="control-info bold-text" ng-if="!personalInfo.nationality">-</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <label>{{'APPLY-DIRECT_SCREEN7-CONFIRM_2-NATIONALITY_LABEL' | translate}} </label>
+                                    <p ng-if="personalInfo.nationality2" class="control-info">{{personalInfo.nationality2}}</p>
+                                    <p ng-if="!personalInfo.nationality2" class="control-info bold-text">-</p>
+                                </div>
+                            </div>
+                            <div class="custom-row form-group">
+                                <div class="col-md-4">
+                                    <label>{{'APPLY-DIRECT_SCREEN7-CONFIRM_COUNTRY-OF-BIRTH_LABEL' | translate}}</label>
+                                    <p class="control-info" ng-if="personalInfo.countryOfBirth">{{personalInfo.countryOfBirth}}</p>
+                                    <p class="control-info bold-text" ng-if="!personalInfo.countryOfBirth">-</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <label>{{'APPLY-DIRECT_SCREEN7-CONFIRM_COUNTRY-OF-SOURCE-INCOME_LABEL' | translate}} </label>
+                                    <p class="control-info" ng-if="personalInfo.sourceIncomeCountry">{{personalInfo.sourceIncomeCountry}}</p>
+                                    <p class="control-info bold-text" ng-if="!personalInfo.sourceIncomeCountry">-</p>
+                                </div>
+                            </div>
+                            <div class="custom-row form-group">
+                                <div class="col-md-4">
+                                    <label>{{'APPLY-DIRECT_SCREEN7-CONFIRM_OCCUPATION_LABEL' | translate}}</label>
+                                    <p class="control-info" ng-if="personalInfo.occupationName">{{personalInfo.occupationName}}</p>
+                                    <p class="control-info bold-text" ng-if="!personalInfo.occupationName">-</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <label>{{'APPLY-DIRECT_SCREEN7-CONFIRM_OCCUPATION-DETAILS_LABEL' | translate}}</label>
+                                    <p class="control-info" ng-if="personalInfo.occupationDetails">{{personalInfo.occupationDetails}}</p>
+                                    <p class="control-info bold-text" ng-if="!personalInfo.occupationDetails">-</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="custom-row line-bottom form-group">
+                            <div class="custom-row form-group">
+                                <div class="col-md-12 m-t-20">
+                                    <h2 class="m-b-minus-5">{{'APPLY-DIRECT_SCREEN7-CONFIRM_MOBILE-NUMBER-HEADER_LABEL' | translate}}</h2>
+                                </div>
+                            </div>
+                            <div class="custom-row form-group">
+                                <div class="col-md-4">
+                                    <label>{{'APPLY-DIRECT_SCREEN7-CONFIRM_MOBILE-NUMBER_LABEL' | translate}}</label>
+                                    <p class="control-info">{{personalInfo.mobileNumber}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="custom-row line-bottom form-group">
+                            <div class="custom-row form-group">
+                                <div class="col-md-12 m-t-20">
+                                    <h2 class="m-b-minus-5">{{'APPLY-DIRECT_SCREEN7-CONFIRM_REG-ADDRESS-HEADER_LABEL' | translate}}</h2>
+                                </div>
+                            </div>
+                            <div class="custom-row form-group">
+                                <div class="col-md-6">
+                                    <div ng-bind-html="formattedRegisteredAddress"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="custom-row line-bottom  form-group">
+                            <div class="custom-row form-group">
+                                <div class="col-md-12 m-t-20">
+                                    <h2 class="left m-b-minus-5">{{'APPLY-DIRECT_SCREEN7-CONFIRM_CONTACT-INFO-SECTION_LABEL' | translate}}</h2>
+                                    <a ng-click="editContactInfo()" class="btn btn-sm right col col-1">{{'APPLY-DIRECT_SCREEN7-CONFIRM_EDIT-CONTACT-INFO_LABEL' | translate}}</a>
+                                </div>
+                            </div>
+                            <div class="custom-row form-group">
+                                <div class="col-md-4">
+                                    <label>{{'APPLY-DIRECT_SCREEN7-CONFIRM_EMAIL-ADDRESS_LABEL' | translate}}</label>
+                                    <p class="control-info">{{mibCustomerEmail}}</p>
+                                </div>
+                            </div>
+                            <div class="custom-row">
+                                <h2 class="left">
+                                    {{'APPLY-DIRECT_SCREEN7-CONFIRM_CONTACT-ADDRESS_LABEL' | translate}}
+                                </h2>
+                            </div>
+                            <div class="custom-row form-group">
+                                <div class="col-md-12 address">
+                                    <div ng-bind-html="formattedCurrentAddress"></div>
+                                </div>
+                            </div>
+                            <div class="custom-row">
+                                <h2 class="left">
+                                    {{'APPLY-DIRECT_SCREEN7-CONFIRM_COMPANY-ADDRESS_LABEL' | translate}}
+                                </h2>
+                            </div>
+                            <div class="custom-row">
+                                <div class="col-md-12 address last">
+                                    <div ng-bind-html="formattedOfficeAddress"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="custom-row line-bottom form-group">
+                            <div class="custom-row form-group">
+                                <div class="col-md-12 m-t-20">
+                                    <h2 class="left m-b-minus-5">
+                                        {{'APPLY-DIRECT_SCREEN7-CONFIRM_INCOME-INFO-HEADER_LABEL' | translate}}
+                                    </h2>
+                                    <a ng-click="editIncomeInfo()" class="btn btn-sm right col col-1">{{'APPLY-DIRECT_SCREEN7-CONFIRM_EDIT-INCOME-INFO_BUTTON' | translate}}</a>
+                                </div>
+                            </div>
+                            <div class="custom-row form-group">
+                                <div class="col-md-4">
+                                    <label>{{'APPLY-DIRECT_SCREEN7-CONFIRM_INCOME-INFO_LABEL' | translate}}</label>
+                                    <p class="control-info">{{incomeInfo.income}}</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <label>{{'APPLY-DIRECT_SCREEN7-CONFIRM_SOURCE-OF-INCOME_LABEL' | translate}}</label>
+                                    <p class="control-info">{{incomeInfo.sourceOfIncome.source}}</p>
+                                </div>
+                            </div>
+                            <div class="custom-row form-group">
+                                <div class="col-md-4">
+                                    <label>{{'APPLY-DIRECT_SCREEN7-CONFIRM_EDUCATION_LABEL' | translate}} </label>
+                                    <p class="control-info">{{incomeInfo.education}}</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <label>{{'APPLY-DIRECT_SCREEN7-CONFIRM_OBJ-ACCOUNT_LABEL' | translate}}  </label>
+                                    <p class="control-info">{{incomeInfo.objective}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="custom-row form-group">
+                            <div class="custom-row form-group">
+                                <div class="col-md-12 m-t-20">
+                                    <h2 class="left m-b-minus-5">
+                                        {{'APPLY-DIRECT_SCREEN7-CONFIRM_LINK-ACCOUNT_LABEL' | translate}}
+                                    </h2>
+                                    <a ng-click="editEBAInfo()" class="btn btn-sm right col col-1">{{'APPLY-DIRECT_SCREEN7-CONFIRM_EDIT-LINK-ACCOUNT_LABEL' | translate}}</a>
+                                </div>
+                            </div>
+                            <div class="custom-row form-group" ng-repeat="eba in ebaList">
+                                <div class="col-md-12 m-t-20">
+                                    <div class="block-responsive">
+                                        <div class="col-md-2">
+                                            <div class="image-container m-b-10">
+                                                <img class="left bank-logo bank-logo-size-80px" ng-src="{{eba.bankLogo}}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="clearfix"></div>
+                                            <div class="custom-row form-group">
+                                                <div class="col-xs-6 col-sm-5 col-md-6">
+                                                    <label>{{'APPLY-DIRECT_SCREEN7-CONFIRM_LINK-ACCOUNT-BANK-NAME_LABEL' | translate}}</label>
+                                                    <p class="control-info">{{eba.bankName}}</p>
+                                                </div>
+                                                <div class="col-xs-6 col-sm-7 col-md-6">
+                                                    <label>{{'APPLY-DIRECT_SCREEN7-CONFIRM_LINK-ACCOUNT-ACCOUNT-NUMBER_LABEL' | translate}}</label>
+                                                    <p class="control-info">{{eba.accNo | accountNumberFormat}}</p>
+                                                </div>
+                                            </div>
+                                            <div class="custom-row">
+                                                <div class="col-xs-6 col-sm-5 col-md-6">
+                                                    <label>{{'APPLY-DIRECT_SCREEN7-CONFIRM_LINK-ACCOUNT-ACCOUNT-NAME_LABEL' | translate}}</label>
+                                                    <p class="control-info">{{eba.accName}}</p>
+                                                </div>
+                                                <div class="col-xs-6 col-sm-5 col-md-6">
+                                                  <label>{{'APPLY-DIRECT_SCREEN7-CONFIRM_LINK-ACCOUNT-ACCOUNT-NICKNAME_LABEL' | translate}}</label>
+                                                  <p class="control-info">{{eba.accNickName}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--<div class="custom-row form-group" ng-if="mgmCampaignActive === true">-->
+                            <!--<div class="custom-row form-group">-->
+                                <!--<div class="col-md-4"> </div>-->
+                            <!--</div>-->
+                            <!--<div class="custom-row form-group">-->
+
+                                <!--<div class="col-md-4">-->
+                                    <!--<label>-->
+                                        <!--{{'APPLY-DIRECT_SCREEN7-CONFIRM_MEMBER-GOT-MEMBER_LABEL' | translate}}-->
+                                    <!--</label>-->
+                                    <!--<input name="refereePhone"-->
+                                           <!--ng-model="refereeMobile"-->
+                                           <!--ng-class="{'invalidbox': submitted === true && refereeMobileForm.refereePhone.$invalid}"-->
+                                           <!--type="tel"-->
+                                           <!--numbers-only-->
+                                           <!--my-mobilenumber-->
+                                           <!--ng-minlength="10"-->
+                                           <!--maxlength="10"-->
+                                           <!--type="text" value=""-->
+                                           <!--class="form-control" />-->
+                                    <!--<div class="ngMessagesClass" ng-messages="submitted === true && refereeMobileForm.refereePhone.$error" role="alert">-->
+                                      <!--<div class="ngMessageClass" ng-message="minlength">{{'SETTINGS-CONTACT-INFO_EDIT-CONTACT-ADDRESS_ERROR-MESSAGE_LABEL' | translate}}</div>-->
+                                      <!--<div class="ngMessageClass" ng-message="myMaxlength">{{'SETTINGS-CONTACT-INFO_EDIT-CONTACT-ADDRESS_ERROR-MESSAGE_LABEL' | translate}}</div>-->
+                                      <!--<div class="ngMessageClass" ng-message="numbersOnly">{{'SETTINGS-CONTACT-INFO_EDIT-CONTACT-ADDRESS_ERROR-MESSAGE_LABEL' | translate}}</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <div class="custom-row form-group" ng-if="mgmCampaignActive === true">
+                          <div class="custom-row form-group">
+                            <div class="col-md-4"> </div>
+                          </div>
+                          <div class="custom-row form-group">
+                            <div class="col-md-4">
+                              <label>
+                                {{'APPLY-DIRECT_SCREEN7-CONFIRM_MEMBER-GOT-MEMBER_LABEL' | translate}}
+                              </label>
+                              <input name="" type="text" value="" class="form-control" placeholder="" />
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="custom-row">
+      <div class="text-center m-t-20 p-b-30">
+        <button type="button" type="submit" ng-click="ConfirmDetails()" class="btn btn-md">{{'APPLY-DIRECT_SCREEN7-CONFIRM_CONFIRM_BUTTON' | translate}}</button>
+      </div>
+    </div>
+  </form>
+</div>
+

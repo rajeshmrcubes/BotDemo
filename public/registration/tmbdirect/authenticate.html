@@ -1,0 +1,114 @@
+﻿<div class="container tmb-direct m-b-30">
+  <form id="tmbDirectAuthenticateForm" name="tmbDirectAuthenticateForm" novalidate autocomplete="off">
+    <h1 class="text-center text-white m-t-30">{{'APPLY-DIRECT_SCREEN1-AUTHENTICATE_HEADER_LABEL' | translate}}</h1>
+    <div class="panel panel-default">
+      <div class="panel-body art-content">
+        <div class="registration">
+          <div class="custom-row-responsive-sm-mg form-group m-b-10">
+            <div class="col-md-12">
+              <p class="sub-title-content text-center">{{'APPLY-DIRECT_SCREEN1-AUTHENTICATE_DETAILS_LABEL' | translate}}</p>
+            </div>
+          </div>
+          <div class="custom-row-responsive-sm-mg form-group m-b-10">
+            <div class="col-md-2 col-md-offset-3">
+              <label class="control-label col-lg">{{'APPLY-DIRECT_SCREEN1-AUTHENTICATE_USERNAME_LABEL' | translate}}<span class="pink"> *</span></label>
+            </div>
+            <div class="col-md-4">
+              <input class="form-control"
+                     ng-model="tmbCustomer.username"
+                     ng-class="{invalidbox: submitted==true && tmbDirectAuthenticateForm.username.$invalid}"
+                     type="text"
+                     id="username"
+                     autocapitalize="off"
+                     autocorrect="off"
+                     autocomplete="off"
+                     ng-minlength="8"
+                     ng-maxlength="20"
+                     maxlength="20"
+                     prevent-copy-paste
+                     name="username"
+                     required />
+              <div class="ngMessagesClass" ng-messages="submitted==true && tmbDirectAuthenticateForm.username.$error" role="alert">
+                <div class="ngMessageClass" ng-message="required">{{'APPLY-DIRECT_SCREEN1-AUTHENTICATE_UN-BLANK_LABEL' | translate}}</div>
+                <div class="ngMessageClass" ng-message="minlength">{{'APPLY-DIRECT_SCREEN1-AUTHENTICATE_UN-BLANK_LABEL' | translate}}</div>
+                <div class="ngMessageClass" ng-message="maxlength">{{'APPLY-DIRECT_SCREEN1-AUTHENTICATE_UN-BLANK_LABEL' | translate}}</div>
+              </div>
+            </div>
+            <div class="col-md-2"> </div>
+          </div>
+          <div class="custom-row-responsive-sm-mg form-group m-b-10">
+            <div class="col-md-2 col-md-offset-3">
+              <label class="control-label col-lg">{{'APPLY-DIRECT_SCREEN1-AUTHENTICATE_PASSWORD_LABEL' | translate}}<span class="pink"> *</span></label>
+            </div>
+            <div class="col-md-4">
+              <input class="form-control m-r-10"
+                     ng-model="tmbCustomer.password"
+                     ng-class="{invalidbox: submitted==true && tmbDirectAuthenticateForm.mibUserPwd.$invalid}"
+                     type="password"
+                     id="mibUserPwd"
+                     autocomplete="off"
+                     autocapitalize="off"
+                     prevent-copy-paste
+                     autocorrect="off"
+                     disallow-chars="<,>,&"
+                     ng-minlength="8"
+                     ng-maxlength="20"
+                     maxlength="20"
+                     name="mibUserPwd"
+                     required />
+              <div class="ngMessagesClass" ng-messages="submitted==true && tmbDirectAuthenticateForm.mibUserPwd.$error" role="alert">
+                <div class="ngMessageClass" ng-message="required">{{'APPLY-DIRECT_SCREEN1-AUTHENTICATE_PW-BLANK_LABEL' | translate}}</div>
+                <div class="ngMessageClass" ng-message="minlength">{{'APPLY-DIRECT_SCREEN1-AUTHENTICATE_PW-BLANK_LABEL' | translate}}</div>
+                <div class="ngMessageClass" ng-message="maxlength">{{'APPLY-DIRECT_SCREEN1-AUTHENTICATE_PW-BLANK_LABEL' | translate}}</div>
+              </div>
+              <div class="alt"><span class="pink">*</span>{{'APPLY-DIRECT_SCREEN1-AUTHENTICATE_INFORMATION_LABEL' | translate}}</div>
+            </div>
+            <div class="col-md-2"> </div>
+          </div>
+          <div class="custom-row-responsive-sm-mg form-group" ng-show="showCaptcha">
+            <div class="col-md-2 col-md-offset-3">
+              <label class="control-label col-lg">{{'APPLY-DIRECT_SCREEN1-AUTHENTICATE_CAPTCHA_LABEL' | translate}}</label>
+            </div>
+            <div class="col-md-4">
+              <div class="control-label captcha-content">
+                                <span>
+                                    <img class="captcha-container-left" src="{{tmbCustomer.captchaImage}}">
+                                </span>
+                <img src="img/refresh.png" align="right" ng-click="refreshCaptcha()" class="captcha-container-right">
+              </div>
+            </div>
+            <div class="col-md-2"> </div>
+          </div>
+          <div class="custom-row-responsive-sm-mg form-group" ng-show="showCaptcha">
+            <div class="col-md-2 col-md-offset-3"></div>
+            <div class="col-md-4">
+              <input name="captcha"
+                     id="captcha"
+                     ng-class="{invalidbox: submitted==true && tmbDirectAuthenticateForm.captcha.$invalid || capchaIncorrect === true}"
+                     ng-minlength="6"
+                     ng-maxlength="6"
+                     type="text"
+                     ng-model="tmbCustomer.captcha"
+                     placeholder="{{'APPLY-DIRECT_SCREEN1-AUTHENTICATE_CAPTCHA-INPUT_TEXTBOX' | translate}}"
+                     ng-required="showCaptcha"
+                     class="form-control">
+              <div class="ngMessagesClass" ng-messages="submitted==true && tmbDirectAuthenticateForm.captcha.$error" role="alert">
+                <div ng-message="required" class="ngMessageClass">{{'APPLY-DIRECT_SCREEN1-AUTHENTICATE_CAPTCHA-ERROR_LABEL' | translate}}</div>
+                <div ng-message="minlength" class="ngMessageClass">{{'APPLY-DIRECT_SCREEN1-AUTHENTICATE_CAPTCHA-ERROR_LABEL' | translate}}</div>
+                <div ng-message="maxlength" class="ngMessageClass">{{'APPLY-DIRECT_SCREEN1-AUTHENTICATE_CAPTCHA-ERROR_LABEL' | translate}}</div>
+              </div>
+              <div class="ngMessagesClass" ng-if="capchaIncorrect === true" role="alert">
+                <div class="ngMessageClass">{{'APPLY-DIRECT_SCREEN1-AUTHENTICATE_CAPTCHA-ERROR_LABEL' | translate}}</div>
+              </div>
+            </div>
+            <div class="col-md-2"> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center m-t-20 m-b-70">
+      <button type="button" ng-click="cancelAuthenticate()" class="btn darkblue btn-mg">{{'APPLY-DIRECT_SCREEN1-AUTHENTICATE_BACK_BUTTON' | translate}}</button>
+      <button type="button" ng-click="authenticateUser()" class="btn">{{'APPLY-DIRECT_SCREEN1-AUTHENTICATE_NEXT_BUTTON' | translate}}</button>
+    </div>
+  </form>
+</div>

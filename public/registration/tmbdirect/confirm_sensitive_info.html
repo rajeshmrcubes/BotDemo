@@ -1,0 +1,154 @@
+﻿<div class="container m-b-70" ng-show="pageLoaded">
+    <h1 class="text-center text-white m-t-30">{{'APPLY-DIRECT_SCREN3-SENSITIVE-DATA_HEADER_LABEL' | translate}}</h1>
+    <div class="panel panel-default">
+        <div class="panel-body art-content">
+            <div class="grid-row">
+                <div class="custom-row form-group">
+                    <div class="col-md-12">
+                        <h2 class="left m-b-minus-5">{{'APPLY-DIRECT_SCREN3-SENSITIVE-DATA_PERSONAL-INFO-HEADER_LABEL' | translate}}</h2>
+                    </div>
+                </div>
+                <div class="custom-row line-bottom form-group">
+                    <div class="custom-row form-group">
+                        <div class="col-md-4">
+                            <label>{{'APPLY-DIRECT_SCREN3-SENSITIVE-DATA_TH-NAME_LABEL' | translate}}</label>
+                            <p class="control-info" ng-if="MIBCustomerSensitiveInfo.profileInfo.nameTH">{{MIBCustomerSensitiveInfo.profileInfo.nameTH}}</p>
+                            <p class="control-info bold-text" ng-if="!MIBCustomerSensitiveInfo.profileInfo.nameTH">-</p>
+                        </div>
+                        <div class="col-md-4">
+                            <label>{{'APPLY-DIRECT_SCREN3-SENSITIVE-DATA_TH-SURNAME_LABEL' | translate}}</label>
+                            <p class="control-info" ng-if="MIBCustomerSensitiveInfo.profileInfo.surNameTH">{{MIBCustomerSensitiveInfo.profileInfo.surNameTH}}</p>
+                            <p class="control-info bold-text" ng-if="!MIBCustomerSensitiveInfo.profileInfo.surNameTH">-</p>
+                        </div>
+                    </div>
+                    <div class="custom-row form-group">
+                        <div class="col-md-4">
+                            <label>{{'APPLY-DIRECT_SCREN3-SENSITIVE-DATA_EN-NAME_LABEL' | translate}}</label>
+                            <p class="control-info" ng-if="MIBCustomerSensitiveInfo.profileInfo.nameEN">{{MIBCustomerSensitiveInfo.profileInfo.nameEN}}</p>
+                            <p class="control-info bold-text" ng-if="!MIBCustomerSensitiveInfo.profileInfo.nameEN">-</p>
+                        </div>
+                        <div class="col-md-4">
+                            <label>{{'APPLY-DIRECT_SCREN3-SENSITIVE-DATA_EN-SURNAME_LABEL' | translate}}</label>
+                            <p class="control-info" ng-if="MIBCustomerSensitiveInfo.profileInfo.surNameEN">{{MIBCustomerSensitiveInfo.profileInfo.surNameEN}}</p>
+                            <p class="control-info bold-text" ng-if="!MIBCustomerSensitiveInfo.profileInfo.surNameEN">-</p>
+                        </div>
+                    </div>
+                    <div class="custom-row form-group">
+                        <div class="col-md-4">
+                            <label>{{'APPLY-DIRECT_SCREN3-SENSITIVE-DATA_CITIZEN-ID_LABEL' | translate}}</label>
+                            <p class="control-info" ng-if="MIBCustomerSensitiveInfo.citizenId">{{MIBCustomerSensitiveInfo.citizenId}}</p>
+                            <p class="control-info bold-text" ng-if="!MIBCustomerSensitiveInfo.citizenId">-</p>
+                        </div>
+                        <div class="col-md-4">
+                            <label>{{'APPLY-DIRECT_SCREN3-SENSITIVE-DATA_BIRTHDAY_LABEL' | translate}}</label>
+                            <p class="control-info" ng-if="MIBCustomerSensitiveInfo.profileInfo.birthDate && MIBCustomerSensitiveInfo.profileInfo.birthDate !== ''">{{getRequestedDateInThai(MIBCustomerSensitiveInfo.profileInfo.birthDate)}}</p>
+                            <p class="control-info bold-text" ng-if="!MIBCustomerSensitiveInfo.profileInfo.birthDate">-</p>
+                        </div>
+                    </div>
+                    <div class="custom-row form-group">
+                        <div class="col-md-4">
+                            <label>{{'APPLY-DIRECT_SCREN3-SENSITIVE-DATA_ISSUE-DATE_LABEL' | translate}}</label>
+                            <p class="control-info" ng-if="MIBCustomerSensitiveInfo.profileInfo.issueDate && MIBCustomerSensitiveInfo.profileInfo.issueDate !== ''"> {{getRequestedDateInThai(MIBCustomerSensitiveInfo.profileInfo.issueDate)}}</p>
+                            <p class="control-info bold-text" ng-if="!MIBCustomerSensitiveInfo.profileInfo.issueDate">-</p>
+                    </div>
+                        <div class="col-md-4">
+                            <label>{{'APPLY-DIRECT_SCREN3-SENSITIVE-DATA_EXPIRY-DATE_LABEL' | translate}}</label>
+                            <p class="control-info" ng-if="MIBCustomerSensitiveInfo.profileInfo.expiryDate && MIBCustomerSensitiveInfo.profileInfo.expiryDate !== ''">{{getRequestedDateInThai(MIBCustomerSensitiveInfo.profileInfo.expiryDate)}}</p>
+                            <p class="control-info bold-text" ng-if="!MIBCustomerSensitiveInfo.profileInfo.expiryDate">-</p>
+                        </div>
+                    </div>
+                    <div class="custom-row form-group">
+                        <div class="col-md-4">
+                            <label>{{'APPLY-DIRECT_SCREN3-SENSITIVE-DATA_MARITAL-STATUS_LABEL' | translate}}</label>
+                            <p ng-if="MIBCustomerSensitiveInfo.profileInfo.maritalStatus" class="control-info">{{MIBCustomerSensitiveInfo.profileInfo.maritalStatus}}</p>
+                            <p ng-if="!MIBCustomerSensitiveInfo.profileInfo.maritalStatus" class="control-info bold-text">-</p>
+                        </div>
+                        <div class="col-md-4">
+                        </div>
+                    </div>
+                    <div class="custom-row form-group">
+                        <div class="col-md-4">
+                            <label>{{'APPLY-DIRECT_SCREN3-SENSITIVE-DATA_NATIONALITY_LABEL' | translate}}</label>
+                            <p ng-if="MIBCustomerSensitiveInfo.profileInfo.nationality" class="control-info">{{MIBCustomerSensitiveInfo.profileInfo.nationality}}</p>
+                            <p ng-if="!MIBCustomerSensitiveInfo.profileInfo.nationality" class="control-info bold-text">-</p>
+                        </div>
+                        <div class="col-md-4">
+                            <label>{{'APPLY-DIRECT_SCREN3-SENSITIVE-DATA_2-NATIONALITY_LABEL' | translate}}</label>
+                            <p ng-if="MIBCustomerSensitiveInfo.profileInfo.nationality2" class="control-info">{{MIBCustomerSensitiveInfo.profileInfo.nationality2}}</p>
+                            <p ng-if="!MIBCustomerSensitiveInfo.profileInfo.nationality2" class="control-info bold-text">-</p>
+                        </div>
+                    </div>
+                    <div class="custom-row form-group">
+                        <div class="col-md-4">
+                            <label>{{'APPLY-DIRECT_SCREN3-SENSITIVE-DATA_COUNTRY-OF-BIRTH_LABEL' | translate}}</label>
+                            <p ng-if="MIBCustomerSensitiveInfo.profileInfo.countryOfBirth" class="control-info">{{MIBCustomerSensitiveInfo.profileInfo.countryOfBirth}}</p>
+                            <p ng-if="!MIBCustomerSensitiveInfo.profileInfo.countryOfBirth" class="control-info bold-text">-</p>
+                        </div>
+                        <div class="col-md-4">
+                            <label>{{'APPLY-DIRECT_SCREN3-SENSITIVE-DATA_COUNTRY-OF-SOURCE-INCOME_LABEL' | translate}} </label>
+                            <p ng-if="MIBCustomerSensitiveInfo.profileInfo.sourceIncomeCountry" class="control-info">{{MIBCustomerSensitiveInfo.profileInfo.sourceIncomeCountry}}</p>
+                            <p ng-if="!MIBCustomerSensitiveInfo.profileInfo.sourceIncomeCountry" class="control-info bold-text">-</p>
+                        </div>
+                    </div>
+                    <div class="custom-row form-group">
+                        <div class="col-md-4">
+                            <label>{{'APPLY-DIRECT_SCREN3-SENSITIVE-DATA_OCCUPATION_LABEL' | translate}}</label>
+                            <p ng-if="MIBCustomerSensitiveInfo.profileInfo.occupationName" class="control-info">{{MIBCustomerSensitiveInfo.profileInfo.occupationName}}</p>
+                            <p ng-if="!MIBCustomerSensitiveInfo.profileInfo.occupationName" class="control-info bold-text">-</p>
+                        </div>
+                        <div class="col-md-4">
+                            <label>{{'APPLY-DIRECT_SCREN3-SENSITIVE-DATA_OCCUPATION-DETAILS_LABEL' | translate}}</label>
+                            <p ng-if="MIBCustomerSensitiveInfo.profileInfo.occupationDetails" class="control-info">{{MIBCustomerSensitiveInfo.profileInfo.occupationDetails}}</p>
+                            <p ng-if="!MIBCustomerSensitiveInfo.profileInfo.occupationDetails" class="control-info bold-text">-</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="custom-row line-bottom  form-group">
+                    <div class="custom-row form-group">
+                        <div class="col-md-12 m-t-20">
+                            <h2 class="m-b-minus-5">{{'APPLY-DIRECT_SCREN3-SENSITIVE-DATA_PHONE-NO_LABEL' | translate}}</h2>
+                        </div>
+                    </div>
+                    <div class="custom-row form-group">
+                        <div class="col-md-4">
+                            <label>{{'APPLY-DIRECT_SCREN3-SENSITIVE-DATA_MOBILE-PHONE-NO_LABEL' | translate}}</label>
+                            <p class="control-info">{{MIBCustomerSensitiveInfo.mobileNumber}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="custom-row form-group">
+                    <div class="custom-row form-group">
+                        <div class="col-md-12 m-t-20">
+                            <h2 class="m-b-minus-5">{{'APPLY-DIRECT_SCREN3-SENSITIVE-DATA_REGISTER-ADDRESS_LABEL' | translate}}</h2>
+                        </div>
+                    </div>
+                    <div class="custom-row form-group">
+                        <div class="col-md-6">
+                            <p>{{MIBCustomerSensitiveInfo.regAddress.addr1}}</p>
+                            <p> {{MIBCustomerSensitiveInfo.regAddress.addr2}}</p>
+                            <p> {{MIBCustomerSensitiveInfo.regAddress.addr3}}</p>
+                            <p>{{MIBCustomerSensitiveInfo.regAddress.city}}  {{MIBCustomerSensitiveInfo.regAddress.postalCode}}  {{MIBCustomerSensitiveInfo.regAddress.countryCodeValue}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-center m-t-b-15">
+    <p class="txt-terms checkbox checkbox-02 m-b-15">
+        <input type="checkbox" ng-model="acceptSensitivedata" name="acceptSensitivedata" id="acceptSensitivedata" class="css-checkbox checkbox-02">
+        <label for="acceptSensitivedata" class="css-label text-white">{{'APPLY-DIRECT_SCREN3-SENSITIVE-DATA_CONFIRM-INFO_CHECKBOX' | translate}}</label>
+    </p>
+    <br>
+    <p class="p-b-15 text-white">
+        {{'APPLY-DIRECT_SCREN3-SENSITIVE-DATA_CHANGE-INFO_LABEL' | translate}}
+        <a ng-click="newRegistration()" class="link-pink">{{'APPLY-DIRECT_SCREN3-SENSITIVE-DATA_APPLY-AS-NEW_LINK' | translate}}</a>
+    </p>
+    <p>
+    </p>
+</div>
+    <div class="text-center m-t-20 p-b-30">
+    <button type="button" ng-click="cancelRegistrationProcess()" class="btn gray">{{'APPLY-DIRECT_SCREN3-SENSITIVE-DATA_BACK_BUTTON' | translate}}</button>
+    <button type="button" ng-disabled=!acceptSensitivedata ng-click="confirmSensitivedata()" class="btn">{{'APPLY-DIRECT_SCREN3-SENSITIVE-DATA_NEXT_BUTTON' | translate}}</button>
+</div>
+</div>

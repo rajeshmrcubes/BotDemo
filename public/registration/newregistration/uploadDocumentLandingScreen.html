@@ -1,0 +1,102 @@
+<div class="container" id="upload-verification">
+    <h1 class="text-center text-white m-t-30">{{'APPLY-NEW_SCREEN10-UPLOAD-DOC_TITLE1_LABEL' | translate}}</h1>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="grid-row">
+                <form name="registrationDocumentLanding.frmDocumentsComplete" novalidate>
+                    <div class="entry-content">
+                        <h3 class="text-center">{{'APPLY-NEW_SCREEN10-UPLOAD-DOC_TITLE2_LABEL' | translate}}<br />{{'APPLY-NEW_SCREEN10-UPLOAD-DOC_TITLE3_LABEL' | translate}}</h3>
+                    </div>
+                    <br>
+                    <div class="custom-row form-group">
+                        <div class="block-responsive">
+                            <div class="col-md-2">
+                                <div id="thumbnail" class="thumbnail" ng-click="uploadDocumentBtnClick('thumbnail');"></div>
+                            </div>
+                            <div class="col-md-8">
+                                <p class="control-info"><span>{{citizenDetails}}</span></p>
+                                <p class="control-info"><span ng-if="addOrEditFile == 'Edit'">{{'APPLY-NEW_SCREEN10-UPLOAD-DOC-SUCCESS_TITLE1_LABEL' | translate}} &nbsp; <img src="img/ico-check.png" style="width:20px;height:20px;"> &nbsp;</span><span>{{uploadCitizenIDname}}</span></p>
+                                <p class="ngMessageClass" ng-if="uploadFailed && addOrEditFile == 'Upload'">{{ 'APPLY-NEW_SCREEN10-UPLOAD-DOC-FAILED_ERROR-MESSAGE_LABEL' | translate }}</p>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="block-responsive-btn">
+                                    <button type="button" id="upload" class="btn darkblue btn-sm" ng-click="uploadDocumentBtnClick('thumbnail');" upload-button-text="CitizenID">{{addOrEditFile}}</button>
+                                    <input type="file" id="upload-image" name="citizenIDDoc" ng-model="registrationDocumentLanding.images" style="display:none; visibility: hidden; width: 1px; height: 1px" accept='image/*,application/pdf' custom-on-change-for-input-file-apply-flow="uploadDocumentServiceCall" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="custom-row form-group" style="margin-bottom:20px" ng-if="bankDetails[0]">
+                        <div class="block-responsive">
+                            <div class="col-md-2">
+                                <div id="thumbnail1" class="thumbnail" ng-click="uploadDocumentBtnClick('thumbnail1');">
+                                    <img src="../img/logo-tmb.png" ng-if="bankDetails[0].bankName == 'TMB bank'" />
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <p class="control-info"><span>{{ 'APPLY-NEW_SCREEN10-UPLOAD-DOC_PASSBOOK1_LABEL'| translate }}</span>&nbsp;&nbsp;<span>{{bankDetails[0].bankName}}</span>&nbsp;<span>{{bankDetails[0].accNo | accountNumberFormat}}</span></p>
+                                <p class="control-info"><span ng-if="addOrEditBankOneSuccess == 'Edit' || !utilities.isEmpty(uploadBankIDnameOne)">{{'APPLY-NEW_SCREEN10-UPLOAD-DOC-SUCCESS_TITLE1_LABEL' | translate}} &nbsp;<img src="img/ico-check.png" style="width:20px;height:20px;"> &nbsp;</span><span>{{uploadBankIDnameOne}}</span></p>
+                                <p class="ngMessageClass" ng-if="uploadFailed && addOrEditBankOneSuccess == 'Upload'">{{ 'APPLY-NEW_SCREEN10-UPLOAD-DOC-FAILED_ERROR-MESSAGE_LABEL' | translate }}</p>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="block-responsive-btn">
+                                    <button type="button" id="upload" class="btn darkblue  btn-sm " ng-if="bankDetails[0].bankName != 'TMB bank'" ng-click="uploadDocumentBtnClick('thumbnail1');" upload-button-text="BankAccOne">{{addOrEditBankOneSuccess}}</button>
+                                    <input type="file" id="upload-image" name="bankOne" style="display:none; visibility: hidden; width: 1px; height: 1px" accept='image/*,application/pdf' ng-model="registrationDocumentLanding.images" custom-on-change-for-input-file-apply-flow="uploadDocument" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="custom-row form-group" style="margin-bottom:20px" ng-if="bankDetails[1]">
+                        <div class="block-responsive">
+                            <div class="col-md-2">
+                                <div id="thumbnail2" class="thumbnail" ng-click="uploadDocumentBtnClick('thumbnail2');">
+                                    <img src="../img/logo-tmb.png" ng-if="bankDetails[1].bankName == 'TMB bank'" />
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <p class="control-info"><span>{{ 'APPLY-NEW_SCREEN10-UPLOAD-DOC_PASSBOOK1_LABEL'| translate }}</span>&nbsp;&nbsp;<span>{{bankDetails[1].bankName}}</span>&nbsp;<span>{{bankDetails[1].accNo | accountNumberFormat}}</span></p>
+                                <p class="control-info"><span ng-if="addOrEditBankSecondSuccess == 'Edit' || !utilities.isEmpty(uploadBankIDnameTwo)">{{'APPLY-NEW_SCREEN10-UPLOAD-DOC-SUCCESS_TITLE1_LABEL' | translate}} &nbsp; <img src="img/ico-check.png" style="width:20px;height:20px;"> &nbsp;</span><span>{{uploadBankIDnameTwo}}</span></p>
+                                <p class="ngMessageClass" ng-if="uploadFailed && addOrEditBankSecondSuccess == 'Upload'">{{ 'APPLY-NEW_SCREEN10-UPLOAD-DOC-FAILED_ERROR-MESSAGE_LABEL' | translate }}</p>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="block-responsive-btn">
+                                    <button type="button" id="upload" class="btn darkblue  btn-sm " ng-if="bankDetails[1].bankName != 'TMB bank'" ng-click="uploadDocumentBtnClick('thumbnail2');" upload-button-text="BankAccTwo">{{addOrEditBankSecondSuccess}}</button>
+                                    <input type="file" id="upload-image" name="bankSecond" style="display:none; visibility: hidden; width: 1px; height: 1px" accept='image/*,application/pdf' ng-model="registrationDocumentLanding.images" custom-on-change-for-input-file-apply-flow="uploadDocument" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="custom-row form-group" style="margin-bottom:20px" ng-if="bankDetails[2]">
+                        <div class="block-responsive">
+                            <div class="col-md-2">
+                                <div id="thumbnail3" class="thumbnail" ng-click="uploadDocumentBtnClick('thumbnail3');">
+                                    <img src="../img/logo-tmb.png" ng-if="bankDetails[2].bankName == 'TMB bank'" />
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <p class="control-info"><span>{{ 'APPLY-NEW_SCREEN10-UPLOAD-DOC_PASSBOOK1_LABEL'| translate }}</span>&nbsp;&nbsp;<span>{{bankDetails[2].bankName}}</span>&nbsp;<span>{{bankDetails[2].accNo | accountNumberFormat}}</span></p>
+                                <p class="control-info"><span ng-if="addOrEditBankThirdSuccess == 'Edit' || !utilities.isEmpty(uploadBankIDnameThree)">{{'APPLY-NEW_SCREEN10-UPLOAD-DOC-SUCCESS_TITLE1_LABEL' | translate}} &nbsp; <img src="img/ico-check.png" style="width:20px;height:20px;"> &nbsp;</span><span>{{uploadBankIDnameThree}}</span></p>
+                                <p class="ngMessageClass" ng-if="uploadFailed && addOrEditBankThirdSuccess == 'Upload'">{{ 'APPLY-NEW_SCREEN10-UPLOAD-DOC-FAILED_ERROR-MESSAGE_LABEL' | translate }}</p>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="block-responsive-btn">
+                                    <button type="button" id="upload" class="btn darkblue  btn-sm " ng-if="bankDetails[2].bankName != 'TMB bank'" ng-click="uploadDocumentBtnClick('thumbnail3');" upload-button-text="BankAccThree">{{addOrEditBankThirdSuccess}}</button>
+                                    <input type="file" id="upload-image" name="bankThird" style="display:none; visibility: hidden; width: 1px; height: 1px" accept='image/*,application/pdf' ng-model="registrationDocumentLanding.images" custom-on-change-for-input-file-apply-flow="uploadDocument" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center m-t-b-15">
+                        <button type="button" ng-click="uploadConfirmation();" class="btn">{{'APPLY-NEW_SCREEN10-UPLOAD-DOC_SEND-DOC_BUTTON' | translate}}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="text-center m-b-70">
+    <button type="button" class="btn gray btn-mg" ng-click="backButton()">{{'APPLY-NEW_SCREEN10-UPLOAD-DOC_BACK_BUTTON' | translate}}</button>
+    <button type="button" ng-click="openMEPlace()" class="btn gray btn-mg">{{'APPLY-NEW_SCREEN10-UPLOAD-DOC_FIND-A-LOCATION_BUTTON' | translate}}</button>
+</div>
+</div>

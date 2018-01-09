@@ -1,0 +1,74 @@
+﻿<div class="container m-b-70">
+    <h1 class="text-center text-white m-t-30">{{'APPLY-NEW_FATCA1_FATCA1_LABEL' | translate}}</h1>
+    <div class="panel panel-default">
+        <div class="panel-body art-content">
+            <div class="grid-row">
+                <div class="entry-content">
+                    <div class="page-fatca entry-section-padding">
+                        <div class="sub-title" ng-bind-html="fatca1Part1Label">
+                        </div>
+                        <div class="row-fatca">
+                            <div class="h-fatca radio" ng-init="que1.checked=false">
+                                <span class="col-l"><span class="txt-hl"></span> {{'APPLY-NEW_FATCA1_QUE1_LABEL' | translate}}</span>
+                                <span class="col-r">
+                                    <span class="inline-radio sm">
+                                        <input type="radio" name="radiog_lite1" id="radio1" class="css-checkbox" value="yes" ng-model="que1.checked" ng-value="true" />
+                                        <label for="radio1" class="css-label radGroup1 radGroup1">
+                                            {{'APPLY-NEW_FATCA1_QUE1-YES_RADIO-BUTTON' | translate}}
+                                        </label>
+                                    </span>
+                                    <span class="inline-radio sm">
+                                        <input type="radio" name="radiog_lite1" id="radio2" class="css-checkbox" value="no" ng-model="que1.checked" ng-value="false" />
+                                        <label for="radio2" class="css-label radGroup1 radGroup1 radio-inline">{{'APPLY-NEW_FATCA1_QUE1-NO_RADIO-BUTTON' | translate}}</label>
+                                    </span>
+                                </span>
+                            </div>
+                            <div class="detail-fatca">
+                                <span ng-bind-html="que1DescLabel"></span>
+                            </div>
+                        </div>
+                        <div class="row-fatca">
+                            <div class="h-fatca radio" ng-init="que2.checked=false">
+                                <span class="col-l"><span class="txt-hl"></span>{{'APPLY-NEW_FATCA1_QUE2_LABEL' | translate}}</span> <span class="col-r">
+                                    <span class="inline-radio sm">
+                                        <input type="radio" name="radiog_lite3" id="radio3" class="css-checkbox" value="yes" ng-model="que2.checked" ng-value="true" />
+                                        <label for="radio3" class="css-label radGroup1 radGroup1">{{'APPLY-NEW_FATCA1_QUE2-YES_RADIO-BUTTON' | translate}}</label>
+                                    </span>
+                                    <span class="inline-radio sm">
+                                        <input type="radio" name="radiog_lite3" id="radio4" class="css-checkbox" value="no" ng-model="que2.checked" ng-value="false" />
+                                        <label for="radio4" class="css-label radGroup1 radGroup1 radio-inline">{{'APPLY-NEW_FATCA1_QUE2-NO_RADIO-BUTTON' | translate}}</label>
+                                    </span>
+                                </span>
+                            </div>
+                            <div class="detail-fatca">
+                                <span ng-bind-html="que2DescLabel"></span>
+                            </div>
+                        </div>
+                        <div class="row-fatca">
+                            <div class="h-fatca radio" ng-init="que3.checked=false">
+                                <span class="col-l"><span class="txt-hl"></span>{{'APPLY-NEW_FATCA1_QUE3_LABEL' | translate}}</span> <span class="col-r">
+                                    <span class="inline-radio sm">
+                                        <input type="radio" name="radiog_lite5" id="radio5" class="css-checkbox" value="yes" ng-model="que3.checked" ng-value="true" />
+                                        <label for="radio5" class="css-label radGroup1 radGroup1">{{'APPLY-NEW_FATCA1_QUE3-YES_RADIO-BUTTON' | translate}}</label>
+                                    </span>
+                                    <span class="inline-radio sm">
+                                        <input type="radio" name="radiog_lite5" id="radio6" class="css-checkbox" value="no" ng-model="que3.checked" ng-value="false" />
+                                        <label for="radio6" class="css-label radGroup1 radGroup1 radio-inline">{{'APPLY-NEW_FATCA1_QUE3-NO_RADIO-BUTTON' | translate}}</label>
+                                    </span>
+                                </span>
+                            </div>
+                            <div class="detail-fatca">
+                                <span ng-bind-html="'APPLY-NEW_FATCA1_QUE3-DESCRIPTION_LABEL' | translate"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-center m-t-20 p-b-30">
+      <button type="button" class="btn gray btn-mg" ng-click="utilities.gotoPage('prelogin.applyoptions');">{{'APPLY-NEW_FATCA1_BACK_BUTTON' | translate}}</button>
+      <button type="button" class="btn" ng-click="fatcaStep1Success();">{{'APPLY-NEW_FATCA1_NEXT_BUTTON' | translate}}</button>
+    </div>
+</div>
+

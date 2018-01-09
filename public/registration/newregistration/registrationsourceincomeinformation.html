@@ -1,0 +1,257 @@
+<div class="container tmb-direct">
+  <form name="registrationsrcincomeinfo.frmapply" ng-submit="sourceIncomeInfoValidation()" novalidate>
+    <h1 class="text-center text-white m-t-30">{{'APPLY-NEW_SCREEN6-SOURCE-INCO_HEADER_LABEL' | translate}}</h1>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="grid-row">
+           <div class="form-style">
+            <h2>{{'APPLY-NEW_SCREEN6-SOURCE-INCO_LABEL1_LABEL' | translate}}</h2>
+            <div class="custom-row form-group">
+              <h3>{{'APPLY-NEW_SCREEN6-SOURCE-INCO_LABEL2_LABEL' | translate}} <span class="pink">*</span></h3>
+              <div class="col-md-3">
+                <div class="form-group checkbox">
+                  <span class="inline-radio lg" style="width:200px;">
+                      <input type="checkbox" name="checkboxG3" ng-click="fundRequired = false" ng-model="FundSourcesCheckboxes.sourceOfFundOwnBussiness" id="checkbox02" class="css-checkbox" />
+                      <label for="checkbox02" class="css-label">{{'APPLY-NEW_SCREEN6-SOURCE-INCO_BUSINESS-OWNER_CHECKBOX' | translate}}</label>
+                  </span>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group checkbox">
+                  <span class="inline-radio lg">
+                      <input type="checkbox" name="checkboxG3" ng-click="fundRequired = false" ng-model="FundSourcesCheckboxes.sourceOfFundSavings" id="checkbox03" class="css-checkbox"
+                      />
+                      <label for="checkbox03" class="css-label">{{'APPLY-NEW_SCREEN6-SOURCE-INCO_SAVINGS_CHECKBOX' | translate}}</label>
+                  </span>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group checkbox">
+                  <span class="inline-radio lg">
+                      <input type="checkbox" name="checkboxG3" ng-click="fundRequired = false" ng-model="FundSourcesCheckboxes.sourceOfFundCompensation" id="checkbox04" class="css-checkbox"
+                      />
+                      <label for="checkbox04" class="css-label">{{'APPLY-NEW_SCREEN6-SOURCE-INCO_EMPLOYMENT_CHECKBOX' | translate}}</label>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="custom-row form-group">
+              <div class="col-md-3">
+                <div class="checkbox">
+                    <span class="inline-radio lg">
+                      <input type="checkbox" name="checkboxG3" ng-click="fundRequired = false" ng-model="FundSourcesCheckboxes.sourceOfFundPortfolio" id="checkbox05" class="css-checkbox"/>
+                      <label for="checkbox05" class="css-label"
+                      >{{'APPLY-NEW_SCREEN6-SOURCE-INCO_FUND-INVESTMENT_CHECKBOX' | translate}}</label>
+                  </span>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="checkbox">
+                  <span class="inline-radio lg">
+                      <input type="checkbox" name="checkboxG3" ng-click="fundRequired = false" ng-model="FundSourcesCheckboxes.sourceOfFundOwnInheritance" id="checkbox06" class="css-checkbox"/>
+                      <label for="checkbox06" class="css-label"
+                      >{{'APPLY-NEW_SCREEN6-SOURCE-INCO_HERITAGE-GIFT_CHECKBOX' | translate}}</label>
+                  </span>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="checkbox">
+                  <span class="inline-radio">
+                      <input type="checkbox" name="checkboxG3" ng-click="fundRequired = false" ng-model="FundSourcesCheckboxes.sourceOfFundOthers" id="checkbox07" class="css-checkbox"/>
+                      <label for="checkbox07" class="css-label"
+                      >{{'APPLY-NEW_SCREEN6-SOURCE-INCO_OTHERS_CHECKBOX' | translate}}</label>
+                  </span>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group checkbox">
+                  <input name="OthersFundsPurpose"
+                         type="text"
+                         ng-model="registrationsrcincomeinfo.OthersFundsPurpose"
+                         class="form-control"
+                         placeholder="{{'APPLY-NEW_SCREEN6-SOURCE-INCO_OTHERS_TEXT-BOX' | translate}}"
+                         ng-class="{'invalidbox': submitted==true && registrationsrcincomeinfo.frmapply.OthersFundsPurpose.$invalid && !registrationsrcincomeinfo.OthersFundsPurpose}"
+                         ng-required="FundSourcesCheckboxes.sourceOfFundOthers"
+                         />
+                 <div class="ngMessagesClass" ng-messages="submitted==true && registrationsrcincomeinfo.frmapply.OthersFundsPurpose.$error" role="alert">
+                   <div class="ngMessageClass " ng-message="required">{{'APPLY-NEW_SCREEN6-SOURCE-INCO_ERROR-MESSAGE_LABEL' | translate}}</div>
+                 </div>
+                </div>
+              </div>
+              <div class="ngMessagesClass" ng-show="fundRequired== true">
+                <div class="ngMessageClass">{{'APPLY-NEW_SCREEN6-SOURCE-INCO_ERROR-MESSAGE_LABEL' | translate}}</div>
+              </div>
+
+            </div>
+            <h2>{{'APPLY-NEW_SCREEN6-SOURCE-INCO_SECTION2-HEADER_LABEL' | translate}} <span class="pink">*</span></h2>
+
+            <div class="custom-row form-group">
+              <h3>{{'APPLY-NEW_SCREEN6-SOURCE-INCO_DEPOSIT_LABEL' | translate}}</h3>
+              <div class="col-md-2">
+                <label class="control-label">{{'APPLY-NEW_SCREEN6-SOURCE-INCO_NO-OF-TRANSACTION-DEPOSIT_LABEL' | translate}} <span class="pink">*</span></label>
+              </div>
+              <div class="col-md-3">
+                <select name="nooftransaction"
+                        class="form-control"
+                        ng-model="registrationsrcincomeinfo.nooftransaction"
+                        ng-options="nooftransaction.varCode as nooftransaction.varDesc for nooftransaction in noOfTransactionDeposit"
+                        required
+                        ng-class="{invalidbox: submitted==true && registrationsrcincomeinfo.frmapply.nooftransaction.$invalid}">
+                  <option value="">{{'APPLY-NEW_SCREEN6-SOURCE-INCO_NO-OF-TRANSACTION-DEPOSIT_LISTBOX' | translate}}</option>
+                </select>
+                <div class="ngMessagesClass"
+                     ng-messages="submitted==true && registrationsrcincomeinfo.frmapply.nooftransaction.$error"
+                     role="alert">
+                  <div class="ngMessageClass " ng-message="required">{{'APPLY-NEW_SCREEN6-SOURCE-INCO_ERROR-MESSAGE_LABEL' | translate}}</div>
+                </div>
+              </div>
+              <div class="col-md-2 no-margin"></div>
+              <div class="col-md-2"><label class="control-label">{{'APPLY-NEW_SCREEN6-SOURCE-INCO_ESTIMATED-AMOUNT-DEPOSIT_LABEL' | translate}} <span class="pink">*</span></label>
+              </div>
+              <div class="col-md-3">
+                <select name="estAmtPerMnth"
+                        class="form-control"
+                        ng-model="registrationsrcincomeinfo.estAmtPerMnth"
+                        ng-options="estAmtPerMnth.varCode as estAmtPerMnth.varDesc for estAmtPerMnth in estimatedDepositAmountPerMonth"
+                        required
+                        ng-class="{invalidbox: submitted==true && registrationsrcincomeinfo.frmapply.estAmtPerMnth.$invalid}">
+                  <option value="">{{'APPLY-NEW_SCREEN6-SOURCE-INCO_ESTIMATED-AMOUNT-DEPOSIT_LISTBOX' | translate}}</option>
+                </select>
+                <div class="ngMessagesClass"
+                     ng-messages="submitted==true && registrationsrcincomeinfo.frmapply.estAmtPerMnth.$error"
+                     role="alert">
+                  <div class="ngMessageClass " ng-message="required">{{'APPLY-NEW_SCREEN6-SOURCE-INCO_ERROR-MESSAGE_LABEL' | translate}}</div>
+                </div>
+              </div>
+            </div>
+            <div class="custom-row form-group">
+              <h3>{{'APPLY-NEW_SCREEN6-SOURCE-INCO_WITHDRAW_LABEL' | translate}}</h3>
+              <div class="col-md-2">
+                <label class="control-label">{{'APPLY-NEW_SCREEN6-SOURCE-INCO_NO-OF-TRANSACTION-WITHDRAW_LABEL' | translate}} <span class="pink">*</span></label>
+              </div>
+              <div class="col-md-3">
+                <select name="noOfWithdrawTrans"
+                        class="form-control"
+                        ng-model="registrationsrcincomeinfo.noOfWithdrawTrans"
+                        required
+                        ng-options="noOfWithdrawTrans.varCode as noOfWithdrawTrans.varDesc for noOfWithdrawTrans in noOfWithdrawTransactions"
+                        ng-class="{invalidbox: submitted==true && registrationsrcincomeinfo.frmapply.noOfWithdrawTrans.$invalid}">
+                  <option value="">{{'APPLY-NEW_SCREEN6-SOURCE-INCO_NO-OF-TRANSACTION-WITHDRAW_LISTBOX' | translate}}</option>
+                </select>
+                <div class="ngMessagesClass"
+                     ng-messages="submitted==true && registrationsrcincomeinfo.frmapply.noOfWithdrawTrans.$error"
+                     role="alert">
+                  <div class="ngMessageClass " ng-message="required">{{'APPLY-NEW_SCREEN6-SOURCE-INCO_ERROR-MESSAGE_LABEL' | translate}}</div>
+                </div>
+              </div>
+              <div class="col-md-2 no-margin"></div>
+              <div class="col-md-2"><label class="control-label">{{'APPLY-NEW_SCREEN6-SOURCE-INCO_ESTIMATED-AMOUNT-WITHDRAW_LABEL' | translate }} <span class="pink">*</span></label>
+              </div>
+              <div class="col-md-3">
+                <select name="estWithdrawalPerMnth"
+                        class="form-control"
+                        ng-model="registrationsrcincomeinfo.estWithdrawalPerMnth"
+                        required
+                        ng-options="estWithdrawalPerMnth.varCode as estWithdrawalPerMnth.varDesc for estWithdrawalPerMnth in estimatedWithdrawalAmountPerMonth"
+                        ng-class="{invalidbox: submitted==true && registrationsrcincomeinfo.frmapply.estWithdrawalPerMnth.$invalid}">
+                  <option value="">{{'APPLY-NEW_SCREEN6-SOURCE-INCO_ESTIMATED-AMOUNT-WITHDRAW_LISTBOX' | translate}}</option>
+                </select>
+                <div class="ngMessagesClass"
+                     ng-messages="submitted==true && registrationsrcincomeinfo.frmapply.estWithdrawalPerMnth.$error"
+                     role="alert">
+                  <div class="ngMessageClass " ng-message="required">{{'APPLY-NEW_SCREEN6-SOURCE-INCO_ERROR-MESSAGE_LABEL' | translate}}</div>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="row last"> -->
+            <h2>{{'APPLY-NEW_SCREEN6-SOURCE-INCO_SOURCE-OF-ASSET_LABEL' | translate}} <span class="pink">*</span></h2>
+            <div class="custom-row form-group">
+              <div class="col-md-3">
+                <div class="checkbox">
+                  <span class="inline-radio lg">
+                    <input type="checkbox" name="checkboxG3" ng-click="assetRequired = false" ng-model="AssetSourcesCheckboxes.sourceOfAssetBussiness" id="checkboxG3" class="css-checkbox" />
+                    <label for="checkboxG3" class="css-label">{{'APPLY-NEW_SCREEN6-SOURCE-INCO_CHECKBOX1_CHECKBOX' | translate}}</label>
+                  </span>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="checkbox">
+                    <span class="inline-radio lg">
+                        <input type="checkbox" name="checkboxG4" ng-click="assetRequired = false" ng-model="AssetSourcesCheckboxes.sourceOfAssetInvestments"  id="checkboxG4" class="css-checkbox"/>
+                        <label for="checkboxG4" class="css-label">{{'APPLY-NEW_SCREEN6-SOURCE-INCO_CHECKBOX2_CHECKBOX' | translate}}</label>
+                    </span>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="checkbox">
+                      <span class="inline-radio lg">
+                          <input type="checkbox" name="checkboxG5" ng-click="assetRequired = false"  ng-model="AssetSourcesCheckboxes.sourceOfAssetSalary"  id="checkboxG5" class="css-checkbox"/>
+                          <label for="checkboxG5" class="css-label">{{'APPLY-NEW_SCREEN6-SOURCE-INCO_CHECKBOX3_CHECKBOX' | translate}}</label>
+                      </span>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="checkbox">
+                      <span class="inline-radio lg">
+                          <input type="checkbox" name="checkboxG6" ng-click="assetRequired = false" ng-model="AssetSourcesCheckboxes.sourceOfAssetInheritance"  id="checkboxG6" class="css-checkbox"/>
+                          <label for="checkboxG6" class="css-label">{{'APPLY-NEW_SCREEN6-SOURCE-INCO_CHECKBOX4_CHECKBOX' | translate}}</label>
+                      </span>
+                </div>
+              </div>
+            </div>
+            <div class="custom-row form-group">
+              <div class="col-md-2">
+                <div class="checkbox">
+                    <span class="inline-radio">
+                        <input type="checkbox" name="checkboxG7" ng-click="assetRequired = false" ng-model="AssetSourcesCheckboxes.sourceOfAssetOthers" id="checkboxG7" value="IncomeSourcesCheckboxes.objective5.value" class="css-checkbox"/>
+                        <label for="checkboxG7" class="css-label">{{'APPLY-NEW_SCREEN6-SOURCE-INCO_OTHERS_CHECKBOX' | translate}}</label>
+                    </span>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <input name="OthersAssetsPurpose"
+                       type="text"
+                       ng-model="registrationsrcincomeinfo.OthersAssetsPurpose"
+                       class="form-control"
+                       placeholder="โปรดระบุ"
+                       ng-class="{'invalidbox': submitted==true && registrationsrcincomeinfo.frmapply.OthersAssetsPurpose.$invalid && !registrationsrcincomeinfo.OthersAssetsPurpose}"
+                       ng-required="AssetSourcesCheckboxes.sourceOfAssetOthers"
+                       />
+                 <div class="ngMessagesClass" ng-messages="submitted==true && registrationsrcincomeinfo.frmapply.OthersAssetsPurpose.$error" role="alert">
+                   <div class="ngMessageClass " ng-message="required">{{'APPLY-NEW_SCREEN6-SOURCE-INCO_ERROR-MESSAGE_LABEL' | translate}}</div>
+                 </div>
+              </div>
+            </div>
+            <div class="ngMessagesClass" ng-show="assetRequired== true">
+              <div class="ngMessageClass">{{'APPLY-NEW_SCREEN6-SOURCE-INCO_ERROR-MESSAGE_LABEL' | translate}}</div>
+            </div>
+            <div class="custom-row form-group">
+              <div class="col-md-2">
+                <label class="control-label">{{'APPLY-NEW_SCREEN6-SOURCE-INCO_ESTIMATED-ASSET_LABEL' | translate}} <span class="pink">*</span></label>
+              </div>
+              <div class="col-md-3">
+                <select name="estAssetValue" class="form-control"
+                        ng-model="registrationsrcincomeinfo.estAssetValue"
+                        ng-options="estAssetValue.varCode as estAssetValue.varDesc for estAssetValue in estimatedAssetValue"
+                        ng-class="{invalidbox: submitted==true && registrationsrcincomeinfo.frmapply.estAssetValue.$invalid}"
+                        required>
+                  <option value="">{{'APPLY-NEW_SCREEN6-SOURCE-INCO_ESTIMATED-ASSET_LISTBOX' | translate}}</option>
+                </select>
+                <div class="ngMessagesClass" ng-messages="submitted==true && registrationsrcincomeinfo.frmapply.estAssetValue.$error" role="alert">
+                  <div class="ngMessageClass " ng-message="required">{{'APPLY-NEW_SCREEN6-SOURCE-INCO_ERROR-MESSAGE_LABEL' | translate}}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="text-center m-b-70">
+  <button type="button" ng-click="backButton();" class="btn gray btn-mg" ng-show="fromEditFlow">{{'APPLY-NEW_SCREEN6-SOURCE-INCO-EDIT_BACK_BUTTON' | translate}}</button>
+  <button type="button" class="btn" ng-show="fromEditFlow" ng-click="sourceIncomeInfoValidation();">{{'APPLY-NEW_SCREEN6-SOURCE-INCO-EDIT_SAVE_BUTTON' | translate}}</button>
+  <button type="button" ng-click="backButton()" class="btn gray btn-mg" ng-hide="fromEditFlow">{{'APPLY-NEW_SCREEN6-SOURCE-INCO_BACK_BUTTON' | translate}}</button>
+  <button type="button" ng-click="sourceIncomeInfoValidation();" class="btn" ng-hide="fromEditFlow">{{'APPLY-NEW_SCREEN6-SOURCE-INCO_NEXT_BUTTON' | translate}}</button>
+</div>

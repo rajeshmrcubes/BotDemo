@@ -1,0 +1,48 @@
+<div class="container settings-link">
+    <div class="art-content">
+        <div class="text-center">
+            <!-- <div class="primary-inline" ng-show="DVStatusApplicable">
+                <h1 class="text-center text-white m-t-30">{{'APPLY-NEW_SCREEN9-COMPLETE-REG_TITLE1_LABEL' | translate}}</h1>
+                <p class="text-center text-white m-t-30" >{{'APPLY-NEW_SCREEN9-COMPLETE-REG_TITLE2_LABEL' | translate}}</p>
+                <div class="grid-btn-center m-t-30">
+                    <button type="button" ng-click="utilities.gotoPage('prelogin.uploadDocumentLandingScreen');" class="btn btn-mg btn-md">{{'APPLY-NEW_SCREEN9-COMPLETE-REG_UPLOAD-DOC_BUTTON' | translate}} </button>
+                </div>
+                <p class="text-center text-white m-t-30">{{regCompleteTitle3}}</p>
+            </div> -->
+            <div class="primary-inline">
+                <h1 class="text-center text-white m-t-30">{{'APPLY-NEW_SCREEN9-COMPLETE-REG_TITLE1_LABEL' | translate}}</h1>
+                <p class="text-center text-white m-t-30">{{'APPLY-NEW_SCREEN9-COMPLETE-REG_TITLE4_LABEL' | translate}}</p>
+                <p class="text-center text-white">{{regCompleteTitle5}}</p>
+            </div>
+            <h2 class="text-white">{{'APPLY-NEW_SCREEN9-COMPLETE-REG_DOC-TO-VERIFY_LABEL' | translate}}</h2>
+            <div class="grouped-col">
+                <div class="col col-3">
+                    <div class="entry-img"><img src="img/apply-01.png"></div>
+                    <p class="text-center text-white">{{'APPLY-NEW_SCREEN9-COMPLETE-REG_CITIZEN-ID_LABEL' | translate}}</p>
+                </div>
+                <div class="col col-3 text-white" ng-if="!ebaNotAdded">
+                    <div class="entry-img"><img src="img/apply-02.png"></div>
+                    <p ng-bind-html="bookLabel"></p>
+
+                </div>
+                <div class="grouped-col" ng-if="!ebaNotAdded">
+                    <div class="col col-3">
+                        <!-- <div class="entry-img"><img src="img/apply-01.png"></div>
+                        <p class="text-center text-white">1. {{'APPLY-NEW_SCREEN9-COMPLETE-REG_CITIZEN-ID_LABEL' | translate}}</p> -->
+                    </div>
+                    <div class="col col-3 text-white">
+                        <span ng-repeat="bankdetails in bankDetails">{{bankdetails.bankName}} / {{bankdetails.accNo | accountNumberFormat}}<br /><br /></span>
+                    </div>
+                </div>
+            </div>
+            <!-- </div> -->
+            <div class="m-b-70">
+                <div class="text-center">
+                    <button type="button" ng-click="openMEPlace()" class="btn btn-md gray m-t-b-15">{{'APPLY-NEW_SCREEN9-COMPLETE-REG_FIND-ME-PLACE_BUTTON' | translate}} </button>
+                    <button type="button" ng-click="findTMB()" class="btn darkblue btn-md btn-mg m-t-b-15">{{'APPLY-NEW_SCREEN9-COMPLETE-REG_FIND-TMB_BUTTON' | translate}} </button>
+                    <button type="button" ng-click="utilities.gotoSplash()" class="btn m-t-b-15">{{'APPLY-NEW_SCREEN9-COMPLETE-REG_EXIT-FROM-SYSTEM_BUTTON' | translate}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

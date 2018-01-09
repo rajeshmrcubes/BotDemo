@@ -1,0 +1,131 @@
+﻿<form name="customerIncomeDataForm" novalidate ng-submit="ConfirmIncomeInfo()">
+    <div class="container tmb-direct m-b-70">
+        <h1 class="text-center text-white m-t-30">{{'APPLY-DIRECT_SCREEN5-INCOME_HEADER_LABEL' | translate}}</h1>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="grid-row">
+                    <div class="form-style">
+                        <h2>{{'APPLY-DIRECT_SCREEN5-INCOME_CUSTOMER-INCOME-INFO_LABEL' | translate}}</h2>
+                        <div class="custom-row form-group">
+                            <div class="col-md-2">
+                                <label class="control-label">{{'APPLY-DIRECT_SCREEN5-INCOME_INCOME_LABEL' | translate}} <span class="pink">*</span></label>
+                            </div>
+                            <div class="col-md-3">
+                                <select class="form-control"
+                                        ng-model="customerIncomeData.income"
+                                        ng-class="{'invalidbox': submitted==true && customerIncomeDataForm.income.$invalid}"
+                                        id="income"
+                                        name="income"
+                                        ng-options="income.varCode as income.varDesc for income in incomeListData.incomeList"
+                                        required>
+                                    <option value="" label="{{'APPLY-DIRECT_SCREEN5-INCOME_INCOME-VALUE_LISTBOX' | translate}}" disabled selected="selected"> </option>
+                                </select>
+                                <div class="ngMessagesClass" ng-messages="submitted==true && customerIncomeDataForm.income.$error" role="alert">
+                                    <div class="ngMessageClass " ng-message="required">{{'APPLY-DIRECT_SCREEN5-INCOME-ERROR_INCOME_LABEL' | translate}}</div>
+                                </div>
+                            </div>
+                            <div class="col-md-2 no-margin"></div>
+                            <div class="col-md-2">
+                                <label class="control-label">{{'APPLY-DIRECT_SCREEN5-INCOME_SOURCE-OF-INCOME_LABEL' | translate}} <span class="pink">*</span></label>
+                            </div>
+                            <div class="col-md-3">
+                                <select class="form-control"
+                                        ng-model="customerIncomeData.sourceofincome"
+                                        ng-change="setSourceOfIncome(customerIncomeData.sourceofincome)"
+                                        ng-class="{'invalidbox': submitted===true && customerIncomeDataForm.sourceofincome.$invalid}"
+                                        id="sourceofincome"
+                                        name="sourceofincome"
+                                        ng-options="incSource.source for incSource in incomeSourceInfo.incomeSourceList"
+                                        required>
+                                    <option value="" label="{{'APPLY-DIRECT_SCREEN5-INCOME_SOURCE-OF-INCOME-VALUE_LISTBOX' | translate}}" disabled selected="selected"> </option>
+                                </select>
+                                <div class="ngMessagesClass" ng-messages="submitted===true && customerIncomeDataForm.sourceofincome.$error" role="alert">
+                                    <div class="ngMessageClass " ng-message="required">{{'APPLY-DIRECT_SCREEN5-INCOME-ERROR_SOURCE-OF-INCOME_LABEL' | translate}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="custom-row form-group">
+                            <div class="col-md-2">
+                                <label class="control-label">{{'APPLY-DIRECT_SCREEN5-INCOME_EDUCATION_LABEL' | translate}} <span class="pink">*</span></label>
+                            </div>
+                            <div class="col-md-3">
+                                <select class="form-control"
+                                        ng-model="customerIncomeData.education"
+                                        ng-class="{'invalidbox': submitted===true && customerIncomeDataForm.education.$invalid}"
+                                        id="education"
+                                        name="education"
+                                        ng-options="source.varCode as source.varDesc for source in educationListData.educationList"
+                                        required>
+                                    <option value="" label="{{'APPLY-DIRECT_SCREEN5-INCOME_EDUCATION-VALUE_LISTBOX' | translate}}" disabled selected="selected"> </option>
+                                </select>
+                                <div class="ngMessagesClass" ng-messages="submitted==true && customerIncomeDataForm.education.$error" role="alert">
+                                    <div class="ngMessageClass " ng-message="required">{{'APPLY-DIRECT_SCREEN5-INCOME-ERROR_EDUCATION_LABEL' | translate}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="custom-row form-group">
+                            <h2>{{'APPLY-DIRECT_SCREEN5-INCOME_OBJ-ACCOUNT_LABEL' | translate}} <span class="pink">*</span></h2>
+                            <div class="col-md-2">
+                                <div class="form-group radio">
+                                    <span class="inline-radio lg">
+                                        <input type="radio" ng-model="customerIncomeData.objective" name="objective" id="objective1" class="css-checkbox" value="9001" required>
+                                        <label for="objective1" class="css-label radGroup1 radGroup1">{{'APPLY-DIRECT_SCREEN5-INCOME_SAVING_RADIO-BUTTON' | translate}}</label>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group radio">
+                                    <span class="inline-radio lg">
+                                        <input type="radio" ng-model="customerIncomeData.objective" name="objective" id="objective2" class="css-checkbox" value="9002" required>
+                                        <label for="objective2" class="css-label radGroup1 radGroup1">{{'APPLY-DIRECT_SCREEN5-INCOME_INVESTMENT_RADIO-BUTTON' | translate}}</label>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group radio">
+                                    <span class="inline-radio lg">
+                                        <input type="radio" ng-model="customerIncomeData.objective" name="objective" id="objective3" class="css-checkbox" value="9003" required>
+                                        <label for="objective3" class="css-label radGroup1 radGroup1">{{'APPLY-DIRECT_SCREEN5-INCOME_RISK-CONTROL_RADIO-BUTTON' | translate}}</label>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group radio">
+                                    <span class="inline-radio lg">
+                                        <input type="radio" ng-model="customerIncomeData.objective" name="objective" id="objective4" class="css-checkbox" value="9004" required>
+                                        <label for="objective4" class="css-label radGroup1 radGroup1">{{'APPLY-DIRECT_SCREEN5-INCOME_SALARY_RADIO-BUTTON' | translate}}</label>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="custom-row form-group">
+                            <div class="col-md-2">
+                                <div class="form-group radio">
+                                    <span class="inline-radio lg">
+                                        <input type="radio" ng-model="customerIncomeData.objective" name="objective" id="objective5" class="css-checkbox" value="-900" required>
+                                        <label for="objective5" class="css-label radGroup1 radGroup1">{{'APPLY-DIRECT_SCREEN5-INCOME_OTHERS_RADIO-BUTTON' | translate}}</label>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <input name="otherpurpose"
+                                       type="text"
+                                       ng-model="customerIncomeData.otherpurpose"
+                                       placeholder="{{'APPLY-DIRECT_SCREEN5-INCOME_OTHERS-VALUE_TEXTBOX' | translate}}"
+                                       value=""
+                                       class="form-control">
+                            </div>
+                        </div>
+                        <div class="ngMessagesClass" ng-messages="submitted===true && customerIncomeDataForm.objective.$error" role="alert">
+                          <div class="ngMessageClass " ng-message="required">{{'APPLY-DIRECT_SCREEN5-INCOME-ERROR_OBJECTIVE-ACCOUNT_LABEL' | translate}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center m-t-20 p-b-30">
+            <button type="button" ng-click="incomeBackButton()" class="btn darkblue btn-mg">{{'APPLY-DIRECT_SCREEN5-INCOME_BACK_BUTTON' | translate}}</button>
+            <button type="submit" class="btn">{{'APPLY-DIRECT_SCREEN5-INCOME_NEXT_BUTTON' | translate}}</button>
+        </div>
+    </div>
+</form>

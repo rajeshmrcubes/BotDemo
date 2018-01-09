@@ -1,0 +1,311 @@
+<div class="container tmb-direct">
+  <form name="registrationpersonalinfo.frmapply" ng-submit="personalInfoValidation()" novalidate>
+    <h1  class="text-center text-white m-t-30">{{'APPLY-NEW_SCREEN5-PERS-INCO_TITLE_LABEL' | translate}}</h1>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="grid-row">
+           <div class="form-style">
+                <h2>{{'APPLY-NEW_SCREEN5-PERS-INCO_HEADER_LABEL' | translate}}</h2>
+                <div class="custom-row form-group">
+                  <div class="col-md-2">
+                    <label class="control-label">{{'APPLY-NEW_SCREEN5-PERS-INCO_GENDER_LABEL' | translate}} <span class="pink">*</span></label>
+                  </div>
+                  <div class="col-md-3">
+                    <select
+                      name="gender"
+                      class="form-control"
+                      ng-model="registrationpersonalinfo.gender"
+                      id="gender"
+                      ng-class="{invalidbox: (submitted==true && registrationpersonalinfo.frmapply.gender.$invalid) || invalidGender === true}"
+                      ng-options="gender.varCode as gender.varDesc for gender in chooseGender"
+                      required>
+                      <option value="">{{'APPLY-NEW_SCREEN5-PERS-INCO_GENDER-INPUT_LISTBOX' | translate}}</option>
+                    </select>
+                    <div class="ngMessagesClass" ng-messages="submitted==true && registrationpersonalinfo.frmapply.gender.$error" role="alert">
+                      <div class="ngMessageClass " ng-message="required">{{'APPLY-NEW_SCREEN5-PERS-INCO_ERROR-MESSAGE_LABEL' | translate}}</div>
+                  </div>
+                  </div>
+                  <div class="col-md-2 no-margin"></div>
+                  <div class="col-md-2">
+                    <label class="control-label">{{'APPLY-NEW_SCREEN5-PERS-INCO_MARITAL-STATUS_LABEL' | translate}} <span class="pink">*</span></label>
+                  </div>
+                  <div class="col-md-3">
+                    <select
+                      name="maritalstatus"
+                      class="form-control"
+                      ng-model="registrationpersonalinfo.maritalstatus"
+                      id="gender"
+                      ng-class="{invalidbox: (submitted==true && registrationpersonalinfo.frmapply.maritalstatus.$invalid) || invalidMaritalStatus === true}"
+                      ng-options="maritalstatus.varCode as maritalstatus.varDesc for maritalstatus in chooseMaritalStatus"
+                      required>
+                      <option value="">{{'APPLY-NEW_SCREEN5-PERS-INCO_MARITAL-STATUS_LISTBOX' | translate}}</option>
+                    </select>
+                    <div class="ngMessagesClass" ng-messages="submitted==true && registrationpersonalinfo.frmapply.maritalstatus.$error" role="alert">
+                      <div class="ngMessageClass " ng-message="required">{{'APPLY-NEW_SCREEN5-PERS-INCO_ERROR-MESSAGE_LABEL' | translate}}</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="custom-row form-group">
+                  <div class="col-md-2">
+                    <label class="control-label">{{'APPLY-NEW_SCREEN5-PERS-INCO_NATIONALITY_LABEL' | translate}} <span class="pink">*</span></label>
+                  </div>
+                  <div class="col-md-3">
+                    <input name="nationality"
+                           id="nationality"
+                           type="text"
+                           class="form-control"
+                           disabled
+                           ng-model="registrationpersonalinfo.nationality" />
+                  </div>
+                  <div class="col-md-2 no-margin"></div>
+                  <div class="col-md-2">
+                    <label class="control-label">{{'APPLY-NEW_SCREEN5-PERS-INCO_2-NATIONALITY_LABEL' | translate}}</label>
+                  </div>
+                  <div class="col-md-3">
+                    <select
+                      name="secondcitizenship"
+                      class="form-control"
+                      ng-model="registrationpersonalinfo.secondcitizenship"
+                      id="secondcitizenship"
+                      ng-options="secondcitizenship.countryCd as secondcitizenship.description for secondcitizenship in chooseSecondNationality"
+                      >
+                      <option value="">{{'APPLY-NEW_SCREEN5-PERS-INCO_2-NATIONALITY_LISTBOX' | translate}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="custom-row form-group">
+                  <div class="col-md-2">
+                    <label class="control-label">{{'APPLY-NEW_SCREEN5-PERS-INCO_COUNTRY-OF-BIRTH_LABEL' | translate}} <span class="pink">*</span></label>
+                  </div>
+                  <div class="col-md-3">
+                    <select
+                      name="country"
+                      class="form-control"
+                      ng-model="registrationpersonalinfo.country"
+                      ng-options="country.countryCd as country.description for country in choosePlaceOfBirth"
+                      id="country"
+                      ng-class="{invalidbox: submitted==true && registrationpersonalinfo.frmapply.country.$invalid}"
+                      required>
+                      <option value="">{{'APPLY-NEW_SCREEN5-PERS-INCO_COUNTRY-OF-BIRTH_LISTBOX' | translate}}</option>
+                    </select>
+                    <div class="ngMessagesClass" ng-messages="submitted==true && registrationpersonalinfo.frmapply.country.$error" role="alert">
+                      <div class="ngMessageClass " ng-message="required">{{'APPLY-NEW_SCREEN5-PERS-INCO_ERROR-MESSAGE_LABEL' | translate}}</div>
+                    </div>
+                  </div>
+                </div>
+                <h2>{{'APPLY-NEW_SCREEN5-PERS-INCO_INCOME-HEADER_LABEL' | translate}}</h2>
+                <div class="custom-row form-group">
+                  <div class="col-md-2">
+                    <label class="control-label">{{'APPLY-NEW_SCREEN5-PERS-INCO_INCOME_LABEL' | translate}} <span class="pink">*</span></label>
+                  </div>
+                  <div class="col-md-3">
+                    <select
+                      name="income"
+                      class="form-control"
+                      ng-model="registrationpersonalinfo.income"
+                      ng-options="income.varDesc as income.varDesc for income in chooseIncome"
+                      id="income"
+                      ng-class="{invalidbox: (submitted==true && registrationpersonalinfo.frmapply.income.$invalid) || invalidSrcIncome === true}"
+                      required>
+                      <option value="">{{'APPLY-NEW_SCREEN5-PERS-INCO_INCOME_LISTBOX' | translate}}</option>
+                    </select>
+                    <div class="ngMessagesClass" ng-messages="submitted==true && registrationpersonalinfo.frmapply.income.$error" role="alert">
+                      <div class="ngMessageClass " ng-message="required">{{'APPLY-NEW_SCREEN5-PERS-INCO_ERROR-MESSAGE_LABEL' | translate}}</div>
+                    </div>
+                    <div class="ngMessagesClass" ng-if="invalidSrcIncome === true" role="alert">
+                      <div class="ngMessageClass">{{'APPLY-NEW_SCREEN5-PERS-INCO_ERROR-MESSAGE_LABEL' | translate}}</div>
+                    </div>
+                  </div>
+                  <div class="col-md-2 no-margin"></div>
+                  <div class="col-md-2">
+                    <label class="control-label">{{'APPLY-NEW_SCREEN5-PERS-INCO_SOURCE-OF-INCOME_LABEL' | translate}} <span class="pink">*</span> </label>
+                  </div>
+                  <div class="col-md-3">
+                    <select
+                      name="sourceofincome"
+                      class="form-control"
+                      ng-model="registrationpersonalinfo.sourceofincome"
+                       ng-options="sourceofincome.sourceId as sourceofincome.source for sourceofincome in chooseSourceOfIncome"
+                      id="sourceofincome"
+                      ng-class="{invalidbox: submitted==true && registrationpersonalinfo.frmapply.sourceofincome.$invalid}"
+                      required>
+                      <option value="">{{'APPLY-NEW_SCREEN5-PERS-INCO_SOURCE-OF-INCOME_LISTBOX' | translate}}</option>
+                    </select>
+                    <div class="ngMessagesClass" ng-messages="submitted==true && registrationpersonalinfo.frmapply.sourceofincome.$error" role="alert">
+                      <div class="ngMessageClass " ng-message="required">{{'APPLY-NEW_SCREEN5-PERS-INCO_ERROR-MESSAGE_LABEL' | translate}}</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="custom-row form-group">
+                  <div class="col-md-2">
+                    <label class="control-label">{{'APPLY-NEW_SCREEN5-PERS-INCO_COUNTRY-SOURCE_LABEL' | translate}} <span class="pink">*</span></label>
+                  </div>
+                  <div class="col-md-3">
+                    <select
+                      name="sourceofincomecountry"
+                      class="form-control"
+                      ng-model="registrationpersonalinfo.sourceofincomecountry"
+                      ng-options="country.countryCd as country.description for country in chooseIncomeCountry"
+                      id="sourceofincomecountry"
+                      ng-class="{invalidbox: submitted==true && registrationpersonalinfo.frmapply.sourceofincomecountry.$invalid}"
+                      required>
+                      <option value="">{{'APPLY-NEW_SCREEN5-PERS-INCO_COUNTRY-SOURCE_LISTBOX' | translate}}</option>
+                    </select>
+                    <div class="ngMessagesClass" ng-messages="submitted==true && registrationpersonalinfo.frmapply.sourceofincomecountry.$error" role="alert">
+                      <div class="ngMessageClass " ng-message="required">{{'APPLY-NEW_SCREEN5-PERS-INCO_ERROR-MESSAGE_LABEL' | translate}}</div>
+                    </div>
+                  </div>
+                  <div class="col-md-2 no-margin"></div>
+                  <div class="col-md-2">
+                    <label class="control-label">{{'APPLY-NEW_SCREEN5-PERS-INCO_EDUCATION_LABEL' | translate}} <span class="pink">*</span></label>
+                  </div>
+                  <div class="col-md-3">
+                    <select
+                      name="studies"
+                      class="form-control"
+                      ng-model="registrationpersonalinfo.studies"
+                      ng-options="education.varCode as education.varDesc for education in chooseEducation"
+                      id="studies"
+                      ng-class="{invalidbox: submitted==true && registrationpersonalinfo.frmapply.studies.$invalid}"
+                      required>
+                      <option value="">{{'APPLY-NEW_SCREEN5-PERS-INCO_EDUCATION_LISTBOX' | translate}}</option>
+                    </select>
+                    <div class="ngMessagesClass" ng-messages="(submitted==true && registrationpersonalinfo.frmapply.studies.$error) || invalidEducation === true" role="alert">
+                      <div class="ngMessageClass " ng-message="required">{{'APPLY-NEW_SCREEN5-PERS-INCO_ERROR-MESSAGE_LABEL' | translate}}</div>
+                    </div>
+                    <div class="ngMessagesClass" ng-if="invalidEducation === true" role="alert">
+                      <div class="ngMessageClass">{{'APPLY-NEW_SCREEN5-PERS-INCO_ERROR-MESSAGE_LABEL' | translate}}</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="custom-row form-group">
+                  <div class="col-md-2">
+                    <label class="control-label">{{'APPLY-NEW_SCREEN5-PERS-INCO_OCCUPATION_LABEL' | translate}} <span class="pink">*</span></label>
+                  </div>
+                  <div class="col-md-3">
+                    <select
+                      name="occupation"
+                      class="form-control"
+                      ng-model="registrationpersonalinfo.occupation"
+                      ng-options="occupation.varCode as occupation.varDesc for occupation in chooseOccupation"
+                      id="occupation"
+                      ng-class="{invalidbox: submitted==true && registrationpersonalinfo.frmapply.occupation.$invalid}"
+                      required
+                      ng-change="occupationSelected();">
+                      <option value="">{{'APPLY-NEW_SCREEN5-PERS-INCO_OCCUPATION_LISTBOX' | translate}}</option>
+                    </select>
+                    <div class="ngMessagesClass" ng-messages="submitted==true && registrationpersonalinfo.frmapply.occupation.$error" role="alert">
+                      <div class="ngMessageClass " ng-message="required">{{'APPLY-NEW_SCREEN5-PERS-INCO_ERROR-MESSAGE_LABEL' | translate}}</div>
+                    </div>
+                  </div>
+                  <div class="col-md-2 no-margin"></div>
+                  <!-- <span ng-show="riskLevel"> -->
+                  <div class="col-md-2" ng-if="risk">
+                    <label class="control-label">{{'APPLY-NEW_SCREEN5-PERS-INCO_OCC-DETAILS_LABEL' | translate}} <span class="pink">*</span></label>
+                  </div>
+                  <div class="col-md-3" ng-if="risk">
+                    <select
+                      name="occupationdetails"
+                      class="form-control"
+                      ng-model="registrationpersonalinfo.occupationdetails"
+                      ng-options="occupationdetails.kycName as occupationdetails.kycDescription for occupationdetails in chooseOccupationDetails"
+                      id="occupationdetails"
+                      ng-class="{invalidbox: submitted==true && registrationpersonalinfo.frmapply.occupationdetails.$invalid}"
+                      ng-required='risk'>
+                      <option value="">{{'APPLY-NEW_SCREEN5-PERS-INCO_OCC-DETAILS_LISTBOX' | translate}}</option>
+                    </select>
+                    <div class="ngMessagesClass" ng-messages="submitted==true && registrationpersonalinfo.frmapply.occupationdetails.$error" role="alert">
+                      <div class="ngMessageClass " ng-message="required">{{'APPLY-NEW_SCREEN5-PERS-INCO_ERROR-MESSAGE_LABEL' | translate}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+            <div class="custom-row form-group">
+                <h2>{{'APPLY-DIRECT_SCREEN5-INCOME_OBJ-ACCOUNT_LABEL' | translate}} <span class="pink">*</span></h2>
+                <div class="col-md-2">
+                        <div class="form-group radio">
+                          <span class="inline-radio lg">
+                            <input type="radio" ng-model="registrationpersonalinfo.objective" name="objective" id="objective1" class="css-checkbox" value="{{'APPLY-NEW_SCREEN5-PERS-INCO_SAVINGS_RADIO-BUTTON' | translate}}"
+                            ng-checked="(objectiveRequest.value == '{{'APPLY-NEW_SCREEN5-PERS-INCO_SAVINGS_RADIO-BUTTON' | translate}}') || objectiveRequest == '{{'APPLY-NEW_SCREEN5-PERS-INCO_SAVINGS_RADIO-BUTTON' | translate}}'"
+                            ng-required='utilties.isEmpty(objectiveRequest)'
+                            >
+                            <label for="objective1" class="css-label radGroup1 radGroup1">{{'APPLY-NEW_SCREEN5-PERS-INCO_SAVINGS_RADIO-BUTTON' | translate}}</label>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                        <div class="form-group radio">
+                          <span class="inline-radio lg">
+                            <input type="radio" ng-model="registrationpersonalinfo.objective" name="objective" id="objective2" class="css-checkbox" value="{{'APPLY-NEW_SCREEN5-PERS-INCO_INVESTMENT_RADIO-BUTTON' | translate}}"
+                            ng-checked="(objectiveRequest.value == '{{'APPLY-NEW_SCREEN5-PERS-INCO_INVESTMENT_RADIO-BUTTON' | translate}}') || (objectiveRequest == '{{'APPLY-NEW_SCREEN5-PERS-INCO_INVESTMENT_RADIO-BUTTON' | translate}}')"
+                            ng-required='utilties.isEmpty(objectiveRequest)'>
+                            <label for="objective2" class="css-label radGroup1 radGroup1">{{'APPLY-NEW_SCREEN5-PERS-INCO_INVESTMENT_RADIO-BUTTON' | translate}}</label>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                        <div class="form-group radio">
+                          <span class="inline-radio lg">
+                            <input type="radio" ng-model="registrationpersonalinfo.objective" name="objective" id="objective3" class="css-checkbox" value="{{'APPLY-NEW_SCREEN5-PERS-INCO_RISK-CONTROL_RADIO-BUTTON' | translate}}"
+                            ng-checked="(objectiveRequest.value == '{{'APPLY-NEW_SCREEN5-PERS-INCO_RISK-CONTROL_RADIO-BUTTON' | translate}}') || (objectiveRequest == '{{'APPLY-NEW_SCREEN5-PERS-INCO_RISK-CONTROL_RADIO-BUTTON' | translate}}')"
+                            ng-required='utilties.isEmpty(objectiveRequest)'>
+                            <label for="objective3" class="css-label radGroup1 radGroup1">{{'APPLY-NEW_SCREEN5-PERS-INCO_RISK-CONTROL_RADIO-BUTTON' | translate}}</label>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                        <div class="form-group radio">
+                          <span class="inline-radio lg">
+                            <input type="radio" ng-model="registrationpersonalinfo.objective" name="objective" id="objective4" class="css-checkbox" value="{{'APPLY-NEW_SCREEN5-PERS-INCO_SALARY-ACCOUNT_RADIO-BUTTON' | translate}}"
+                            ng-checked="(objectiveRequest.value == '{{'APPLY-NEW_SCREEN5-PERS-INCO_SALARY-ACCOUNT_RADIO-BUTTON' | translate}}') || (objectiveRequest == '{{'APPLY-NEW_SCREEN5-PERS-INCO_SALARY-ACCOUNT_RADIO-BUTTON' | translate}}')"
+                             ng-required='utilties.isEmpty(objectiveRequest)'>
+                            <label for="objective4" class="css-label radGroup1 radGroup1">{{'APPLY-NEW_SCREEN5-PERS-INCO_SALARY-ACCOUNT_RADIO-BUTTON' | translate}}</label>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="custom-row form-group">
+                <div class="col-md-2">
+                    <div class="form-group radio">
+                    <span class="inline-radio lg">
+                    <input type="radio" ng-model="registrationpersonalinfo.objective" name="objective" id="objective5" class="css-checkbox" value="-900"
+                    ng-checked="(!utilities.isEmpty(registrationpersonalinfo.otherpurpose) && registrationpersonalinfo.otherpurpose != '-') && ((objectiveRequest.value != '{{'APPLY-NEW_SCREEN5-PERS-INCO_SAVINGS_RADIO-BUTTON' | translate}}') || objectiveRequest != '{{'APPLY-NEW_SCREEN5-PERS-INCO_SAVINGS_RADIO-BUTTON' | translate}}') && ((objectiveRequest.value != '{{'APPLY-NEW_SCREEN5-PERS-INCO_INVESTMENT_RADIO-BUTTON' | translate}}') || (objectiveRequest != '{{'APPLY-NEW_SCREEN5-PERS-INCO_INVESTMENT_RADIO-BUTTON' | translate}}')) && ((objectiveRequest.value != '{{'APPLY-NEW_SCREEN5-PERS-INCO_RISK-CONTROL_RADIO-BUTTON' | translate}}') || (objectiveRequest != '{{'APPLY-NEW_SCREEN5-PERS-INCO_RISK-CONTROL_RADIO-BUTTON' | translate}}')) && ((objectiveRequest.value != '{{'APPLY-NEW_SCREEN5-PERS-INCO_SALARY-ACCOUNT_RADIO-BUTTON' | translate}}') || (objectiveRequest != '{{'APPLY-NEW_SCREEN5-PERS-INCO_SALARY-ACCOUNT_RADIO-BUTTON' | translate}}')) && registrationpersonalinfo.objective == -900"
+                    ng-required='utilties.isEmpty(objectiveRequest) || utilities.isEmpty(registrationpersonalinfo.otherpurpose)'>
+                    <label for="objective5" class="css-label radGroup1 radGroup1">{{'APPLY-NEW_SCREEN5-PERS-INCO_OTHERS_LABEL' | translate}}</label>
+                    </span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                  <input name="otherpurpose"
+                         type="text"
+                         maxlength="20"
+                         ng-maxlength="20"
+                         ng-model="registrationpersonalinfo.otherpurpose"
+                         placeholder="{{'APPLY-DIRECT_SCREEN5-INCOME_OTHERS-VALUE_TEXTBOX' | translate}}"
+                         value=""
+                         ng-required='registrationpersonalinfo.objective == -900'
+                         class="form-control">
+                   <div class="ngMessagesClass" ng-messages="submitted==true && registrationpersonalinfo.frmapply.otherpurpose.$error" role="alert">
+                     <div class="ngMessageClass " ng-message="required">{{'APPLY-NEW_SCREEN5-PERS-INCO_ERROR-MESSAGE_LABEL' | translate}}</div>
+                   </div>
+                </div>
+            </div>
+            <div class="ngMessagesClass" ng-messages="submitted==true && registrationpersonalinfo.frmapply.objective.$error" role="alert">
+              <div class="ngMessageClass " ng-message="required">{{'APPLY-NEW_SCREEN5-PERS-INCO_ERROR-MESSAGE_LABEL' | translate}}</div>
+            </div>
+            <div class="ngMessagesClass" ng-if="invalidObjective === true" role="alert">
+                      <div class="ngMessageClass">{{'APPLY-NEW_SCREEN5-PERS-INCO_ERROR-MESSAGE_LABEL' | translate}}</div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="text-center m-b-70">
+  <button class="btn gray btn-mg" type="button" ng-hide="fromEditFlow" ng-click="goToPrevPage();">{{'APPLY-NEW_SCREEN5-PERS-INCO_BACK_BUTTON' | translate}}</button>
+  <button class="btn gray btn-mg" type="button" ng-show="fromEditFlow" ng-click="utilities.gotoPage('prelogin.applicantAccountSummaryScreen');">{{'APPLY-NEW_SCREEN5-PERS-INCO-EDIT_BACK_BUTTON' | translate}}</button>
+  <button class="btn" type="button" ng-click="personalInfoValidation();" ng-hide="fromEditFlow">{{'APPLY-NEW_SCREEN5-PERS-INCO_NEXT_BUTTON' | translate}}</button>
+  <button class="btn" type="button" ng-show="fromEditFlow" ng-click="personalInfoValidation();">{{'APPLY-NEW_SCREEN5-PERS-INCO-EDIT_SAVE_BUTTON' | translate}}</button>
+</div>

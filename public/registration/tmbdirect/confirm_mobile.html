@@ -1,0 +1,81 @@
+﻿<div class="container tmb-direct m-b-70">
+    <form id="tmbDirectConfirmMobileForm" name="tmbDirectConfirmMobileForm" novalidate ng-submit="confirmMobileWithOTP()">
+        <h1 class="text-center text-white m-t-30">{{'APPLY-DIRECT_SCREEN2-CONFRIM-MOBILE_OTP-TITLE_LABEL' | translate}}</h1>
+        <div class="panel panel-default">
+            <div class="panel-body art-content">
+                <div class="grid-row">
+                    <div class="entry-content">
+                        <div class="art-content">
+                            <div class="custom-row">
+                                <div class="col-md-9 col-md-offset-3 form-group p-l-0">
+                                    <p class="sub-title-content">
+                                        <span ng-bind-html="'APPLY-DIRECT_SCREEN2-CONFRIM-MOBILE_OTP-EXPLAINATION_LABEL' | translate"></span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="custom-row">
+                                <div class="col-md-2 col-md-offset-3 form-group p-l-0 m-b-0">
+                                    <label class="control-label col-md">{{'APPLY-DIRECT_SCREEN2-CONFRIM-MOBILE_MOBILE-NUMBER_LABEL' | translate}}</label>
+                                </div>
+                                <div class="col-md-3 form-group p-l-0">
+                                    <span class="mobile-number">{{tmbCustomer.mobileNumber}}</span>
+                                </div>
+                                <div class="col-md-3 form-group p-l-0">
+                                    <button type="button" ng-click="generateOTP()" ng-disabled="!enableOTPButton" class="btn btn-md">
+                                        {{'APPLY-DIRECT_SCREEN2-CONFRIM-MOBILE_REQUEST-OTP_BUTTON' | translate}}
+                                    </button>
+                                    <div ng-if="generateOTPFailed==true" class="ngMessagesClass">
+                                        <div class="ngMessageClass">{{'COMMON-RULES_OTP-NOT-GENERATED_ERROR-MSG_LABEL' | translate}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="custom-row" ng-show="bankRefNumber">
+                                <div class="col-md-2 col-md-offset-3 p-l-0">
+                                    <label class="control-label col-md"></label>
+                                </div>
+                                <div class="col-md-5 form-group p-l-0">
+                                    <span ng-bind-html="otpStatusLabel"></span>
+                                    <div>{{'APPLY-DIRECT_SCREEN2-CONFRIM-MOBILE_BANK-REF-NO_LABEL' | translate}} {{bankRefNumber}} </div>
+                                </div>
+                                <div class="col-md-2 form-group p-l-0"> </div>
+                            </div>
+                            <div class="custom-row">
+                                <div class="col-md-2 col-md-offset-3 form-group p-l-0 m-b-0">
+                                    <label class="control-label col-md">{{'APPLY-DIRECT_SCREEN2-CONFRIM-MOBILE_ENTER-OTP_LABEL' | translate}}</label>
+                                </div>
+                                <div class="col-md-3 form-group p-l-0">
+                                    <input class="form-control"
+                                           type="text"
+                                           ng-model="tmbCustomer.otp"
+                                           ng-class="{'invalidbox': (submitted==true && tmbDirectConfirmMobileForm.otp.$invalid) || invalidOTPEntered === true}"
+                                           id="otp"
+                                           ng-minlength="6"
+                                           ng-maxlength="6"
+                                           maxlength="6"
+                                           ng-pattern="/^[0-9]/"
+                                           numbers-only
+                                           required
+                                           placeholder="{{'APPLY-DIRECT_SCREEN2-CONFRIM-MOBILE_OTP-INPUT_TEXTBOX' | translate}}"
+                                           name="otp" />
+                                    <div class="ngMessagesClass" ng-messages="submitted==true && tmbDirectConfirmMobileForm.otp.$error" role="alert">
+                                        <div class="ngMessageClass" ng-message="required">{{'APPLY-DIRECT_SCREEN2-CONFRIM-MOBILE_ERROR-MESSAGE_LABEL' | translate}}</div>
+                                        <div class="ngMessageClass" ng-message="minlength">{{'APPLY-DIRECT_SCREEN2-CONFRIM-MOBILE_ERROR-MESSAGE_LABEL' | translate}}</div>
+                                        <div class="ngMessageClass" ng-message="maxlength">{{'APPLY-DIRECT_SCREEN2-CONFRIM-MOBILE_ERROR-MESSAGE_LABEL' | translate}}</div>
+                                        <div class="ngMessageClass" ng-message="pattern">{{'APPLY-DIRECT_SCREEN2-CONFRIM-MOBILE_ERROR-MESSAGE_LABEL' | translate}}</div>
+                                    </div>
+                                    <div class="ngMessagesClass" ng-if="invalidOTPEntered === true">
+                                        <span class="ngMessageClass">{{'APPLY-DIRECT_SCREEN2-CONFRIM-MOBILE_ERROR-MESSAGE_LABEL' | translate}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center m-t-20 m-b-70">
+            <button type="button" ng-click="cancelRegistrationProcess()" class="btn darkblue btn-mg">{{'APPLY-DIRECT_SCREEN2-CONFRIM-MOBILE_BACK_BUTTON' | translate}}</button>
+            <button type="submit" class="btn">{{'APPLY-DIRECT_SCREEN2-CONFRIM-MOBILE_NEXT_BUTTON' | translate}}</button>
+        </div>
+    </form>
+</div>

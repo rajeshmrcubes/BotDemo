@@ -1,0 +1,320 @@
+<div class="container">
+    <h1 class="text-center text-white m-t-30">
+        {{'APPLY-NEW_SCREEN8-SUMMARY_TITLE1_LABEL' | translate}}<br>
+        {{'APPLY-NEW_SCREEN8-SUMMARY_TITLE2_LABEL' | translate}}
+    </h1>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="grid-row">
+                <div class="custom-row form-group">
+                    <div class="col-md-12">
+                        <h2 class="left">{{'APPLY-NEW_SCREEN8-SUMMARY_CITIZEN-ID-TITLE_LABEL' | translate}}</h2>
+                        <button type="button" class="btn btn-sm right" ng-click="editCitizenInfoPage();">
+                            {{'APPLY-NEW_SCREEN8-SUMMARY_EDIT-CITIZEN-INFO_BUTTON' | translate}}
+                        </button>
+                    </div>
+                </div>
+                <div class="custom-row line-bottom form-group">
+                    <div class="custom-row form-group">
+                        <div class="col-md-4">
+                            <label>{{'APPLY-NEW_SCREEN8-SUMMARY_TH-NAME_LABEL' | translate}}</label>
+                            <p class="control-info">{{nameTH}}</p>
+                        </div>
+                        <div class="col-md-4">
+                            <label>{{'APPLY-NEW_SCREEN8-SUMMARY_TH-SURNAME_LABEL' | translate}} </label>
+                            <p class="control-info">{{surnameTH}}</p>
+                        </div>
+                    </div>
+                    <div class="custom-row form-group">
+                        <div class="col-md-4">
+                            <label>{{'APPLY-NEW_SCREEN8-SUMMARY_EN-NAME_LABEL' | translate}} </label>
+                            <p class="control-info">{{nameEn}}</p>
+                        </div>
+                        <div class="col-md-4">
+                            <label>{{'APPLY-NEW_SCREEN8-SUMMARY_EN-SURNAME_LABEL' | translate}} </label>
+                            <p class="control-info">{{surnameEn}}</p>
+                        </div>
+                    </div>
+                    <div class="custom-row form-group">
+                        <div class="col-md-4">
+                            <label>{{'APPLY-NEW_SCREEN8-SUMMARY_CITIZEN-ID_LABEL' | translate}}</label>
+                            <p class="control-info">{{citizenID}}</p>
+                        </div>
+                        <div class="col-md-4">
+                            <label>{{'APPLY-NEW_SCREEN8-SUMMARY_LASER-NUMBER_LABEL' | translate}}</label>
+                            <p class="control-info">{{laserNumber}}</p>
+                        </div>
+                    </div>
+                    <div class="custom-row form-group">
+                        <div class="col-md-4">
+                            <label>{{'APPLY-NEW_SCREEN8-SUMMARY_DATE-OF-BIRTH_LABEL' | translate}} </label>
+                            <p class="control-info">{{birthDate}}</p>
+                        </div>
+                        <div class="col-md-4">
+
+                        </div>
+                    </div>
+                    <div class="custom-row form-group">
+                        <div class="col-md-4">
+                            <label>{{'APPLY-NEW_SCREEN8-SUMMARY_ISSUE-DATE_LABEL' | translate}} </label>
+                            <p class="control-info">{{issueDate}}</p>
+                        </div>
+                        <div class="col-md-4">
+                            <label>{{'APPLY-NEW_SCREEN8-SUMMARY_EXPIRY-DATE_LABEL' | translate}} </label>
+                            <p class="control-info">{{expiryDate}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="custom-row line-bottom form-group">
+                    <div class="custom-row form-group">
+                        <div class="col-md-12 m-t-20">
+                            <h2 class="left">{{'APPLY-NEW_SCREEN8-SUMMARY_MOBILE-NUMBER-HEADER_LABEL' | translate}}</h2>
+                            <button type="button" class="btn btn-sm right" ng-click="editNewMobileNumberPage();">{{'APPLY-NEW_SCREEN8-SUMMARY_EDIT-MOBILE-NUMBER_BUTTON' | translate}}</button>
+                        </div>
+                    </div>
+                    <div class="custom-row form-group">
+                        <div class="col-md-4">
+                            <label>{{'APPLY-NEW_SCREEN8-SUMMARY_MOBILE-NUMBER_LABEL' | translate}}</label>
+                            <p class="control-info">{{mobileNumber}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="custom-row line-bottom form-group">
+                    <div class="custom-row form-group">
+                        <div class="col-md-12 m-t-20">
+                            <h2 class="left">{{'APPLY-NEW_SCREEN8-SUMMARY_CONTACT-INFO-SECTION_LABEL' | translate}}</h2>
+                            <button type="button" class="btn btn-sm right" ng-click="editContactInfo();">
+                                {{'APPLY-NEW_SCREEN8-SUMMARY_EDIT-CONTACT-INFO_BUTTON' | translate}}
+                            </button>
+                        </div>
+                    </div>
+                    <div class="custom-row form-group">
+                        <div class="col-md-4">
+                            <label>{{'APPLY-NEW_SCREEN8-SUMMARY_EMAIL-ADDRESS_LABEL' | translate}}</label>
+                            <p class="control-info">{{email}}</p>
+                        </div>
+                    </div>
+                    <div class="custom-row">
+                        <h2 class="left">{{'APPLY-NEW_SCREEN8-SUMMARY_REG-ADDRESS_LABEL' | translate}}</h2>
+                    </div>
+                    <div class="custom-row form-group">
+                        <div class="col-md-12 address">
+                            <p>{{registeredAddressPart1}}</p>
+                            <p>{{registeredAddressPart2}}</p>
+                            <p>{{registeredAddressPart3}}</p>
+                            <p>{{registeredAddressPart4}}</p>
+                        </div>
+                    </div>
+                    <div class="custom-row">
+                        <h2 class="left">{{'APPLY-NEW_SCREEN8-SUMMARY_CONTACT-ADDRESS_LABEL' | translate}}</h2>
+                    </div>
+                    <div class="custom-row">
+                        <div class="col-md-12 address last">
+                            <p>{{currentAddressPart1}}</p>
+                             <p>{{currentAddressPart2}}</p>
+                             <p>{{currentAddressPart3}}</p>
+                             <p>{{currentAddressPart4}}</p>
+                             <p>{{currentAddressPart5}}</p>
+                        </div>
+                    </div>
+                    <div class="custom-row">
+                        <h2 class="left">{{'APPLY-NEW_SCREEN8-SUMMARY_COMPANY-ADDRESS_LABEL' | translate}}</h2>
+                    </div>
+                    <div class="custom-row">
+                        <div class="col-md-12 address last">
+                            <p>{{officeAddressPart1}}</p>
+                            <p>{{officeAddressPart2}}</p>
+                            <p>{{officeAddressPart3}}</p>
+                            <p>{{officeAddressPart4}}</p>
+                            <p>{{officeAddressPart5}}</p>
+                            <p>{{officeAddressPart6}}</p>
+                            <p>{{officeAddressPart7}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="custom-row line-bottom form-group">
+                    <div class="custom-row form-group">
+                        <div class="col-md-12 m-t-20">
+                            <h2 class="left">{{'APPLY-NEW_SCREEN8-SUMMARY_PERSONAL-INFO-HEADER_LABEL' | translate}}</h2>
+                            <button type="button" class="btn btn-sm right" ng-click="editPersonalInfo();">
+                                {{'APPLY-NEW_SCREEN8-SUMMARY_EDIT-PERSONAL-INFO_LABEL' | translate}}
+                            </button>
+                        </div>
+                    </div>
+                    <div class="custom-row form-group">
+                        <div class="col-md-4">
+                            <label>{{'APPLY-NEW_SCREEN8-SUMMARY_GENDER_LABEL' | translate}}</label>
+                            <p class="control-info">{{gender}}</p>
+                        </div>
+                        <div class="col-md-4">
+                            <label>{{'APPLY-NEW_SCREEN8-SUMMARY_MARITAL-STATUS_LABEL' | translate}}</label>
+                            <p class="control-info">{{maritalStatus}}</p>
+                        </div>
+                    </div>
+                    <div class="custom-row form-group">
+                        <div class="col-md-4">
+                            <label>{{'APPLY-NEW_SCREEN8-SUMMARY_NATIONALITY_LABEL' | translate}}</label>
+                            <p class="control-info">{{nationality}}</p>
+                        </div>
+                        <div class="col-md-4">
+                            <label>{{'APPLY-NEW_SCREEN8-SUMMARY_2-NATIONALITY_LABEL' | translate}} </label>
+                            <p class="control-info">{{nationality2}}</p>
+                        </div>
+                    </div>
+                    <div class="custom-row form-group">
+                        <div class="col-md-4">
+                            <label>{{'APPLY-NEW_SCREEN8-SUMMARY_INCOME_LABEL' | translate}}</label>
+                            <p class="control-info">{{incomesource}}</p>
+                        </div>
+                        <div class="col-md-4">
+                            <label>{{'APPLY-NEW_SCREEN8-SUMMARY_SOURCE-OF-INCOME_LABEL' | translate}} </label>
+                            <p class="control-info">{{income}}</p>
+                        </div>
+                    </div>
+                    <div class="custom-row form-group">
+                        <div class="col-md-4">
+                            <label>{{'APPLY-NEW_SCREEN8-SUMMARY_COUNTRY-SOURCE_LABEL' | translate}}</label>
+                            <p class="control-info">{{sourceIncomeCountry}}</p>
+                        </div>
+                        <div class="col-md-4">
+                            <label>{{'APPLY-NEW_SCREEN8-SUMMARY_EDUCATION_LABEL' | translate}}</label>
+                            <p class="control-info">{{studies}}</p>
+                        </div>
+                    </div>
+                    <div class="custom-row form-group">
+                        <div class="col-md-4">
+                            <label>{{'APPLY-NEW_SCREEN8-SUMMARY_OCCUPATION_LABEL' | translate}}</label>
+                            <p class="control-info">{{occupationName}}</p>
+                        </div>
+                        <div class="col-md-4">
+                            <label>{{'APPLY-NEW_SCREEN8-SUMMARY_OCCUPATION-DETAILS_LABEL' | translate}}</label>
+                            <p class="control-info">{{occupationDetails}}</p>
+                        </div>
+                    </div>
+                    <div class="custom-row form-group">
+                        <div class="col-md-4">
+                            <label>{{'APPLY-NEW_SCREEN8-SUMMARY_OBJECTIVE-ACCOUNT_LABEL' | translate}}</label>
+                            <p class="control-info">{{objectiveOfAccount}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="custom-row line-bottom form-group" ng-hide="riskLevel == '1'">
+                    <div class="custom-row form-group">
+                        <div class="col-md-12 m-t-20">
+                            <h2 class="left">{{'APPLY-NEW_SCREEN8-SUMMARY_SOURCE-OF-INC-HEADER_LABEL' | translate}}</h2>
+                            <button type="button" class="btn btn-sm right" ng-click="editSourceIncomeInfo();">{{'APPLY-NEW_SCREEN8-SUMMARY_EDIT-SOURCE-OF-INCOME_LABEL' | translate}}</button>
+                        </div>
+                    </div>
+                    <div class="custom-row form-group">
+                        <div class="col-md-4">
+                            <label>{{'APPLY-NEW_SCREEN8-SUMMARY_SOURCE_LABEL' | translate}}</label>
+                            <p class="control-info">{{assetsource}}</p>
+                        </div>
+                    </div>
+                    <div class="custom-row form-group">
+                        <div class="col-md-6">
+                            <h3>{{'APPLY-NEW_SCREEN8-SUMMARY_ESTIMATED-TRANSACTION_LABEL' | translate}}</h3>
+                        </div>
+                    </div>
+                    <div class="custom-row form-group">
+                        <div class="col-md-4">
+                            <label>{{'APPLY-NEW_SCREEN8-SUMMARY_DEPOSIT-TRANSACTION_LABEL' | translate}}</label>
+                            <p class="control-info">{{depositedTransaction}}</p>
+                        </div>
+                        <div class="col-md-4">
+                            <label>{{'APPLY-NEW_SCREEN8-SUMMARY_ESTIMATE-DEPOSIT_LABEL' | translate}}</label>
+                            <p class="control-info">{{estimatedDeposit}}</p>
+                        </div>
+                    </div>
+                    <div class="custom-row form-group">
+                        <div class="col-md-4">
+                            <label>{{'APPLY-NEW_SCREEN8-SUMMARY_WITHDRAW-TRANSACTION_LABEL' | translate}}</label>
+                            <p class="control-info">{{transactionWithdrawn}}</p>
+                        </div>
+                        <div class="col-md-4">
+                            <label>{{'APPLY-NEW_SCREEN8-SUMMARY_ESTIMATE-WITHDRAW_LABEL' | translate}}</label>
+                            <p class="control-info">{{estimatedWithdrawal}}</p>
+                        </div>
+                    </div>
+                    <div class="custom-row form-group">
+                        <div class="col-md-4">
+                            <label>{{'APPLY-NEW_SCREEN8-SUMMARY_SOURCE-ASSET_LABEL' | translate}}</label>
+                            <p class="control-info">{{sourceAsset}}</p>
+                        </div>
+                        <div class="col-md-4">
+                            <label>{{'APPLY-NEW_SCREEN8-SUMMARY_ESTIMATE-NET-ASSET_LABEL' | translate}}</label>
+                            <p class="control-info">{{estimatedAsset}}</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="custom-row line-bottom form-group">
+                    <div class="custom-row form-group">
+                        <div class="col-md-12 m-t-20">
+                            <h2 class="left">{{'APPLY-NEW_SCREEN8-SUMMARY_LINK-ACCOUNT-HEADER_LABEL' | translate}}</h2>
+                            <button type="button" class="btn btn-sm right" ng-click="editEBA();">{{'APPLY-NEW_SCREEN8-SUMMARY_EDIT-LINK-ACCOUNT_BUTTON' | translate}}</button>
+                        </div>
+                    </div>
+                    <div class="custom-row form-group"  ng-if="utilities.isEmpty(bankDetails) || utilities.isEmpty(getProspectUserData)">
+                        <p>{{"APPLY-NEW_SCREEN8-SUMMARY_NO-EBA_LABEL" | translate}}</p><br/>
+                    </div>
+                    <div class="custom-row form-group"  ng-if="!utilities.isEmpty(bankDetails) || !utilities.isEmpty(getProspectUserData)">
+                        <div class="block-responsive  m-t-5" ng-repeat="bankdetails in bankDetails">
+                            <div class="col-md-2">
+                                <div class="image-container">
+                                    <img ng-src="{{bankdetails.bankLogo}}" class="bank-logo-size-80px">
+                                </div>
+                            </div>
+                            <div class="col-md-10">
+                                <div class="custom-row form-group">
+                                    <div class="col-md-4">
+                                        <label>{{'APPLY-NEW_SCREEN8-SUMMARY_BANK-NAME_LABEL' | translate}}</label>
+                                        <p class="control-info">{{bankdetails.bankName}}</p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>{{'APPLY-NEW_SCREEN8-SUMMARY_ACCOUNT-NUMBER_LABEL' | translate}}</label>
+                                        <p class="control-info">{{bankdetails.accNo | accountNumberFormat}}</p>
+                                    </div>
+                                </div>
+                                <div class="custom-row form-group">
+                                    <div class="col-md-4">
+                                        <label>{{'APPLY-NEW_SCREEN8-SUMMARY_ACCOUNT-NAME_LABEL' | translate}}</label>
+                                        <p class="control-info">{{bankdetails.accName}}</p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>{{'APPLY-NEW_SCREEN8-SUMMARY_ACCOUNT-NICK-NAME_LABEL' | translate}}</label>
+                                        <p class="control-info">{{bankdetails.accNickName}}</p>
+                                    </div>
+                                </div>
+                                <div class="custom-row form-group">
+                                    <div class="col-md-10">
+                                        <span class="pink">*</span> {{ 'APPLY-NEW_SCREEN8-SUMMARY_VERIFY-EBA-WARNING-MESSAGE_LABEL' | translate
+                                        }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--div class="custom-row form-group">
+                    <div class="custom-row form-group">
+                        <div class="col-md-12 m-t-20">
+                            <h2>{{'APPLY-NEW_SCREEN8-SUMMARY_MGM-HEADER_LABEL' | translate}}</h2>
+                        </div>
+                    </div>
+                    <div class="custom-row form-group">
+                        <div class="col-md-4">
+                            <label>{{'Number of recommendations' | translate}}</label>
+                            <input name="" class="form-control" type="text" value="">
+                        </div>
+                    </div>
+                </div-->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="custom-row">
+    <div class="text-center m-b-70">
+        <button type="button" ng-click="applicantSummaryConfirmation();" class="btn">{{'APPLY-NEW_SCREEN8-SUMMARY_CONFIRM_BUTTON' | translate}}</button>
+    </div>
+</div>
