@@ -41,8 +41,8 @@ const client = new Wit(accessToken);
 var options = {
     sessionId: ''
 }
-//const {interactive} = require('node-wit');
-//interactive(client);
+const {interactive} = require('node-wit');
+interactive(client);
 // body parser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
