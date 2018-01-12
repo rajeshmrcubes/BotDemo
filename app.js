@@ -283,3 +283,10 @@ app.listen(app.get('port') ,function(req,res){
   console.log("time is "+Date.now());
 console.log('Webhook server is listening, port 3030');
 });
+
+if (module === require.main) {
+  app.listen(app.get('port'), function(req,res) {
+    //log.info('running on port', app.get('port'))
+      console.log('running on port', app.get('port'))
+  })
+}
