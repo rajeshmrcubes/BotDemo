@@ -275,7 +275,7 @@ var accessLogStream = rfs('access.log', {
   path: logDirectory
 })
 
-//setting port
+/*//setting port
 app.set('port',process.env.PORT || 3030);
 // providing the JSon
 app.listen(app.get('port') ,function(req,res){
@@ -289,4 +289,8 @@ if (module === require.main) {
     //log.info('running on port', app.get('port'))
       console.log('running on port', app.get('port'))
   })
-}
+}*/
+var server = app.listen(process.env.PORT || 3030, function () {
+  var port = server.address().port;
+  console.log("Express is working on port " + port);
+});
